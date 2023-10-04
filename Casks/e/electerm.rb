@@ -1,0 +1,24 @@
+cask "electerm" do
+  arch arm: "arm64", intel: "x64"
+
+  version "1.34.0"
+  sha256 arm:   "826ba8b910900db272aae7b702860106d2083a5b32717da1c0626b4f5aa2be97",
+         intel: "3fd5e5b0aa2a332956fcd164a5d5b35276b9b4266bf9695f95e216670f620256"
+
+  url "https://github.com/electerm/electerm/releases/download/v#{version}/electerm-#{version}-mac-#{arch}.dmg"
+  name "electerm"
+  desc "Terminal/ssh/sftp client"
+  homepage "https://github.com/electerm/electerm/"
+
+  auto_updates true
+
+  app "electerm.app"
+  binary "#{appdir}/electerm.app/Contents/MacOS/electerm"
+
+  zap trash: [
+    "~/Library/Application Support/electerm",
+    "~/Library/Logs/electerm",
+    "~/Library/Preferences/org.electerm.electerm.plist",
+    "~/Library/Saved Application State/org.electerm.electerm.savedState",
+  ]
+end

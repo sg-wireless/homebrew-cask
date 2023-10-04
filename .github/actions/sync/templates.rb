@@ -19,10 +19,8 @@ puts 'Detecting changes…'
   '.github/*.md',
   '.github/*.yml',
   '.github/ISSUE_TEMPLATE/*.{md,yml}',
-  '.github/workflows/{cache,ci,dispatch-command,rebase,rerun-workflow,review,triage}.yml',
+  '.github/workflows/{automerge,cache,ci,dispatch-command,rebase,rerun-workflow,triage}.yml',
   '.gitignore',
-  '.travis.yml',
-  'Casks/.rubocop.yml',
 ].each do |glob|
   src_paths = Pathname.glob(glob)
   dst_paths = Pathname.glob(repo_dir.join(glob))
@@ -63,4 +61,6 @@ modified_paths.each do |modified_path|
 end
 puts
 
-puts '::set-output name=pull_request::true'
+File.open(ENV.fetch('GITHUB_OUTPUT'), 'a') do |f|
+  f.puts('pull_request=true')
+end
