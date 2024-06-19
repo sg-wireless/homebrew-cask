@@ -1,9 +1,9 @@
 cask "banana-cake-pop" do
   arch arm: "arm64", intel: "x64"
 
-  version "10.0.0"
-  sha256 arm:   "142a9d0c79516e37dbfa0c3755486cf67f98d4efad5a0df0c78be2bc7c9fac9a",
-         intel: "587e49b76bf5956ec8f876731d612606a043d3812919de547a264e2819a338b3"
+  version "16.0.3"
+  sha256 arm:   "7a03dee6ed8c30fbcf2c6e28443de3c71065e04fa136a58c6478a4032b84b8da",
+         intel: "c78ee1b86dc5884833ad7357718ba8b1fa1fe9996c727f39fb933ee66ce7250a"
 
   url "https://download.chillicream.com/bananacakepop/BananaCakePop-#{version}-mac-#{arch}.dmg"
   name "Banana Cake Pop"
@@ -21,10 +21,10 @@ cask "banana-cake-pop" do
   app "Banana Cake Pop.app"
 
   zap trash: [
-    "~/Library/Application Support/bananacakepop",
     "~/Library/Application Support/@banana-cake-pop",
-    "~/Library/Caches/com.chillicream.bananacakepop.ShipIt",
+    "~/Library/Application Support/bananacakepop",
     "~/Library/Caches/com.chillicream.bananacakepop",
+    "~/Library/Caches/com.chillicream.bananacakepop.ShipIt",
     "~/Library/Preferences/ByHost/com.chillicream.bananacakepop.ShipIt.*.plist",
     "~/Library/Preferences/com.chillicream.bananacakepop.plist",
     "~/Library/Saved Application State/com.chillicream.bananacakepop.savedState",

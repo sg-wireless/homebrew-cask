@@ -40,11 +40,9 @@ cask "asix-ax88179" do
       staged_path.glob("AX88179_178A_Uninstall_v*.pkg").first.rename(staged_path/"AX88179_178A_Uninstall.pkg")
 
       system_command "/usr/sbin/installer",
-                     args: [
-                       "-pkg", staged_path/"AX88179_178A_Uninstall.pkg",
-                       "-target", "/"
-                     ],
-                     sudo: true
+                     args:         ["-pkg", staged_path/"AX88179_178A_Uninstall.pkg", "-target", "/"],
+                     sudo:         true,
+                     sudo_as_root: true
     end
   end
   on_big_sur do
@@ -69,15 +67,13 @@ cask "asix-ax88179" do
       staged_path.glob("ASIX_USB_Device_Un*.pkg").first.rename(staged_path/"AX88179_178A_Uninstall.pkg")
 
       system_command "/usr/sbin/installer",
-                     args: [
-                       "-pkg", staged_path/"AX88179_178A_Uninstall.pkg",
-                       "-target", "/"
-                     ],
-                     sudo: true
+                     args:         ["-pkg", staged_path/"AX88179_178A_Uninstall.pkg", "-target", "/"],
+                     sudo:         true,
+                     sudo_as_root: true
     end
   end
   on_monterey :or_newer do
-    version "2.3.0,1372"
+    version "2.4.0,1472"
 
     livecheck do
       url "https://www.asix.com.tw/en/support/download/step2/11/2/3"
@@ -89,7 +85,7 @@ cask "asix-ax88179" do
       end
     end
 
-    container nested: "ASIX_USB_Device_Installer_macOS_12_above_Driver_v#{version.csv.first}/ASIX_USB_Device_Installer_v#{version.csv.first}.dmg"
+    container nested: "ASIX_USB_Device_Installer_v#{version.csv.first}.dmg"
 
     pkg "ASIX_USB_Device_Installer_v#{version.csv.first}.pkg"
   end
@@ -102,9 +98,9 @@ cask "asix-ax88179" do
   uninstall pkgutil: [
     "com.asix.ax88179.uninstall",
     "com.asix.pkg.ASIXUSBDeviceAppInstaller",
+    "com.mygreatcompany.pkg.ASIXUSBDeviceAPPUninstall",
     "com.mygreatcompany.pkg.AX88179178A",
     "com.mygreatcompany.pkg.AX88179A772DDEXTAPPUninistaller",
-    "com.mygreatcompany.pkg.ASIXUSBDeviceAPPUninstall",
   ]
 
   caveats do

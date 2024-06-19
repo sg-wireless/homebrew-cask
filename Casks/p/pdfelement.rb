@@ -1,5 +1,5 @@
 cask "pdfelement" do
-  version "10.0.4"
+  version "10.3.7"
   sha256 :no_check
 
   url "https://download.wondershare.com/cbs_down/mac-pdfelement_full5237.dmg"
@@ -12,17 +12,17 @@ cask "pdfelement" do
     regex(%r{<Version>(\d+(?:\.\d+)+)</Version>}i)
   end
 
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :catalina"
 
   app "PDFelement.app"
 
   uninstall quit: [
-    "com.wondershare.PDFelement",
     "com.wondershare.helper_compact",
+    "com.wondershare.PDFelement",
   ]
 
   zap trash: [
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.wondershare.pdfelement.sfl2",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.wondershare.pdfelement.sfl*",
     "~/Library/Application Support/com.wondershare.PDFelement",
     "~/Library/Caches/com.wondershare.PDFelement",
     "~/Library/Caches/PDFelement",

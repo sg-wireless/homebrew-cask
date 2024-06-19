@@ -1,6 +1,6 @@
 cask "adobe-acrobat-reader" do
-  version "23.006.20320"
-  sha256 "e6c0b1bd0079c25f39974179e81d3f4011cf443b16259378f7de9c954c4474b0"
+  version "24.002.20759"
+  sha256 "df7e9b0358a05ba7e6b15c138011c1c00b4a57cb6991ea4ba9ba5a94f092a186"
 
   url "https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/#{version.no_dots}/AcroRdrDC_#{version.no_dots}_MUI.dmg"
   name "Adobe Acrobat Reader"
@@ -8,15 +8,27 @@ cask "adobe-acrobat-reader" do
   homepage "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
 
   livecheck do
-    url "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt"
-    regex(/(\d+(?:\.\d+)+)/i)
+    url "https://rdc.adobe.io/reader/products?lang=en&site=landing&os=Mac%20OS%2010.15&api_key=dc-get-adobereader-cdn"
+    strategy :json do |json|
+      json.dig("products", "reader").map { |product| product["version"] }
+    end
   end
 
   auto_updates true
 
   pkg "AcroRdrDC_#{version.no_dots}_MUI.pkg"
 
-  uninstall pkgutil:   [
+  uninstall launchctl: [
+              "com.adobe.ARMDC.Communicator",
+              "com.adobe.ARMDC.SMJobBlessHelper",
+              "com.adobe.ARMDCHelper.cc24aef4a1b90ed56a725c38014c95072f92651fb65e1bf9c8e43c37a23d420d",
+            ],
+            quit:      [
+              "com.adobe.AdobeRdrCEF",
+              "com.adobe.AdobeRdrCEFHelper",
+              "com.adobe.Reader",
+            ],
+            pkgutil:   [
               "com.adobe.acrobat.DC.reader.*",
               "com.adobe.armdc.app.pkg",
               "com.adobe.RdrServicesUpdater",
@@ -24,23 +36,13 @@ cask "adobe-acrobat-reader" do
             delete:    [
               "/Applications/Adobe Acrobat Reader.app",
               "/Library/Preferences/com.adobe.reader.DC.WebResource.plist",
-            ],
-            quit:      [
-              "com.adobe.AdobeRdrCEF",
-              "com.adobe.AdobeRdrCEFHelper",
-              "com.adobe.Reader",
-            ],
-            launchctl: [
-              "com.adobe.ARMDC.Communicator",
-              "com.adobe.ARMDC.SMJobBlessHelper",
-              "com.adobe.ARMDCHelper.cc24aef4a1b90ed56a725c38014c95072f92651fb65e1bf9c8e43c37a23d420d",
             ]
 
   zap trash: [
     "~/Library/Caches/com.adobe.Reader",
     "~/Library/HTTPStorages/com.adobe.Reader.binarycookies",
     "~/Library/Preferences/com.adobe.AdobeRdrCEFHelper.plist",
-    "~/Library/Preferences/com.adobe.Reader.plist",
     "~/Library/Preferences/com.adobe.crashreporter.plist",
+    "~/Library/Preferences/com.adobe.Reader.plist",
   ]
 end

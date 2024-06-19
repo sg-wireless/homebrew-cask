@@ -1,12 +1,12 @@
 cask "ava" do
-  version "2023-09-26"
-  sha256 "a28165ddf4898390498d851c4f849dddf589b5a7a2be80d7c1d92e5dd7ddaa85"
+  version "2024-04-21"
+  sha256 "7fdfdf409d5b99a98fb16c11d0acfdf59e02815cce0b95f480d5274b0e1532e4"
 
   url "https://s3.amazonaws.com/www.avapls.com/Ava_#{version}.dmg",
       verified: "s3.amazonaws.com/www.avapls.com/"
   name "Ava"
   desc "Run language models locally on your computer"
-  homepage "https://www.avapls.com/"
+  homepage "https://avapls.com/"
 
   livecheck do
     url :homepage

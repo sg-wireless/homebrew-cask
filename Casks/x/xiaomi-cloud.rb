@@ -1,6 +1,6 @@
 cask "xiaomi-cloud" do
-  version "2.4.1"
-  sha256 "526677b298efad6539cb713f2a70f1fc02f5dd6c976ce915fe8e5546aaaa9644"
+  version "2.6.2"
+  sha256 "c39fc8b50e8a581e7c6fe7168651a50f6728aff82eb6bb3a997b9d5dd13b8085"
 
   url "https://cdn.cnbj1.fds.api.mi-img.com/archive/update-server/public/darwin/x64/XiaomiCloud-#{version}.dmg",
       verified: "cdn.cnbj1.fds.api.mi-img.com/archive/update-server/public/darwin/x64/"

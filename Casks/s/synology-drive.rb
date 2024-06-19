@@ -1,6 +1,6 @@
 cask "synology-drive" do
-  version "3.3.0,15082"
-  sha256 "7719a9077d598ced6e02701b635dce8d547cd420832dff6f242db489968f649e"
+  version "3.5.0,16084"
+  sha256 "3436315215ad01552da427f559e9aa4a16421471a02c6c2b917e8795dc4e947d"
 
   url "https://global.download.synology.com/download/Utility/SynologyDriveClient/#{version.csv.first}-#{version.csv.second}/Mac/Installer/synology-drive-client-#{version.csv.second}.dmg"
   name "Synology Drive"
@@ -19,25 +19,24 @@ cask "synology-drive" do
 
   pkg "Install Synology Drive Client.pkg"
 
-  uninstall quit:      [
-              "io.com.synology.CloudStationUI",
+  uninstall launchctl: [
+              "application.com.synology.CloudStationUI*",
+              "com.synology.Synology Cloud Station",
+            ],
+            quit:      [
               "com.synology.CloudStation",
               "com.synology.CloudStationUI",
               "com.synology.SynologyDrive.FinderHelper",
+              "io.com.synology.CloudStationUI",
             ],
             pkgutil:   "com.synology.CloudStation",
-            launchctl: [
-              "com.synology.Synology Cloud Station",
-              "application.com.synology.CloudStationUI*",
-              "application.com.synology.CloudStationUI.*",
-            ],
             delete:    "/Applications/Synology Drive Client.app"
 
   zap trash: [
     "~/Library/Application Scripts/com.synology.CloudStationUI.FileProvider",
     "~/Library/Application Scripts/com.synology.SynologyDrive.FinderHelper*",
     "~/Library/Application Scripts/group.com.synology.CloudStationUI",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.synology.synologydrive.finderhelper.sfl2",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.synology.synologydrive.finderhelper.sfl*",
     "~/Library/Application Support/FileProvider/com.synology.CloudStationUI.FileProvider",
     "~/Library/Application Support/SynologyDrive",
     "~/Library/Containers/com.synology.CloudStationUI.FileProvider",

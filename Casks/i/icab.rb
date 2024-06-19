@@ -1,6 +1,6 @@
 cask "icab" do
-  version "6.2.1"
-  sha256 "ac73749ae747c1fbef576c07d5f2ac8d7f28dd8967e6fd458b4294fead21c9ff"
+  version "6.2.2"
+  sha256 "10c23cee5831b0d77ee7dcb0c791bb170ae70dc883c669e3b05ed909d2ecc3c1"
 
   url "https://icab.clauss-net.de/icab/iCab_#{version}.zip",
       verified: "icab.clauss-net.de/icab/"
@@ -19,7 +19,7 @@ cask "icab" do
 
   zap trash: [
     "~/Library/Application Support/iCab",
-    "~/Library/Caches/com.apple.helpd/Generated/iCab.help*#{version}",
+    "~/Library/Caches/com.apple.helpd/Generated/iCab.help*",
     "~/Library/Caches/de.icab.iCab",
     "~/Library/Preferences/de.icab.iCab.plist",
     "~/Library/Preferences/iCab",

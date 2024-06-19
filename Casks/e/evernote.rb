@@ -30,14 +30,14 @@ cask "evernote" do
     end
   end
   on_mojave :or_newer do
-    version "10.58.8,4175,bf1b4b33d6"
-    sha256 "8959c650d6f7965819a8a9b01ffdddd5a3dafc5c770ebc811fc036df13da1b09"
+    version "10.92.3,20240612161827,f90a5e7c24d80a83573ee1e0f55c77062464b3da"
+    sha256 "d66eb3845a71afc09d3508833dae24e4345b3e9c4ce95b47ca2fe4977e8e099e"
 
-    url "https://cdn1.evernote.com/boron/mac/builds/Evernote-#{version.csv.first}-mac-ddl-ga-#{version.csv.second}-#{version.csv.third}.dmg"
+    url "https://mac.desktop.evernote.com/builds/Evernote-#{version.csv.first}-mac-ddl-stage-#{version.csv.second}-#{version.csv.third}.dmg"
 
     livecheck do
-      url "https://evernote.s3.amazonaws.com/boron/mac/public/latest-mac.yml"
-      regex(/Evernote[._-](\d+(?:\.\d+)+)-mac-ddl-ga-(\d+(?:\.\d+)*)-([0-9a-f]+)\.dmg/i)
+      url "https://updates.desktop.evernote.com/mac/public/latest-mac.yml"
+      regex(/Evernote[._-](\d+(?:\.\d+)+)-mac-ddl-stage-(\d+(?:\.\d+)*)-([0-9a-f]+)\.dmg/i)
       strategy :electron_builder do |yaml, regex|
         yaml["files"]&.map do |file|
           match = file["url"]&.match(regex)
@@ -50,7 +50,7 @@ cask "evernote" do
   end
 
   name "Evernote"
-  desc "App for note taking, organizing, task lists, and archiving"
+  desc "App for note taking, organising, task lists, and archiving"
   homepage "https://evernote.com/"
 
   auto_updates true

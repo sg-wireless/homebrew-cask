@@ -1,11 +1,11 @@
 cask "bisq" do
-  version "1.9.12"
-  sha256 "720c2e411ee5b69afbb5a1a9c6b03d5de1a9619871965abc6eaa6222270f94b1"
+  version "1.9.15"
+  sha256 "8ad7e26024c002adb1e0a73bacca37ee81dd42ac5fdf7bb23980349870cc8a3c"
 
   url "https://github.com/bisq-network/bisq/releases/download/v#{version}/Bisq-#{version}.dmg",
       verified: "github.com/bisq-network/bisq/"
   name "Bisq"
-  desc "Decentralized bitcoin exchange network"
+  desc "Decentralised bitcoin exchange network"
   homepage "https://bisq.network/"
 
   livecheck do

@@ -1,8 +1,11 @@
 cask "perforce" do
-  version "2023.1,2468153"
-  sha256 "c1532eb1b210776dcfeb8b10724f1d24cb9e8582334c1240d185d9792fe0b6b8"
+  arch arm: "12arm64", intel: "1015x86_64"
 
-  url "https://filehost.perforce.com/perforce/r#{version.major[-2..]}.#{version.minor}/bin.macosx1015x86_64/helix-core-server.tgz"
+  version "2024.1,2596294"
+  sha256 arm:   "2b84357df0776071ee4b95510378eae6054b9d07e5c30f1b97ce118c57db6148",
+         intel: "67a8dd068e7aaff6994d8410566061a5a969ff65ee7568ad954604773ab0c0ca"
+
+  url "https://filehost.perforce.com/perforce/r#{version.major[-2..]}.#{version.minor}/bin.macosx#{arch}/helix-core-server.tgz"
   name "Perforce Helix Core Server"
   name "Perforce Helix Command-Line Client (P4)"
   name "Perforce Helix Broker (P4Broker)"
@@ -25,6 +28,8 @@ cask "perforce" do
   binary "p4broker"
   binary "p4d"
   binary "p4p"
+
+  # No zap stanza required
 
   caveats <<~EOS
     Instructions on using the Helix Versioning Engine are available in

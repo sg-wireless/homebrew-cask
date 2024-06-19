@@ -1,9 +1,9 @@
 cask "powershell" do
   arch arm: "arm64", intel: "x64"
 
-  version "7.3.7"
-  sha256 arm:   "7ae91b9a86588f4e1b9199595169184b27f15c81d67754ff84c7b77d455adf8e",
-         intel: "4e25a0f564c46afc605e6da93b1ed165f18d7d60d3506971ca9701cb5f1a1588"
+  version "7.4.2"
+  sha256 arm:   "7b807a68110c44b53911561e7e43bb9d4a37cfe9666a8d157d6fcc6b2b93e51c",
+         intel: "574f3ae046625bf2d300b2ae58a818e4d4059797b0c72ed67686ec09849cac68"
 
   url "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}-osx-#{arch}.pkg"
   name "PowerShell"
@@ -29,7 +29,8 @@ cask "powershell" do
   ]
 
   caveats <<~EOS
-    To use Homebrew in PowerShell, set:
+    To use Homebrew in PowerShell, run the following in a PowerShell session:
+      New-Item -Path (Split-Path -Parent -Path $PROFILE.CurrentUserAllHosts) -ItemType Directory -Force
       Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(#{HOMEBREW_PREFIX}/bin/brew shellenv) | Invoke-Expression'
   EOS
 end

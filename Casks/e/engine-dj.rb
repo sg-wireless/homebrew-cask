@@ -1,8 +1,8 @@
 cask "engine-dj" do
-  version "3.2.0,503f36225b,d1d6ed89e0"
-  sha256 "6e0debf31b56688dded9fbb1afa63b16cc1f8759aa1b622e2079a8ea5c7ea969"
+  version "4.0.0,af2cdcfdbe977f25,778d88f94d"
+  sha256 "6f6e89abdb8b64d9a62854c0e9690b69d33f1b8b46dc9da44ee5238f891d7813"
 
-  url "https://imb-cicd-public.s3.amazonaws.com/Engine/#{version.csv.first}/Release/EDJ/mac/#{version.csv.third}/Engine_DJ_Release_#{version.csv.first}_#{version.csv.second}.dmg",
+  url "https://imb-cicd-public.s3.amazonaws.com/Engine/#{version.csv.first}/Release/#{version.csv.second}/Engine_DJ_#{version.csv.first}_#{version.csv.third}_Setup.dmg",
       verified: "imb-cicd-public.s3.amazonaws.com/Engine/"
   name "Engine DJ Desktop"
   desc "DJ software suite"
@@ -10,9 +10,11 @@ cask "engine-dj" do
 
   livecheck do
     url "https://enginedj.com/downloads"
-    regex(%r{href=.*?/Release/EDJ/mac/(\w*?)/Engine[._-]DJ_Release[._-](\d+(?:\.\d+)+)[._-](\w*?)\.dmg}i)
+    regex(
+      %r{href=.*?/Engine/(\d+(?:\.\d+)+)/Release/(\w*)/Engine[._-]DJ[._-]\d+(?:\.\d+)+[._-](\w*?)[._-]Setup\.dmg}i,
+    )
     strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[1]},#{match[2]},#{match[0]}" }
+      page.scan(regex).map { |match| "#{match[0]},#{match[1]},#{match[2]}" }
     end
   end
 

@@ -47,11 +47,47 @@ cask "omnifocus" do
 
     uninstall quit: "com.omnigroup.OmniFocus#{version.major}"
   end
-  on_catalina :or_newer do
-    version "3.15"
-    sha256 "e34bbeb3d52372289031a7bee2c11c78bf36229e51bc0045ad8edc6c141f7840"
+  on_catalina do
+    version "3.11.7"
+    sha256 "21c0a63b6bd8c8ff3e5067f4ccd0ab16c9fd65815a7305e184ed27723bd0aa15"
+
+    url "https://downloads.omnigroup.com/software/MacOSX/10.14/OmniFocus-#{version}.dmg"
+
+    livecheck do
+      skip "Legacy version"
+    end
+
+    uninstall quit: "com.omnigroup.OmniFocus#{version.major}"
+  end
+  on_big_sur do
+    version "3.15.6"
+    sha256 "7995fea297b5a8a1d7fafd1c3f3ec9f00ebcbe12ac64e91b3f0e55e273749d69"
 
     url "https://downloads.omnigroup.com/software/macOS/11/OmniFocus-#{version}.dmg"
+
+    livecheck do
+      skip "Legacy version"
+    end
+
+    uninstall quit: "com.omnigroup.OmniFocus#{version.major}"
+  end
+  on_monterey do
+    version "3.15.6"
+    sha256 "7995fea297b5a8a1d7fafd1c3f3ec9f00ebcbe12ac64e91b3f0e55e273749d69"
+
+    url "https://downloads.omnigroup.com/software/macOS/11/OmniFocus-#{version}.dmg"
+
+    livecheck do
+      skip "Legacy version"
+    end
+
+    uninstall quit: "com.omnigroup.OmniFocus#{version.major}"
+  end
+  on_ventura :or_newer do
+    version "4.3"
+    sha256 "04789fb447615d489e6cff0f9969fd22041e302be83b2816a20ac494847a809b"
+
+    url "https://downloads.omnigroup.com/software/macOS/13/OmniFocus-#{version}.dmg"
 
     livecheck do
       url "https://www.omnigroup.com/download/latest/omnifocus/"
@@ -62,7 +98,7 @@ cask "omnifocus" do
   end
 
   name "OmniFocus"
-  desc "Scheduling application focusing on organization"
+  desc "Scheduling application focusing on organisation"
   homepage "https://www.omnigroup.com/omnifocus/"
 
   auto_updates true

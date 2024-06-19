@@ -1,7 +1,7 @@
 cask "vpn-tracker-365" do
   # NOTE: "365" is not a version number, but an intrinsic part of the product name
-  version "23.5.1,230510"
-  sha256 "2fb75858d6273a0db8fee449670f748ecc6c9272322bb8958950b00217a19efc"
+  version "24.0.2,240025"
+  sha256 "024b902cd0557a6a54fe4c5b7070760c771749175dad8a4b15cbb932e7b6d78c"
 
   url "https://download.equinux.com/files/other/VPN%20Tracker%20365%20-%20#{version.csv.first}%20#{version.csv.second}.zip",
       verified: "download.equinux.com/files/other/"
@@ -20,7 +20,7 @@ cask "vpn-tracker-365" do
     end
   end
 
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :high_sierra"
 
   app "VPN Tracker 365.app"
 
@@ -29,8 +29,7 @@ cask "vpn-tracker-365" do
     "/Library/Extensions/com.equinux.VPNTracker365.*",
     "/Library/LaunchDaemons/com.equinux.VPNTracker365.agent.plist",
     "/Library/Preferences/com.equinux.VPNTracker365.plist",
-    "/Library/PrivilegedHelperTools/com.equinux.VPNTracker365.agent",
-    "/Library/PrivilegedHelperTools/com.equinux.VPNTracker365.connectiond",
+    "/Library/PrivilegedHelperTools/com.equinux.VPNTracker365.*",
   ]
 
   zap trash: [

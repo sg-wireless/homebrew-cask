@@ -1,9 +1,9 @@
 cask "dataspell" do
   arch arm: "-aarch64"
 
-  version "2023.2.2,232.9921.48"
-  sha256 arm:   "0baeeba5f8a2dd02304b42a54d633719df3242bfaedc5b62bec4dacd403eabf2",
-         intel: "24fb47966c891bf3a2a827df38885d48509c6e2e68a7cc03145ad28493adb76b"
+  version "2024.1.3,241.18034.23"
+  sha256 arm:   "fa8f9c77b2fab31ea383a492c7a061e4b297e6581df4a5c116de9aec4a52c86d",
+         intel: "132c1e67c18d676844a26ad95fcd68942965157222f7dc931c15117e96d29a84"
 
   url "https://download.jetbrains.com/python/dataspell-#{version.csv.first}#{arch}.dmg"
   name "DataSpell"
@@ -23,15 +23,7 @@ cask "dataspell" do
   depends_on macos: ">= :high_sierra"
 
   app "DataSpell.app"
-
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "dataspell") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
-  end
+  binary "#{appdir}/DataSpell.app/Contents/MacOS/dataspell"
 
   zap trash: [
     "~/Library/Application Support/DataSpell*",

@@ -1,6 +1,6 @@
 cask "adguard-vpn" do
-  version "2.1.4.486"
-  sha256 "3639175f7e348fe0211276addc11928348534f1fa5b7ec8e92a0028dd9f52ba5"
+  version "2.3.1.593"
+  sha256 "83995e3ae3b6031747cc546b27c2356d8930507df646aabefa16ee9dd7d72bba"
 
   url "https://static.adguard-vpn.com/mac/release/AdGuardVPN-#{version}.dmg"
   name "AdGuard VPN"
@@ -15,13 +15,16 @@ cask "adguard-vpn" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/adguard-vpn-nightly"
+  conflicts_with cask: "adguard-vpn@nightly"
   depends_on macos: ">= :catalina"
 
   pkg "AdGuard VPN.pkg"
 
-  uninstall quit:      "com.adguard.mac.vpn",
-            launchctl: "com.adguard.mac.vpn.tun-helper",
+  uninstall launchctl: [
+              "com.adguard.mac.vpn.tun-helper",
+              "com.adguard.mac.vpn.vpn_helper",
+            ],
+            quit:      "com.adguard.mac.vpn",
             pkgutil:   "com.adguard.mac.vpn-pkg",
             delete:    [
               "/Library/Application Support/AdGuard Software/com.adguard.mac.vpn",
@@ -31,8 +34,7 @@ cask "adguard-vpn" do
             rmdir:     "/Library/Application Support/AdGuard Software"
 
   zap trash: [
-    "~/Library/Application Scripts/*.com.adguard.mac",
-    "~/Library/Application Scripts/com.adguard.mac.vpn.launchatlogin",
+    "~/Library/Application Scripts/*com.adguard.mac*",
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.adguard.mac.vpn.launchatlogin.sfl*",
     "~/Library/Caches/com.adguard.mac.vpn",
     "~/Library/Containers/com.adguard.mac.vpn.launchatlogin",

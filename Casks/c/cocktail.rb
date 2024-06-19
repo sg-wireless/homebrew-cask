@@ -77,8 +77,8 @@ cask "cocktail" do
     end
   end
   on_ventura do
-    version "16.4.2"
-    sha256 "87ea88496439ba610a4da46e7ad0d2b7158ddd96ad254f51ba5f15b84616dd59"
+    version "16.6"
+    sha256 "8fcb3fda2fc0b3ca7655f9f4c22822066495c5fca7b184d0e4e499bda4e4075c"
 
     url "https://www.maintain.se/downloads/Cocktail#{version.major}VE.dmg"
 
@@ -88,8 +88,8 @@ cask "cocktail" do
     end
   end
   on_sonoma :or_newer do
-    version "17.0"
-    sha256 "aabd09f9569469a8bb47ca7dedd67a901d37b062e9bec61e3fb998e72a7f644e"
+    version "17.2.2"
+    sha256 "af9a5ccd16c93e229882c21e637b3582c9f122f25faeacd73a090968ceaa6e0d"
 
     url "https://www.maintain.se/downloads/Cocktail#{version.major}SE.dmg"
 
@@ -100,7 +100,7 @@ cask "cocktail" do
   end
 
   name "Cocktail"
-  desc "Cleans, repairs and optimizes computer systems"
+  desc "Cleans, repairs and optimises computer systems"
   homepage "https://www.maintain.se/cocktail/"
 
   app "Cocktail.app"

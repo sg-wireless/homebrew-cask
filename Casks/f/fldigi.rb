@@ -1,13 +1,13 @@
 cask "fldigi" do
-  version "4.2.00"
+  version "4.2.05"
 
   on_sierra :or_older do
-    sha256 "1d81c16cee9527d1dcec4084f6cfc8371e44c7e127c96b562f9944ba619770ed"
+    sha256 "d9ca65970968d415bf56d783b4383188297f735c53fc8d379cfb735b3e062974"
 
     url "https://downloads.sourceforge.net/fldigi/fldigi/fldigi-#{version}_LI.dmg"
   end
   on_high_sierra :or_newer do
-    sha256 "bde4665c7cae937b50ad48336ad673938ea40015073c130658c62252944e6924"
+    sha256 "88f2c5b018a1aceb2f64f05470e711f98f412ffef221c5276543d0c20303e60c"
 
     url "https://downloads.sourceforge.net/fldigi/fldigi/fldigi-#{version}_VN.dmg"
   end

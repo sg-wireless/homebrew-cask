@@ -1,11 +1,11 @@
 cask "eqmac" do
-  version "1.7.10"
-  sha256 "37327a872072d80c335963ea829c97aafd265ce699b77b89ffcfb1368d971a29"
+  version "1.8.7"
+  sha256 "ca8fd1885e764c3ab0009420e09012a12a9871dc9702d4edcdb7b25d2d3b71ce"
 
   url "https://github.com/bitgapp/eqMac/releases/download/v#{version}/eqMac.dmg",
       verified: "github.com/bitgapp/eqMac/"
   name "eqMac"
-  desc "System-wide audio equalizer"
+  desc "System-wide audio equaliser"
   homepage "https://eqmac.app/"
 
   livecheck do
@@ -14,8 +14,11 @@ cask "eqmac" do
   end
 
   auto_updates true
+  depends_on macos: ">= :sierra"
 
   app "eqMac.app"
+
+  uninstall delete: "/Library/Audio/Plug-Ins/HAL/eqMac.driver/"
 
   zap trash: [
     "~/Library/Caches/com.bitgapp.eqmac",

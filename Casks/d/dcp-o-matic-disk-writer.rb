@@ -1,10 +1,10 @@
 cask "dcp-o-matic-disk-writer" do
-  version "2.16.65"
-  sha256 "5bb9233e39ff0dcceb1ddc99f697ee8f377773d2f3dd5fddc21109c22449b6c5"
+  version "2.16.86"
+  sha256 "7e61e6288c7d4b19e833a613b23177dc5d6ceaf751cb9d012f3c6aa4d0e29b7b"
 
   url "https://dcpomatic.com/dl.php?id=osx-10.10-disk&version=#{version}"
   name "DCP-o-matic Disk Writer"
-  desc "Convert video, audio and subtitles into DCP (Digital Cinema Democratized)"
+  desc "Convert video, audio and subtitles into DCP (Digital Cinema Package)"
   homepage "https://dcpomatic.com/"
 
   livecheck do

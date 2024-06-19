@@ -1,6 +1,6 @@
 cask "alt-tab" do
-  version "6.61.0"
-  sha256 "72b99e6157929aee5abcd49dddd09b11e1a7baaa278751c2e4d9c43b3f0e0765"
+  version "6.70.1"
+  sha256 "e0b7652e873a84c1758c8947782f3d9b5ba74ad0ac203ebf9d626eb98517f7aa"
 
   url "https://github.com/lwouis/alt-tab-macos/releases/download/v#{version}/AltTab-#{version}.zip",
       verified: "github.com/lwouis/alt-tab-macos/"
@@ -24,6 +24,7 @@ cask "alt-tab" do
     "~/Library/Application Support/com.lwouis.alt-tab-macos",
     "~/Library/Caches/com.lwouis.alt-tab-macos",
     "~/Library/Cookies/com.lwouis.alt-tab-macos.binarycookies",
+    "~/Library/HTTPStorages/com.lwouis.alt-tab-macos",
     "~/Library/LaunchAgents/com.lwouis.alt-tab-macos.plist",
     "~/Library/Preferences/com.lwouis.alt-tab-macos.plist",
   ]

@@ -1,9 +1,9 @@
 cask "screen-studio" do
   arch arm: "-arm64"
 
-  version "2.17.7"
-  sha256 arm:   "8fc53d4681dcb2a20e6ad3f4a84305d6b150a991898a133126196ebde9fbbb92",
-         intel: "99d55d5060e220df232eb26fb75a04ceb635fe7521b09582ddb955b6e499c072"
+  version "2.22.16"
+  sha256 arm:   "46523962a516abaeddf39e123bf3c97a186b181ed75f71480699b7c56070884c",
+         intel: "45c8ffd9eeb109cf012633bdfd8418eafd891ecbfeb6e384890634925d6df2f6"
 
   url "https://screenstudioassets.com/Screen%20Studio-#{version}#{arch}-mac.zip",
       verified: "screenstudioassets.com/"
@@ -12,19 +12,19 @@ cask "screen-studio" do
   homepage "https://www.screen.studio/"
 
   livecheck do
-    url "https://www.screen.studio/api/app-version"
+    url "https://www.screen.studio/api/trpc/appInfo.latestVersionInfo?input=%7B%22isBeta%22%3Afalse%7D"
     strategy :json do |json|
-      json["version"]
+      json.dig("result", "data", "version")
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :high_sierra"
 
   app "Screen Studio.app"
 
   zap trash: [
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.timpler.screenstudio.sfl2",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.timpler.screenstudio.sfl*",
     "~/Library/Application Support/Screen Studio",
     "~/Library/Caches/com.timpler.screenstudio",
     "~/Library/Caches/com.timpler.screenstudio.ShipIt",

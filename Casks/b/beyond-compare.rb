@@ -1,18 +1,19 @@
 cask "beyond-compare" do
-  version "4.4.6.27483"
-  sha256 "854cc97d481f0aebc1e800c76ec8261175e09ed9b4d613e77d28f097b8c8ef47"
+  version "4.4.7.28397"
+  sha256 "a9ba4cea125bbfe00fa3e79de39937197ae5d479d94710f5b93da5bda377a0ce"
 
-  url "https://www.scootersoftware.com/BCompareOSX-#{version}.zip"
+  url "https://www.scootersoftware.com/files/BCompareOSX-#{version}.zip"
   name "Beyond Compare"
   desc "Compare files and folders"
   homepage "https://www.scootersoftware.com/"
 
   livecheck do
-    url "https://www.scootersoftware.com/download.php?zz=v4changelog"
+    url "https://www.scootersoftware.com/download"
     regex(/BCompareOSX[_.-]v?(\d+(?:\.\d+)+)\.zip/i)
   end
 
   auto_updates true
+  conflicts_with cask: "beyond-compare@beta"
 
   app "Beyond Compare.app"
   binary "#{appdir}/Beyond Compare.app/Contents/MacOS/bcomp"
@@ -22,6 +23,8 @@ cask "beyond-compare" do
     "~/Library/Caches/com.apple.helpd/Generated/Beyond Compare Help*",
     "~/Library/Caches/com.apple.helpd/Generated/com.ScooterSoftware.BeyondCompare.help*",
     "~/Library/Caches/com.ScooterSoftware.BeyondCompare",
+    "~/Library/Containers/com.ScooterSoftware.BeyondCompare.BCFinder",
+    "~/Library/Preferences/com.ScooterSoftware.BeyondCompare.plist",
     "~/Library/Saved Application State/com.ScooterSoftware.BeyondCompare.savedState",
   ]
 end

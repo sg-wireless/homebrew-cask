@@ -1,6 +1,6 @@
 cask "sigmaos" do
-  version "1.11.3.1"
-  sha256 "b5bfc8cced233e11617bd6d53c27c83163b59593baf50b367336e715243de6e2"
+  version "1.16.5.2"
+  sha256 "1fad3d804884992aed93c2f12837f105b7834c4e1d3db23fee4fb9d962643890"
 
   url "https://releases.sigmaos.com/SigmaOS-#{version}.dmg"
   name "SigmaOS"
@@ -9,7 +9,7 @@ cask "sigmaos" do
 
   livecheck do
     url "https://releases.sigmaos.com/appcast.xml"
-    strategy :sparkle, &:version
+    strategy :sparkle
   end
 
   auto_updates true

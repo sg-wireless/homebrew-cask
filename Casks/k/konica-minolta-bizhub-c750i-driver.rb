@@ -10,15 +10,15 @@ cask "konica-minolta-bizhub-c750i-driver" do
     pkg "A4/C750i_C650i_C360i_C287i_C286i_C4050i_C4000i_C3320i.pkg"
   end
   on_big_sur :or_newer do
-    version "3.1.3A,55acec5c11f08a2d7a9a06fad48c8949,130158"
-    sha256 "9855a756bf1a1b36a70447232cb98585015dc85a4dfb6ca6e3bd2b10a535610c"
+    version "5.1.9A,e189a7b4f0280caf96f8d5431da6cca9,141503"
+    sha256 "c1f2fe4b42159bf4176e1c8bec05484ac3b11a87726f8aecd2476a16252a5864"
 
     livecheck do
       url "https://dl.konicaminolta.eu/en?tx_kmdownloadcenter_dlajaxservice[action]=getDocuments&tx_kmdownloadcenter_dlajaxservice[controller]=AjaxService&tx_kmdownloadcenter_dlajaxservice[productId]=103745&tx_kmdownloadcenter_dlajaxservice[system]=KonicaMinolta&cHash=dd72618a38434b6cb3edfc20595d58c5&type=1527583889"
       strategy :json do |json|
         items = json.select do |i|
           i["TypeOfApplicationName_textS"]&.match?(/driver/i) &&
-            i["OperatingSystemsNames_textM"]&.grep(/macOS.*?#{Regexp.escape(MacOS.version.to_s)}/i)&.any?
+            i["OperatingSystemsNames_textM"]&.any? { |item| item =~ /macOS/i }
         end
 
         item = items.max_by { |i| i["ReleaseDate_textS"] }
@@ -29,7 +29,7 @@ cask "konica-minolta-bizhub-c750i-driver" do
       end
     end
 
-    pkg "C750i_C650i_C360i_C287i_C286i_C4050i_C4000i_C3320i_11.pkg"
+    pkg "C750i_C287i_C4050i_C451i_C4051i_11.pkg"
   end
 
   url "https://dl.konicaminolta.eu/en?tx_kmdownloadcentersite_downloadproxy[fileId]=#{version.csv.second}&tx_kmdownloadcentersite_downloadproxy[documentId]=#{version.csv.third}&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=EN&type=1558521685"

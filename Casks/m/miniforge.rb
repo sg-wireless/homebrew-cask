@@ -1,9 +1,9 @@
 cask "miniforge" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "23.3.1-1"
-  sha256 arm:   "51d15ed1471ef8633f99574dc0c43fc972ce1981ebf08eade4d9b249bb7640e4",
-         intel: "d8eef4816b28f1bfc099d8fc2cdac4fb0ebbe1ddd27f4acb66d83d66c260cb63"
+  version "24.3.0-0"
+  sha256 arm:   "9b3c3d9fa30437592e680390f2b27d45c5d5cfcbfad9a1af233f70a6d8be71a1",
+         intel: "26a80621b146d60e5ae0d896b83ec138416653b951286361b1f93a804cb6a8d9"
 
   url "https://github.com/conda-forge/miniforge/releases/download/#{version}/Miniforge3-#{version}-MacOSX-#{arch}.sh"
   name "miniforge"
@@ -25,12 +25,13 @@ cask "miniforge" do
     args:       ["-b", "-p", "#{caskroom_path}/base"],
   }
   binary "#{caskroom_path}/base/condabin/conda"
+  binary "#{caskroom_path}/base/condabin/mamba"
 
   uninstall delete: "#{caskroom_path}/base"
 
   zap trash: [
-    "~/.condarc",
     "~/.conda",
+    "~/.condarc",
   ]
 
   caveats <<~EOS

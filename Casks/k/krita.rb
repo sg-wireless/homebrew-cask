@@ -1,6 +1,6 @@
 cask "krita" do
-  version "5.1.5"
-  sha256 "0a4e742c91225b8563484cebc1a55b5356fd027d722a951f3df7847af10f72fd"
+  version "5.2.2"
+  sha256 "d0802aa05f46423abef89b8c905846ab2ccd28f37dce5d775cf815c470edbed5"
 
   url "https://download.kde.org/stable/krita/#{version}/krita-#{version}.dmg",
       verified: "download.kde.org/stable/krita/"

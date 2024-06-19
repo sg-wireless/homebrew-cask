@@ -1,6 +1,6 @@
 cask "languagetool" do
-  version "1.5.4"
-  sha256 "f272c787f625f07760aab5f48413da58f2215c7e2671c46dca82659d199fe942"
+  version "1.8.0"
+  sha256 "ec4c9d369b7cf9f82b5c913d4a2c32bcee609a07e3de7990e1fc335149c1fc94"
 
   url "https://languagetool.org/download/mac-app/LanguageToolDesktop-#{version}.dmg"
   name "LanguageTool for Desktop"
@@ -11,8 +11,13 @@ cask "languagetool" do
   # to work with all of the items in the feed (not just the newest one).
   livecheck do
     url "https://languagetool.org/download/mac-app/appcast.xml"
-    strategy :sparkle do |items|
-      items.map(&:short_version)
+    regex(/(\d+(?:\.\d+)+)/i)
+    strategy :sparkle do |items, regex|
+      # The Sparkle versioning scheme is inconsistent. We check the short
+      # version directly since the versions are not listed chronologically.
+      # The livecheck may need to be reverted to extracting the version from
+      # the url. See: https://github.com/Homebrew/homebrew-cask/pull/156995
+      items.map { |item| item.short_version[regex, 1] }
     end
   end
 

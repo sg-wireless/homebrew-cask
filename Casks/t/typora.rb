@@ -1,6 +1,6 @@
 cask "typora" do
-  version "1.7.5"
-  sha256 "5100dcfd74c71787b3b849971ce00afe1e70494e02c91638dd7052b55b83b6fc"
+  version "1.8.10"
+  sha256 "101f8f3acf0196afd858176e162b29ffabc5ecfdf6a676cf660d9df8b8ff2e7f"
 
   url "https://download.typora.io/mac/Typora-#{version}.dmg"
   name "Typora"
@@ -13,7 +13,7 @@ cask "typora" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/typora-dev"
+  conflicts_with cask: "typora@dev"
   depends_on macos: ">= :catalina"
 
   app "Typora.app"

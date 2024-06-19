@@ -1,9 +1,8 @@
 cask "musicbrainz-picard" do
-  version "2.9.2"
-  sha256 "2482fa1a652234d050c25a6f2493303578d9fa7767fab24f1039ce6748ee10a4"
+  version "2.11"
+  sha256 "a0f04274b71fadb43e9082cee4d1465f183475b8043411de559efad6de44c923"
 
-  url "https://musicbrainz.osuosl.org/pub/musicbrainz/picard/MusicBrainz-Picard-#{version}-macOS-10.14.dmg",
-      verified: "musicbrainz.osuosl.org/pub/"
+  url "https://data.musicbrainz.org/pub/musicbrainz/picard/MusicBrainz-Picard-#{version}-macOS-10.14.dmg"
   name "MusicBrainz Picard"
   desc "Music tagger"
   homepage "https://picard.musicbrainz.org/"

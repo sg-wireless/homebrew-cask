@@ -1,6 +1,6 @@
 cask "extraterm" do
-  version "0.73.0"
-  sha256 "9333c0ced5a9b1950e5cb204d380deae00e7b562a2527af8bdb0d47fc8c975f2"
+  version "0.77.0"
+  sha256 "fad003689e21fb9fd565a8385dfef56e4d9330ef2a17698c711cb41faf2f5dba"
 
   url "https://github.com/sedwards2009/extraterm/releases/download/v#{version}/ExtratermQt_#{version}.dmg",
       verified: "github.com/sedwards2009/extraterm/"
@@ -12,9 +12,20 @@ cask "extraterm" do
   # This should be updated to use the `GithubLatest` strategy if/when stable
   # versions become available.
   livecheck do
-    url "https://github.com/sedwards2009/extraterm/releases"
-    regex(%r{href=["']?[^"' >]*?/tag/v?(\d+(?:\.\d+)+)["' >]}i)
-    strategy :page_match
+    url :url
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+    strategy :github_releases do |json, regex|
+      json.map do |release|
+        # This omits the usual `release["prerelease"]` early return condition,
+        # as we need to work with pre-release versions for now.
+        next if release["draft"]
+
+        match = release["tag_name"]&.match(regex)
+        next if match.blank?
+
+        match[1]
+      end
+    end
   end
 
   app "ExtratermQt.app"

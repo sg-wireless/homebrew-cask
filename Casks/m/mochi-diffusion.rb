@@ -1,6 +1,6 @@
 cask "mochi-diffusion" do
-  version "4.3"
-  sha256 "b09cb145b05719a0b9fa03b7be813ea0c8e1a889544d9bc404fd614edef690ed"
+  version "5.1"
+  sha256 "2a09a8f4d3329acdbea227de6952cf6ad89875c1ffea54107d6323e43d02283f"
 
   url "https://github.com/godly-devotion/MochiDiffusion/releases/download/v#{version}/MochiDiffusion_v#{version}.dmg"
   name "Mochi Diffusion"
@@ -8,7 +8,8 @@ cask "mochi-diffusion" do
   homepage "https://github.com/godly-devotion/MochiDiffusion"
 
   auto_updates true
-  depends_on macos: ">= :ventura"
+  depends_on macos: ">= :sonoma"
+  depends_on arch: :arm64
 
   app "Mochi Diffusion.app"
 

@@ -1,11 +1,14 @@
 cask "unison" do
-  version "2.53.3"
-  sha256 "c389e23927e43117851dd01b6fe681c8fa2f8c21bad599c24e2dfb8639f4100b"
+  arch arm: "arm64", intel: "x86_64"
 
-  url "https://github.com/bcpierce00/unison/releases/download/v#{version}/Unison-#{version}-macos.app.tar.gz",
+  version "2.53.5"
+  sha256 arm:   "545b3b0818e671b7f966cd2f8d61df71b79f07a6cf7f180b969ddf26d50a0931",
+         intel: "ff2ab52930f6642a8ca4c903a75ec6341ca8e886701819a1c39c678dfd492228"
+
+  url "https://github.com/bcpierce00/unison/releases/download/v#{version}/Unison-#{version}-macos-#{arch}.app.tar.gz",
       verified: "github.com/bcpierce00/unison/"
   name "Unison"
-  desc "File synchronizer"
+  desc "File synchroniser"
   homepage "https://www.cis.upenn.edu/~bcpierce/unison/"
 
   livecheck do

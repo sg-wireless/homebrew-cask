@@ -2,12 +2,12 @@ cask "dotnet-sdk" do
   arch arm: "arm64", intel: "x64"
 
   on_arm do
-    version "7.0.401,ca10bac6-3833-476b-8e5c-4a325fd185bd,6f2b2e056c2a4d322cf55d6ea446bc1c"
-    sha256 "2b61df71106869038a3a41b5a0882e12fa53a0d3fff13a4a0aa03700d20e96ce"
+    version "8.0.302,348456db-b1d0-49ce-930d-4e905ed17efd,a39c5b23c669ed9b270e0169eea2b83b"
+    sha256 "cb5b02c6570756988bb0c9fa426a5feff8265a8c6906cf2b385291a472ce0e54"
   end
   on_intel do
-    version "7.0.401,e0f9aead-ae21-411b-bb38-1c6393fb278a,69566da6d19724215edda3af6a9663cd"
-    sha256 "c87f8a41b8e35843152ce1325898900a7aae14efde1aa47da3cac237f8772551"
+    version "8.0.302,5b488f80-2155-4b14-9865-50f328574283,e9126ea28af0375173a18e1d8a6a3086"
+    sha256 "9ebaf4185aa0a4651ffe536db269651aa9ca7823186f490740ba165d4d5ff94f"
   end
 
   url "https://download.visualstudio.microsoft.com/download/pr/#{version.csv.second}/#{version.csv.third}/dotnet-sdk-#{version.csv.first}-osx-#{arch}.pkg"
@@ -22,8 +22,8 @@ cask "dotnet-sdk" do
 
   conflicts_with cask: [
     "dotnet",
-    "homebrew/cask-versions/dotnet-preview",
-    "homebrew/cask-versions/dotnet-sdk-preview",
+    "dotnet-sdk@preview",
+    "dotnet@preview",
   ], formula: "dotnet"
   depends_on macos: ">= :mojave"
 

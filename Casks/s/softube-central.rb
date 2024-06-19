@@ -1,8 +1,8 @@
 cask "softube-central" do
-  version "1.9.7"
-  sha256 "0538f8795d8cde686d7f732ce09fff07328d1d2fd85e2b8516b25f122d0b9ae3"
+  version "1.10.27"
+  sha256 "9b4e3e3891e5e8201f8239ef5eb054ec65b2fb80b75c22bb408e0f5c8739216e"
 
-  url "https://softubestorage.b-cdn.net/softubecentral/Softube%20Central-#{version}-universal.pkg",
+  url "https://softubestorage.b-cdn.net/softubecentraldata/softubecentral/Softube%20Central-#{version}-universal.pkg",
       verified: "softubestorage.b-cdn.net/"
   name "Softube Central"
   desc "Installer for installation and license activation of Softube products"
@@ -18,7 +18,11 @@ cask "softube-central" do
 
   pkg "Softube Central-#{version}-universal.pkg"
 
-  uninstall quit:      [
+  uninstall launchctl: [
+              "com.paceap.eden.licensed",
+              "com.paceap.eden.licensed.agent",
+            ],
+            quit:      [
               "com.softube.Console1OSD_Release",
               "org.softube.com.softubecentral",
             ],
@@ -28,10 +32,6 @@ cask "softube-central" do
               "com.paceap.pkg.eden.licensed",
               "com.softube.installerdaemon.helper",
               "org.softube.com.softubecentral",
-            ],
-            launchctl: [
-              "com.paceap.eden.licensed",
-              "com.paceap.eden.licensed.agent",
             ]
 
   zap trash: [

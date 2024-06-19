@@ -1,6 +1,6 @@
 cask "xournal-plus-plus" do
-  version "1.2.1"
-  sha256 "1002ae2f97e506826c6f0974d7279fb28039a4363dad42580d83ad6e489f6747"
+  version "1.2.3"
+  sha256 "3fdd861352c1663c43d7a4cd30f0c2297f9d593acac23d311ecd63ec9a7cd231"
 
   url "https://github.com/xournalpp/xournalpp/releases/download/v#{version}/xournalpp-#{version}-macos.zip"
   name "Xournal++"
@@ -12,7 +12,7 @@ cask "xournal-plus-plus" do
   app "Xournal++.app"
 
   zap trash: [
-    "~/Library/Saved Application State/com.github.xournalpp.savedState",
     "~/.xournalpp",
+    "~/Library/Saved Application State/com.github.xournalpp.savedState",
   ]
 end

@@ -1,6 +1,6 @@
 cask "steelseries-gg" do
-  version "48.0.0"
-  sha256 "8f44fcba0bda0026f962d1747534ae516d4e00fdb9364f7e750bd47b55133f65"
+  version "64.0.0"
+  sha256 "842b65fd7a0453dd82e2b329e19a744e279b2101d7f852f6ba5d9e3de42d898e"
 
   url "https://engine.steelseriescdn.com/SteelSeriesGG#{version}.pkg",
       verified: "engine.steelseriescdn.com/"
@@ -9,8 +9,8 @@ cask "steelseries-gg" do
   homepage "https://steelseries.com/gg"
 
   livecheck do
-    url "https://techblog.steelseries.com"
-    regex(/GG[._-]notes[._-]v?(\d+(?:\.\d+)+)\.html/i)
+    url "https://steelseries.com/gg/downloads/gg/latest/darwin"
+    strategy :header_match
   end
 
   auto_updates true
@@ -25,17 +25,16 @@ cask "steelseries-gg" do
               "com.steelseries.gg.uninstaller",
               "com.steelseries.SteelSeries-GG",
             ],
-            kext:      [
-              "com.steelseries.ssenext.driver",
-              "com.highpoint-tech.kext.HighPointIOP",
-              "com.highpoint-tech.kext.HighPointRR",
-            ],
+            kext:      "com.steelseries.ssenext.driver",
             script:    {
               executable: "/Applications/SteelSeries GG/SteelSeries GG Uninstaller.app/Contents/Resources/Uninstall.sh",
               sudo:       true,
             },
             pkgutil:   "com.steelseries.*",
-            delete:    "/Library/Application Support/SteelSeries GG"
+            delete:    [
+              "/Applications/SteelSeries GG/SteelSeries GG.app",
+              "/Library/Application Support/SteelSeries GG",
+            ]
 
   zap trash: [
     "~/Library/Application Support/steelseries-gg-client",

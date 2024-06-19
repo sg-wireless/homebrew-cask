@@ -1,7 +1,7 @@
 cask "naver-whale" do
   arch arm: "ARM64"
 
-  version "3.22.205.18"
+  version "3.26.244.21"
   sha256 :no_check
 
   url "http://update.whale.naver.net/downloads/installers/NaverWhale#{arch}.dmg",
@@ -16,6 +16,8 @@ cask "naver-whale" do
       json["message"]["@version"]
     end
   end
+
+  auto_updates true
 
   app "Whale.app"
 

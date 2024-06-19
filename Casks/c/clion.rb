@@ -1,9 +1,9 @@
 cask "clion" do
   arch arm: "-aarch64"
 
-  version "2023.2.2,232.9921.42"
-  sha256 arm:   "2820b59efbb028a861c3912b83a659fc22a136396a7199dd887f7dc28d6fba61",
-         intel: "a4049fd02a9ebe459634ceb47f389a6f8536fcdeb162587d6896991b94023c3f"
+  version "2024.1.3,241.17890.19"
+  sha256 arm:   "0d9e1267ac09a6384eba29088e627219fd00586c1055a1c2f46d1da10f1da467",
+         intel: "b08fb203c870c79a7778e44292968656e711416b985d6c60ed46dc1d6d0269a1"
 
   url "https://download.jetbrains.com/cpp/CLion-#{version.csv.first}#{arch}.dmg"
   name "CLion"
@@ -20,18 +20,10 @@ cask "clion" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "CLion.app"
-
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "clion") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
-  end
+  binary "#{appdir}/CLion.app/Contents/MacOS/clion"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/CLion#{version.major_minor}",

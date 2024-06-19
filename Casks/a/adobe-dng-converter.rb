@@ -1,6 +1,6 @@
 cask "adobe-dng-converter" do
-  version "15.5"
-  sha256 "833412cb7a1f3e904c6708bd960afe551f10c0b5b3ca0e7f8b5981394d2a35a2"
+  version "16.3"
+  sha256 "be8f73a1d7ead8bdda675b6ec0d2eff0ed7fda915e9e92a51c70e0adf3f2c44a"
 
   url "https://download.adobe.com/pub/adobe/dng/mac/DNGConverter_#{version.dots_to_underscores}.dmg"
   name "Adobe DNG Converter"
@@ -8,8 +8,8 @@ cask "adobe-dng-converter" do
   homepage "https://helpx.adobe.com/camera-raw/using/adobe-dng-converter.html"
 
   livecheck do
-    url "https://www.adobe.com/go/dng_converter_mac"
-    strategy :header_match
+    url "https://helpx.adobe.com/photoshop/kb/uptodate.html"
+    regex(%r{Adobe\s+DNG\s+Converter\s+(?:is\s+)?(?:<[^>]+?>)?v?(\d+(?:\.\d+)+)(?:</[^>]+?>)?}im)
   end
 
   depends_on macos: ">= :mojave"

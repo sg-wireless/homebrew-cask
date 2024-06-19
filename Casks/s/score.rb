@@ -1,8 +1,11 @@
 cask "score" do
-  version "3.1.11"
-  sha256 "76ef7a1e5e74532499a0d6817ca195183ab4fb3ccfcd0dd5635207c44bae07d9"
+  arch arm: "AppleSilicon", intel: "Intel"
 
-  url "https://github.com/ossia/score/releases/download/v#{version}/ossia.score-#{version}-macOS.dmg",
+  version "3.2.1"
+  sha256 arm:   "52799d7ae78e2d400d0a6639458061c6156d37767e8b40fd1c85ab3235fd7557",
+         intel: "515ad8834263a44564147e46f73d3ae861b646d1123d163ec277dd55ce890b49"
+
+  url "https://github.com/ossia/score/releases/download/v#{version}/ossia.score-#{version}-macOS-#{arch}.dmg",
       verified: "github.com/ossia/score/"
   name "ossia score"
   desc "Interactive sequencer for intermedia art"
@@ -15,7 +18,7 @@ cask "score" do
 
   depends_on macos: ">= :catalina"
 
-  app "score.app"
+  app "ossia score.app"
 
   zap trash: [
     "~/Library/Preferences/io.ossia.score.plist",

@@ -1,6 +1,6 @@
 cask "marathon" do
-  version "20230529"
-  sha256 "d736253525003864212f1809c9814c4a6d5324b0ea524860dde1305e0cce4125"
+  version "20240513"
+  sha256 "07ca4fda79e8d26a4c95c99e59a6079e492f4ff23277432580d6f911321f48ab"
 
   url "https://github.com/Aleph-One-Marathon/alephone/releases/download/release-#{version}/Marathon-#{version}-Mac.dmg",
       verified: "github.com/Aleph-One-Marathon/alephone/"
@@ -13,5 +13,14 @@ cask "marathon" do
     regex(%r{href=.*?/Marathon[._-]v?(\d+(?:\.\d+)*)[._-]Mac\.dmg}i)
   end
 
-  app "Marathon.app"
+  depends_on macos: ">= :high_sierra"
+
+  app "Classic Marathon.app"
+
+  zap trash: [
+    "~/Library/Application Support/Marathon",
+    "~/Library/Logs/Marathon Log.txt",
+    "~/Library/Preferences/Marathon",
+    "~/Library/Saved Application State/org.bungie.source.Marathon.savedState",
+  ]
 end

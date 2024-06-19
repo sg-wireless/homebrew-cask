@@ -1,5 +1,5 @@
 cask "lehreroffice" do
-  version "2023.4.1"
+  version "2024.2.0"
   sha256 :no_check
 
   url "https://www.lehreroffice.ch/lo/dateien/easy/lo_desktop_macos.dmg"
@@ -14,9 +14,9 @@ cask "lehreroffice" do
 
   app "LehrerOffice.app"
 
-  zap trash:  [
+  zap delete: "/Library/Application Support/LehrerOffice",
+      trash:  [
         "~/Documents/LehrerOffice",
         "~/Library/Saved Application State/ch.rothsoft.lehreroffice.desktop.savedState",
-      ],
-      delete: "/Library/Application Support/LehrerOffice"
+      ]
 end

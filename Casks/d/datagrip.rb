@@ -1,9 +1,9 @@
 cask "datagrip" do
   arch arm: "-aarch64"
 
-  version "2023.2.1,232.9559.28"
-  sha256 arm:   "bcca68af7d5b04d21a6a2a652c0d828ef450d117ab13af74bcf7ff71a803cfdd",
-         intel: "1ceabbebd391f5778ef495a780b0e9b54584342d6e55cc28834e8f708759b440"
+  version "2024.1.4,241.17890.24"
+  sha256 arm:   "329bc223f5a3d16c68c2d271f2576f9e174ab88a9871b928f1dd8601b2d2cf70",
+         intel: "2221288ed33060d67368aa9d56a8d7c25df8158b5d38bb26ddf145ef58de8721"
 
   url "https://download.jetbrains.com/datagrip/datagrip-#{version.csv.first}#{arch}.dmg"
   name "DataGrip"
@@ -23,15 +23,7 @@ cask "datagrip" do
   depends_on macos: ">= :high_sierra"
 
   app "DataGrip.app"
-
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "datagrip") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
-  end
+  binary "#{appdir}/DataGrip.app/Contents/MacOS/datagrip"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/DataGrip*",

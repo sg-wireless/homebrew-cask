@@ -1,8 +1,11 @@
 cask "ganttproject" do
-  version "3.2.3200,3.2.3230"
-  sha256 "4e6ebd308378d3d1936050ff6407630692d5b8833f05f139428b052cf91982dc"
+  arch arm: "silicon", intel: "intel"
 
-  url "https://github.com/bardsoftware/ganttproject/releases/download/ganttproject-#{version.csv.first}/ganttproject-#{version.csv.second}.dmg",
+  version "3.3.3309"
+  sha256 arm:   "85537f33dca107607a516e227bc0ed6a58479a4648632c7f270193b457163f43",
+         intel: "52a767a34ada9683e42fcca72c5e940f9a1092c401a47e367a4c29464484990c"
+
+  url "https://github.com/bardsoftware/ganttproject/releases/download/ganttproject-#{version}/ganttproject-#{version}-#{arch}.dmg",
       verified: "github.com/bardsoftware/ganttproject/"
   name "GanttProject"
   desc "Gantt chart and project management application"
@@ -10,15 +13,7 @@ cask "ganttproject" do
 
   livecheck do
     url :url
-    regex(%r{/ganttproject[._-]v?(\d+(?:\.\d+)+)/ganttproject[._-]v?(\d+(?:\.\d+)+)\.dmg$}i)
-    strategy :github_latest do |json, regex|
-      json["assets"]&.map do |asset|
-        match = asset["browser_download_url"]&.match(regex)
-        next if match.blank?
-
-        "#{match[1]},#{match[2]}"
-      end
-    end
+    strategy :github_latest
   end
 
   app "GanttProject.app"

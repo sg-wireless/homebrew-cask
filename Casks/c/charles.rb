@@ -1,6 +1,6 @@
 cask "charles" do
-  version "4.6.4"
-  sha256 "ab9c355750c9c3ba23b5f784831d3eb63fc5df71cf937c5175c451dc0b3acfdd"
+  version "4.6.6"
+  sha256 "ca67b827df8e9d58f64ae2a1cba493832f335f0d28257e704395839623a7cbb0"
 
   url "https://www.charlesproxy.com/assets/release/#{version}/charles-proxy-#{version}.dmg"
   name "Charles"
@@ -26,14 +26,14 @@ cask "charles" do
     end
   end
 
-  uninstall quit:      "com.xk72.Charles",
-            launchctl: "com.xk72.Charles.ProxyHelper",
+  uninstall launchctl: "com.xk72.Charles.ProxyHelper",
+            quit:      "com.xk72.Charles",
             delete:    "/Library/PrivilegedHelperTools/com.xk72.Charles.ProxyHelper"
 
   zap trash: [
     "~/Library/Application Support/Charles",
-    "~/Library/Preferences/com.xk72.Charles.plist",
     "~/Library/Preferences/com.xk72.charles.config",
+    "~/Library/Preferences/com.xk72.Charles.plist",
     "~/Library/Saved Application State/com.xk72.Charles.savedState",
   ]
 end

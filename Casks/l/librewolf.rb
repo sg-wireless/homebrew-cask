@@ -2,12 +2,12 @@ cask "librewolf" do
   arch arm: "arm64", intel: "x86_64"
 
   on_arm do
-    version "118.0.1,1"
-    sha256 "123ac7cbda238bfaac851d606aca8cf909a6735f027a779fdb1af397394aac9b"
+    version "127.0,1"
+    sha256 "b2ab81d97ead67f9cbeb8149bb213986ab3f42c2b5d66f4210d7d04ef77b255e"
   end
   on_intel do
-    version "118.0.1,1"
-    sha256 "2b3cf543450fb41de09c01e86b10d6d1058de3ccc8ba0987d9c8cd5626688e7d"
+    version "127.0,1"
+    sha256 "8c5ba999c5560646c2ecfea9209adfd812034b5498a7da3e38652d98098ce6b1"
   end
 
   url "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/#{version.csv.first}-#{version.csv.second}/librewolf-#{version.csv.first}-#{version.csv.second}-macos-#{arch}-package.dmg",
@@ -41,8 +41,8 @@ cask "librewolf" do
   zap trash: [
     "~/.librewolf",
     "~/Library/Application Support/LibreWolf",
-    "~/Library/Caches/LibreWolf",
     "~/Library/Caches/LibreWolf Community",
+    "~/Library/Caches/LibreWolf",
     "~/Library/Preferences/io.gitlab.librewolf-community.librewolf.plist",
     "~/Library/Saved Application State/io.gitlab.librewolf-community.librewolf.savedState",
   ]

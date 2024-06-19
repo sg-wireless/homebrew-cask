@@ -1,17 +1,16 @@
 cask "guilded" do
-  version "1.0.9223341"
-  sha256 "2536bf588ff9164de04f4af7da79c93b05dc881d464fb4969ed0f6126569544e"
+  version "1.0.9265619"
+  sha256 "0ba52b2d0847fb417b29e65b6a99849a8cfc0a0dec924db939a5c3c18274f1be"
 
-  url "https://s3-us-west-2.amazonaws.com/www.guilded.gg/AppBuilds/mac/Guilded-#{version}-release.dmg",
-      verified: "s3-us-west-2.amazonaws.com/www.guilded.gg/AppBuilds/mac/"
+  url "https://www.guilded.gg/AppBuilds/mac/Guilded-#{version}-release.dmg"
   name "Guilded"
   desc "Group chat platform"
   homepage "https://www.guilded.gg/"
 
   livecheck do
-    url "https://s3-us-west-2.amazonaws.com/www.guilded.gg/AppBuilds/mac/release-mac.yml"
-    strategy :electron_builder do |data|
-      data["version"].tr("-release", "")
+    url "https://www.guilded.gg/AppBuilds/mac/release-mac.yml"
+    strategy :electron_builder do |yaml|
+      yaml["version"]&.sub(/[._-]release.*$/i, "")
     end
   end
 
@@ -23,4 +22,8 @@ cask "guilded" do
     "~/Library/Preferences/com.electron.guilded.plist",
     "~/Library/Saved Application State/com.electron.guilded.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

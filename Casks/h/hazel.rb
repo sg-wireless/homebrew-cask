@@ -1,11 +1,11 @@
 cask "hazel" do
-  version "5.2.2"
-  sha256 "dc99cec0dc2d73e4bec2b2b8cba0bc2bc14a93aa58d50b3451520d043bc84263"
+  version "5.3.4"
+  sha256 "641a9b5ea845968e4d72875c536dc99075530889826cbfbf38d633815b830476"
 
   url "https://s3.amazonaws.com/Noodlesoft/Hazel-#{version}.dmg",
       verified: "s3.amazonaws.com/Noodlesoft/"
   name "Hazel"
-  desc "Automated organization"
+  desc "Automated organisation"
   homepage "https://www.noodlesoft.com/"
 
   livecheck do

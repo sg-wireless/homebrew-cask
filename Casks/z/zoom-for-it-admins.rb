@@ -1,6 +1,6 @@
 cask "zoom-for-it-admins" do
-  version "5.16.2.23409"
-  sha256 "bc13e5d5224e339195fec871efdd49f7d6ec559c282f7e1a348b4b15801e3913"
+  version "6.1.0.35886"
+  sha256 "c010d4db1d7148080b039fa43d0c4b84291455dc6b36386426aaac051b5e8708"
 
   url "https://cdn.zoom.us/prod/#{version}/ZoomInstallerIT.pkg"
   name "Zoom for IT Admins"
@@ -16,9 +16,9 @@ cask "zoom-for-it-admins" do
 
   pkg "ZoomInstallerIT.pkg"
 
-  uninstall signal:    ["KILL", "us.zoom.xos"],
+  uninstall launchctl: "us.zoom.ZoomDaemon",
+            signal:    ["KILL", "us.zoom.xos"],
             pkgutil:   "us.zoom.pkg.videomeeting",
-            launchctl: "us.zoom.ZoomDaemon",
             delete:    [
               "/Applications/zoom.us.app",
               "/Library/Audio/Plug-Ins/HAL/ZoomAudioDevice.driver",
@@ -33,8 +33,8 @@ cask "zoom-for-it-admins" do
     "~/Desktop/Zoom",
     "~/Documents/Zoom",
     "~/Library/Application Scripts/*.ZoomClient3rd",
-    "~/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings.plist",
     "~/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings",
+    "~/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings.plist",
     "~/Library/Application Support/CrashReporter/zoom.us*",
     "~/Library/Application Support/zoom.us",
     "~/Library/Caches/us.zoom.xos",

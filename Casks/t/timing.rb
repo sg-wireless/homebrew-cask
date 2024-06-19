@@ -1,6 +1,6 @@
 cask "timing" do
-  version "2023.5"
-  sha256 "4d00a27159521fa7d65e8d31fe71387cc23efabae5bfa2256207a31e29c29083"
+  version "2024.2.1"
+  sha256 "14110265e8d43e83ca92842284c5a3044f685d36ce14cc5b7206067f0750a49e"
 
   url "https://updates.timingapp.com/download/Timing-#{version}.dmg"
   name "Timing"
@@ -8,9 +8,13 @@ cask "timing" do
   desc "Automatic time and productivity tracking app"
   homepage "https://timingapp.com/"
 
+  # Some items in the Sparkle feed may not have a pubDate, so it's necessary to
+  # work with all of the items in the feed (not just the newest one).
   livecheck do
     url "https://updates.timingapp.com/updates/timing2.xml"
-    strategy :sparkle, &:short_version
+    strategy :sparkle do |items|
+      items.map(&:short_version)
+    end
   end
 
   auto_updates true
@@ -25,8 +29,8 @@ cask "timing" do
     "~/Library/Application Support/info.eurocomp.TimingHelper",
     "~/Library/Application Support/info.eurocomp.TimingHelper.InfoExtractorService",
     "~/Library/Caches/info.eurocomp.Timing2",
-    "~/Library/Caches/info.eurocomp.TimingHelper.InfoExtractorService",
     "~/Library/Caches/info.eurocomp.TimingHelper",
+    "~/Library/Caches/info.eurocomp.TimingHelper.InfoExtractorService",
     "~/Library/Preferences/info.eurocomp.Timing2.plist",
     "~/Library/Preferences/info.eurocomp.TimingHelper.InfoExtractorService.plist",
     "~/Library/Preferences/info.eurocomp.TimingHelper.plist",

@@ -1,8 +1,8 @@
 cask "navicat-for-mariadb" do
-  version "16.2.9"
+  version "17.0.9"
   sha256 :no_check
 
-  url "https://download.navicat.com/download/navicat#{version.major_minor.no_dots}_mariadb_en.dmg"
+  url "https://dn.navicat.com/download/navicat#{version.major_minor.no_dots}_mariadb_en.dmg"
   name "Navicat for MariaDB"
   desc "Database management and administration tool for MariaDB"
   homepage "https://www.navicat.com/products/navicat-for-mariadb"
@@ -17,7 +17,7 @@ cask "navicat-for-mariadb" do
 
   zap trash: [
     "~/Library/Application Support/PremiumSoft CyberTech/Navicat CC/Navicat for MariaDB",
-    "~/Library/Caches/com.apple.helpd/Generated/Navicat Help*#{version}",
+    "~/Library/Caches/com.apple.helpd/Generated/Navicat Help*",
     "~/Library/Preferences/com.navicat.NavicatForMariaDB.plist",
     "~/Library/Saved Application State/com.navicat.NavicatForMariaDB.savedState",
   ]

@@ -1,25 +1,33 @@
 cask "astropad-studio" do
-  version "5.2.1,4459"
-  sha256 "4641d148065a55982339bfdc648861ffc8fc30ff2c043ed9a40c8911baeb9aae"
+  version "5.3.3,4771"
+  sha256 "a8796135f96b022acf45dee6cd8ba70a8c1550fbe21d367ae608a5182add78fc"
 
-  url "https://downloads.astropad.com/studio/mac/AstropadStudio-#{version.major_minor_patch}.#{version.csv.second}.dmg"
+  url "https://downloads.astropad.com/studio/mac/AstropadStudio-#{version.csv.first}.#{version.csv.second}.dmg"
   name "Astropad Studio"
   desc "Turn your iPad into a professional drawing tablet"
   homepage "https://astropad.com/"
 
   livecheck do
-    url "https://s3.amazonaws.com/astropad.com/downloads/studio-sparkle.xml"
+    url "https://downloads.astropad.com/studio/mac/sparkle.xml"
     strategy :sparkle
   end
+
+  auto_updates true
 
   app "Astropad Studio.app"
 
   uninstall quit: "com.astro-hq.AstropadStudioMac"
 
   zap trash: [
-    "~/Library/Caches/Astropad",
-    "~/Library/Caches/com.astro-hq.AstropadStudioMac",
-    "~/Library/Preferences/com.astro-hq.AstropadStudioMac.plist",
-    "~/Library/Saved Application State/com.astro-hq.AstropadStudioMac.savedState",
-  ]
+        "~/Library/Application Support/astro-hq/AstropadStudio",
+        "~/Library/Application Support/com.astro-hq.AstropadStudioMac",
+        "~/Library/Caches/Astropad",
+        "~/Library/Caches/com.astro-hq.AstropadStudioMac",
+        "~/Library/Caches/SentryCrash/Astropad Studio",
+        "~/Library/HTTPStorages/com.astro-hq.AstropadStudioMac",
+        "~/Library/Logs/Astropad",
+        "~/Library/Preferences/com.astro-hq.AstropadStudioMac.plist",
+        "~/Library/Saved Application State/com.astro-hq.AstropadStudioMac.savedState",
+      ],
+      rmdir: "~/Library/Application Support/astro-hq"
 end

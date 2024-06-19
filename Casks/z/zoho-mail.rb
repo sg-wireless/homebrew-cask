@@ -1,9 +1,9 @@
 cask "zoho-mail" do
   arch arm: "arm64-"
 
-  version "1.5.8"
-  sha256 arm:   "3179dc35b324fe5397b61d88aec16dc996e1d002a10b85d001bca73395064fe4",
-         intel: "0f870c0aa28732769d9ebd5b51eed78d1b97e6391c8cec08ee07ebbd7a6671d9"
+  version "1.6.1"
+  sha256 arm:   "d334abaa3a99304dd37a345f33239b4da11a552c49483dc1f240ec3b13be9dc0",
+         intel: "456af93f65fca37fff85b704ce184ef3494b9fbc5864bd624cc9e76ec4a7478f"
 
   url "https://downloads.zohocdn.com/zmail-desktop/mac/zoho-mail-desktop-lite-installer-#{arch}v#{version}.dmg",
       verified: "downloads.zohocdn.com/zmail-desktop/mac/"
@@ -15,6 +15,8 @@ cask "zoho-mail" do
     url "https://downloads.zohocdn.com/zmail-desktop/artifacts.json"
     regex(/zoho[._-]mail[._-]desktop[._-]lite[._-]installer[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "Zoho Mail - Desktop.app"
 

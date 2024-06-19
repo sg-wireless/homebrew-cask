@@ -1,6 +1,6 @@
 cask "banktivity" do
-  version "9.1.3,250"
-  sha256 "0672375ad9cc47343f1feb3cdd66a30c4fcf1214708ddd170ce4001454e94a19"
+  version "9.2.9,279"
+  sha256 "46b5c1228349f0a2eecd3a5053fc778a889d07c0ce002008bd6ab0bc2152ac8e"
 
   url "https://www.iggsoft.com/banktivity/Banktivity#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "iggsoft.com/banktivity/"
@@ -9,8 +9,12 @@ cask "banktivity" do
   homepage "https://www.iggsoftware.com/banktivity/"
 
   livecheck do
-    url "https://www.banktivity.com/download.php"
-    strategy :extract_plist
+    url "https://www.iggsoft.com/banktivity/banktivity#{version.major}-versions-feed.json"
+    strategy :json do |json|
+      json["Banktivity"].map do |release|
+        "#{release["version"]},#{release["build"]}"
+      end
+    end
   end
 
   depends_on macos: ">= :catalina"
@@ -19,6 +23,7 @@ cask "banktivity" do
 
   zap trash: [
     "~/Library/Application Scripts/com.iggsoftware.banktivity",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.iggsoftware.banktivity.sfl*",
     "~/Library/Containers/com.iggsoftware.banktivity",
   ]
 end

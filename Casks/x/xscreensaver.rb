@@ -1,6 +1,6 @@
 cask "xscreensaver" do
-  version "6.07"
-  sha256 "3036ba42106ae7c312a5927a33762fd7d894a243ecfc11ad25010a945490c6e6"
+  version "6.09"
+  sha256 "52f8526400df92e7cda99a8c6808393e098106b7e2409f52fdd347db5fb333b0"
 
   url "https://www.jwz.org/xscreensaver/xscreensaver-#{version}.dmg"
   name "XScreenSaver"
@@ -14,9 +14,30 @@ cask "xscreensaver" do
 
   pkg "Install Everything.pkg"
 
+  # There is no uninstall script for this Cask, so a manual uninstall is performed
+  # Loop through all screensaver plist files, looking for "org,jwz" in the bundle identifier
+  # Then remove the screensaver if the bundle identifier matches
+  uninstall_postflight do
+    Pathname.glob("/Library/Screen Savers/*.saver/Contents/Info.plist").each do |plist|
+      bundle_id = `/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "#{plist}"`
+      next unless bundle_id.start_with?("org.jwz")
+
+      screensaver_name = `/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "#{plist}"`.delete(" ").strip
+      screensaver = Pathname.new("/Library/Screen Savers/#{screensaver_name}.saver")
+      Utils.gain_permissions_remove(screensaver) if screensaver.directory?
+    end
+  end
+
   uninstall pkgutil: "org.jwz.xscreensaver",
             delete:  [
               "/Applications/Apple2.app",
               "/Applications/Phosphor.app",
+              "/Library/Screen Savers/XScreenSaverUpdater.app",
             ]
+
+  zap trash: [
+    "~/Library/HTTPStorages/org.jwz.xscreensaver.XScreenSaverUpdater",
+    "~/Library/Preferences/org.jwz.xscreensaver.*.plist",
+    "~/Library/Saved Application State/org.jwz.xscreensaver.*.savedState",
+  ]
 end

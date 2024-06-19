@@ -1,5 +1,5 @@
 cask "copyclip" do
-  version "2.9.98.9"
+  version "2.9.99.2"
   sha256 :no_check
 
   url "https://fiplab.com/app-download/CopyClip_#{version.major}.zip"
@@ -10,7 +10,7 @@ cask "copyclip" do
   livecheck do
     url :url
     strategy :extract_plist do |versions|
-      versions.values.map(&:short_version).compact.first
+      versions.values.filter_map(&:short_version).first
     end
   end
 

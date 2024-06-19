@@ -41,12 +41,23 @@ cask "teamviewer" do
          Preferences → Advanced
     EOS
   end
-  on_big_sur :or_newer do
-    version "15.46.5"
-    sha256 "37e75df70f6aa98261ed5798192232d95b12180d339dfe15d826b36acba6a85a"
+  on_big_sur do
+    version "15.54.6"
+    sha256 "52c59aa7d1552a2851d23e5ad5b3776f592e88119f334a385d4667d7f45112a1"
 
     livecheck do
       url "https://download.teamviewer.com/download/update/macupdates.xml?id=0&lang=en&version=#{version}&os=macos&osversion=11.7&type=1&channel=1"
+      strategy :sparkle
+    end
+
+    pkg "TeamViewer.pkg"
+  end
+  on_monterey :or_newer do
+    version "15.54.6"
+    sha256 "52c59aa7d1552a2851d23e5ad5b3776f592e88119f334a385d4667d7f45112a1"
+
+    livecheck do
+      url "https://download.teamviewer.com/download/update/macupdates.xml?id=0&lang=en&version=#{version}&os=macos&osversion=12.7&type=1&channel=1"
       strategy :sparkle
     end
 
@@ -68,24 +79,13 @@ cask "teamviewer" do
     ohai "The TeamViewer package postinstall script launches the TeamViewer app" if retries >= 3
     ohai "Attempting to close the TeamViewer app to avoid unwanted user intervention" if retries >= 3
     return unless system_command "/usr/bin/pkill", args: ["-f", "/Applications/TeamViewer.app"]
-
   rescue RuntimeError
     sleep 1
     retry unless (retries -= 1).zero?
     opoo "Unable to forcibly close TeamViewer"
   end
 
-  uninstall delete:    [
-              "/Applications/TeamViewer.app",
-              "/Library/Preferences/com.teamviewer*",
-            ],
-            pkgutil:   [
-              "com.teamviewer.AuthorizationPlugin",
-              "com.teamviewer.remoteaudiodriver",
-              "com.teamviewer.teamviewer.*",
-              "TeamViewerUninstaller",
-            ],
-            launchctl: [
+  uninstall launchctl: [
               "com.teamviewer.desktop",
               "com.teamviewer.Helper",
               "com.teamviewer.service",
@@ -98,6 +98,16 @@ cask "teamviewer" do
             quit:      [
               "com.teamviewer.TeamViewer",
               "com.teamviewer.TeamViewerUninstaller",
+            ],
+            pkgutil:   [
+              "com.teamviewer.AuthorizationPlugin",
+              "com.teamviewer.remoteaudiodriver",
+              "com.teamviewer.teamviewer.*",
+              "TeamViewerUninstaller",
+            ],
+            delete:    [
+              "/Applications/TeamViewer.app",
+              "/Library/Preferences/com.teamviewer*",
             ]
 
   zap trash: [

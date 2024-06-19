@@ -1,9 +1,9 @@
 cask "google-cloud-sdk" do
   arch arm: "arm", intel: "x86_64"
 
-  version "449.0.0"
-  sha256 arm:   "25d6d90778213579558c6d40b6bfa8288e9d6395300e5683a183dcf4fe9ee3fb",
-         intel: "6882d3b0ab5f5e6e3012607302a0ec68f57c24e070423dd10a574afe71701440"
+  version "481.0.0"
+  sha256 arm:   "4a140315b3dd634f7ac066317461c1dc88ec38ae3e3d2fa3e1c21eefa7b2fefc",
+         intel: "29064fe40199a9c7322dbb36e8876e7c6433ce16d55559ffaef2316b03028fd9"
 
   url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-darwin-#{arch}.tar.gz"
   name "Google Cloud SDK"
@@ -12,11 +12,11 @@ cask "google-cloud-sdk" do
 
   livecheck do
     url "https://cloud.google.com/sdk/docs/install-sdk"
-    regex(/google-cloud-cli-(\d+(?:\.\d+)+)/i)
+    regex(/google[._-]cloud[._-]cli[._-]v?(\d+(?:\.\d+)+)/i)
   end
 
   auto_updates true
-  depends_on formula: "python"
+  depends_on formula: "python@3.12"
 
   google_cloud_sdk_root = "#{HOMEBREW_PREFIX}/share/google-cloud-sdk"
 
@@ -31,7 +31,6 @@ cask "google-cloud-sdk" do
       "--install-python", "false"
     ],
   }
-  binary "google-cloud-sdk/bin/anthoscli"
   binary "google-cloud-sdk/bin/bq"
   binary "google-cloud-sdk/bin/docker-credential-gcloud"
   binary "google-cloud-sdk/bin/gcloud"
@@ -58,8 +57,8 @@ cask "google-cloud-sdk" do
   uninstall delete: staged_path.dirname/"latest"
 
   zap trash: [
-    google_cloud_sdk_root,
     "#{google_cloud_sdk_root}.staging",
+    google_cloud_sdk_root,
   ]
 
   caveats <<~EOS

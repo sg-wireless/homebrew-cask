@@ -1,5 +1,5 @@
 cask "sqlcl" do
-  version "23.2.0.178.1027"
+  version "24.1.0.087.0929"
   sha256 :no_check
 
   url "https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-latest.zip"
@@ -8,7 +8,7 @@ cask "sqlcl" do
   homepage "https://www.oracle.com/sqlcl"
 
   livecheck do
-    url "https://www.oracle.com/tools/downloads/sqlcl-downloads.html"
+    url "https://www.oracle.com/database/sqldeveloper/technologies/sqlcl/download/"
     regex(/p>Version.*?(\d+(?:\.\d+)+)/i)
   end
 

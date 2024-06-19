@@ -1,18 +1,22 @@
 cask "camunda-modeler" do
-  version "5.15.2"
-  sha256 "f5db6bb3541919ebc31cfdb7b76733b5616170d769ff0775125552144c875d8a"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://camunda.org/release/camunda-modeler/#{version}/camunda-modeler-#{version}-mac.zip"
+  version "5.24.0"
+  sha256 arm:   "fddfc29f39f092956542cea07668e1b2ba39fc20d36db52c6bc2bef08476c115",
+         intel: "077cb901d476348095d70c2186a41206002240376c5243f49cf5146720a45620"
+
+  url "https://downloads.camunda.cloud/release/camunda-modeler/#{version}/camunda-modeler-#{version}-mac-#{arch}.zip",
+      verified: "downloads.camunda.cloud/release/camunda-modeler/"
   name "Camunda Modeler"
   desc "Workflow and Decision Automation Platform"
-  homepage "https://camunda.org/"
+  homepage "https://camunda.com/"
 
   livecheck do
     url "https://camunda.com/download/modeler/"
-    regex(%r{href=.*?/camunda[._-]?modeler[._-]?v?(\d+(?:\.\d+)+)[._-]?mac\.zip}i)
+    regex(%r{href=.*?/camunda[._-]modeler[._-]v?(\d+(?:\.\d+)+)[._-]mac[._-]#{arch}\.zip}i)
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Camunda Modeler.app"
 

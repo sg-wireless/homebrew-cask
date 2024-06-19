@@ -1,6 +1,6 @@
 cask "parallels" do
-  version "19.0.0-54570"
-  sha256 "cbb502f84e62d9cc64389f67548e9a400149e644d7bfdb9a66830ee3f4824ba9"
+  version "19.4.0-54962"
+  sha256 "73f32b594bf063f677f2e3816deb4949591997091dcc5870eb0a64d4bd01b90b"
 
   url "https://download.parallels.com/desktop/v#{version.major}/#{version}/ParallelsDesktop-#{version}.dmg"
   name "Parallels Desktop"
@@ -17,13 +17,13 @@ cask "parallels" do
 
   auto_updates true
   conflicts_with cask: [
-    "homebrew/cask-versions/parallels12",
-    "homebrew/cask-versions/parallels13",
-    "homebrew/cask-versions/parallels14",
-    "homebrew/cask-versions/parallels15",
-    "homebrew/cask-versions/parallels16",
-    "homebrew/cask-versions/parallels17",
-    "homebrew/cask-versions/parallels18",
+    "parallels@12",
+    "parallels@13",
+    "parallels@14",
+    "parallels@15",
+    "parallels@16",
+    "parallels@17",
+    "parallels@18",
   ]
   depends_on macos: ">= :monterey"
 
@@ -46,7 +46,9 @@ cask "parallels" do
     set_ownership "#{appdir}/Parallels Desktop.app"
   end
 
-  uninstall delete: [
+  uninstall signal: ["TERM", "com.parallels.desktop.console"],
+            delete: [
+              "/Library/Preferences/Parallels",
               "/usr/local/bin/prl_convert",
               "/usr/local/bin/prl_disk_tool",
               "/usr/local/bin/prl_perf_ctl",
@@ -54,9 +56,7 @@ cask "parallels" do
               "/usr/local/bin/prlctl",
               "/usr/local/bin/prlexec",
               "/usr/local/bin/prlsrvctl",
-              "/Library/Preferences/Parallels",
-            ],
-            signal: ["TERM", "com.parallels.desktop.console"]
+            ]
 
   zap trash: [
         "~/.parallels_settings",

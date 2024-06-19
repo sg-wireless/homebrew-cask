@@ -7,6 +7,8 @@ cask "bloomrpc" do
   desc "GUI Client for GRPC Services"
   homepage "https://github.com/uw-labs/bloomrpc"
 
+  deprecate! date: "2023-12-17", because: :discontinued
+
   app "BloomRPC.app"
 
   zap trash: "~/Library/Preferences/io.github.utilitywarehouse.BloomRPC.plist"

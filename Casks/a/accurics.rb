@@ -1,9 +1,9 @@
 cask "accurics" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "1.0.49"
-  sha256 arm:   "e1a02fa396c3381d1f4b5fddb3201d33665d92105761efb5e8a32a375ee1a4f6",
-         intel: "4cfe4ca227a766e038c2e37f28edf778f419826846e823e9e703723a6a8cec74"
+  version "1.0.53"
+  sha256 arm:   "8d1b215ef0eeb28a7f8f2f77e36514aeeaa0145757cec32db414e1949b72ab0a",
+         intel: "8d714ed9518888f9b672bfd8de6103fa46f75c9a5dd37651560f3956f55258ad"
 
   url "https://www.tenable.com/downloads/api/v2/pages/cloud-security/files/accurics-cli_#{version}_macos_#{arch}.dmg"
   name "Accurics CLI"

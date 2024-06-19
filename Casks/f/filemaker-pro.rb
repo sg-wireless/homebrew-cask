@@ -1,6 +1,6 @@
 cask "filemaker-pro" do
-  version "20.2.1.60"
-  sha256 "412d689a76adb6ffa768c93ec10dda12771a8c3b7b46dadb24443d09616dead3"
+  version "21.0.1.53"
+  sha256 "7af41b407dd9b6d41314341f5ac864d70d5c5b8b8e4e6146e915914feadca013"
 
   url "https://downloads.claris.com/esd/fmp_#{version}.dmg"
   name "FileMaker Pro"
@@ -20,8 +20,8 @@ cask "filemaker-pro" do
   zap trash: [
     "/Users/Shared/FileMaker",
     "~/Library/Application Support/FileMaker",
-    "~/Library/Caches/FileMaker",
     "~/Library/Caches/com.filemaker.client.pro12",
+    "~/Library/Caches/FileMaker",
     "~/Library/HTTPStorages/com.filemaker.client.pro12",
     "~/Library/Preferences/com.filemaker.client.pro12.plist",
     "~/Library/Saved Application State/com.filemaker.client.pro12.savedState",

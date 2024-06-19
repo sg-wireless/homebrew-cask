@@ -1,6 +1,6 @@
 cask "bricklink-studio" do
-  version "2.23.8_1"
-  sha256 "00ee0bab0d50394f394b8d9f3d678b946245a9c8d717c1864970963baf25fb76"
+  version "2.24.4_4"
+  sha256 "8331a1cb107516a0ce79e3ce0fc11658a32e4a6cff4f23f06c40351f15534818"
 
   url "https://blstudio.s3.amazonaws.com/Studio#{version.major}.0/Archive/#{version}/Studio+#{version.major}.0.pkg",
       verified: "blstudio.s3.amazonaws.com/"
@@ -9,8 +9,8 @@ cask "bricklink-studio" do
   homepage "https://www.bricklink.com/v3/studio/download.page"
 
   livecheck do
-    url "https://www.bricklink.com/v3/studio/download.page"
-    regex(/"strVersion"\s*:\s*"(\d+(?:[._-]\d+)*)"/i)
+    url "https://store.bricklink.com/v2/studio/download.page"
+    regex(/"version"\s*:\s*"(\d+(?:[._-]\d+)*)"/i)
   end
 
   auto_updates true

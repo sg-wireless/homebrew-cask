@@ -7,10 +7,7 @@ cask "avocode" do
   desc "Collaborate on design files"
   homepage "https://avocode.com/"
 
-  livecheck do
-    url "https://manager.avocode.com/download/avocode-app/mac-dmg/"
-    strategy :header_match
-  end
+  deprecate! date: "2023-12-17", because: :discontinued
 
   auto_updates true
   depends_on macos: ">= :el_capitan"

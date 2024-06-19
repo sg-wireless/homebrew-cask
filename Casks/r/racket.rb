@@ -1,9 +1,9 @@
 cask "racket" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "8.10"
-  sha256 arm:   "653163b2183f0a6de9f7e073f2b3d161ab5e9983d31e1f4a091fae7801e6a6b5",
-         intel: "2df9e29a3d690a7f83d7f5735446d0913f17265bfe6e7bea3214f22f346cbce9"
+  version "8.13"
+  sha256 arm:   "8d638ef52292fa6e5b12aea9e7a763f43147cc7976f99035f020c9055a9c1fd9",
+         intel: "2f363fc550521eef0fd0a11155fb93fd8952ff25cf73f7ce47841fb685e894aa"
 
   url "https://mirror.racket-lang.org/installers/#{version}/racket-#{version}-#{arch}-macosx-cs.dmg"
   name "Racket"
@@ -52,8 +52,8 @@ cask "racket" do
     "~/Library/Caches/Racket",
     "~/Library/Preferences/org.racket-lang.DrRacket.plist",
     "~/Library/Preferences/org.racket-lang.prefs.rktd",
-    "~/Library/Preferences/PLT-autosave-toc.rktd",
     "~/Library/Preferences/PLT-autosave-toc-save.rktd",
+    "~/Library/Preferences/PLT-autosave-toc.rktd",
     "~/Library/Racket",
     "~/Library/Saved Application State/org.racket-lang.DrRacket.savedState",
     "~/Library/Saved Application State/org.racket-lang.DrRacketBC.savedState",

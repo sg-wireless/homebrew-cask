@@ -1,5 +1,5 @@
 cask "paragon-ntfs" do
-  version "15"
+  version "16"
   sha256 :no_check # required as upstream package is updated in-place
 
   url "https://dl.paragon-software.com/demo/ntfsmac#{version}_trial.dmg"
@@ -16,14 +16,14 @@ cask "paragon-ntfs" do
 
   installer manual: "FSInstaller.app"
 
-  uninstall kext:      "com.paragon-software.filesystems.ntfs",
-            launchctl: "com.paragon-software.ntfs*",
-            pkgutil:   "com.paragon-software.pkg.ntfs",
+  uninstall launchctl: "com.paragon-software.ntfs*",
             quit:      "com.paragon-software.ntfs*",
             signal:    [
               ["KILL", "com.paragon-software.ntfs.FSMenuApp"],
               ["KILL", "com.paragon-software.ntfs.notification-agent"],
-            ]
+            ],
+            kext:      "com.paragon-software.filesystems.ntfs",
+            pkgutil:   "com.paragon-software.pkg.ntfs"
 
   zap trash: [
     "~/Library/Application Support/com.paragon-software.ntfs.*",

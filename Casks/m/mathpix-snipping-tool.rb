@@ -1,6 +1,6 @@
 cask "mathpix-snipping-tool" do
-  version "3.4.5.2"
-  sha256 "23a3554b79c6a6fdf41ae8ad17fd83c5f84359b5d1bf76faf7cb8f417a838b0c"
+  version "3.4.7.2"
+  sha256 "eb6ffa106311d5a26a3c83cb5bddb786345382933dc58c540ac646b4c60c2479"
 
   url "https://mathpix.com/dmg/SnippingTool-v#{version}.dmg"
   name "Mathpix Snipping Tool"
@@ -15,7 +15,7 @@ cask "mathpix-snipping-tool" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :high_sierra"
 
   app "Mathpix Snipping Tool.app"
 
@@ -24,6 +24,8 @@ cask "mathpix-snipping-tool" do
     "~/Library/Caches/com.crashlytics.data/com.mathpix.snipping-tool-noappstore",
     "~/Library/Caches/com.mathpix.snipping-tool-noappstore",
     "~/Library/Caches/io.fabric.sdk.mac.data/com.mathpix.snipping-tool-noappstore",
+    "~/Library/HTTPStorages/com.mathpix.snipping-tool-noappstore",
     "~/Library/Preferences/com.mathpix.snipping-tool-noappstore.plist",
+    "~/Library/WebKit/com.mathpix.snipping-tool-noappstore",
   ]
 end

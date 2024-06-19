@@ -1,6 +1,6 @@
 cask "cinderella" do
-  version "3.0b.2080"
-  sha256 "68327532da85e372712662f9c4fd005966ddc0515364ef0bfb4011f803bee781"
+  version "3.0b.2084"
+  sha256 "f91daf950fcab13f4ce4340e642f5c8d6ebb805e7d53fba906b82914d9bf6773"
 
   url "https://beta.cinderella.de/Cinderella-#{version}.dmg"
   name "Cinderella"
@@ -15,7 +15,7 @@ cask "cinderella" do
   app "Cinderella.app"
 
   zap trash: [
-    "~/Library/Preferences/cinderella2-user.properties",
     "~/Library/Preferences/cinderella2-global.properties",
+    "~/Library/Preferences/cinderella2-user.properties",
   ]
 end

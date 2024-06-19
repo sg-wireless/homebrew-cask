@@ -39,9 +39,25 @@ cask "coteditor" do
       skip "Legacy version"
     end
   end
-  on_big_sur :or_newer do
-    version "4.6.2"
-    sha256 "cd9befbd4d8ad5606e28673b5bae3ef614d8af48530acefb4f968e1701945ccf"
+  on_big_sur do
+    version "4.3.6"
+    sha256 "8c1ecf6fd66a9885d428a6303d9d1c5ecb811c1c35c97bdbccdad72359d96ad9"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_monterey do
+    version "4.5.9"
+    sha256 "fa3e4a1fdf7edfc109c5588292906d864d430d2e8bd3d84161b1f0a7892163f6"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "4.8.6"
+    sha256 "c9569459e1997cfc0b97453ae9f24d9d2b27f334f1d7aee9e1ceb108f598d76a"
 
     livecheck do
       url :url
@@ -56,14 +72,17 @@ cask "coteditor" do
   homepage "https://coteditor.com/"
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
 
   app "CotEditor.app"
   binary "#{appdir}/CotEditor.app/Contents/SharedSupport/bin/cot"
 
+  uninstall quit: "com.coteditor.CotEditor"
+
   zap trash: [
     "~/Library/Application Scripts/com.coteditor.CotEditor",
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.coteditor.coteditor.sfl*",
+    "~/Library/Caches/com.apple.helpd/Generated/com.coteditor.CotEditor.help*",
     "~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/com.coteditor.CotEditor.help*",
     "~/Library/Caches/com.apple.helpd/SDMHelpData/Other/Japanese/HelpSDMIndexFile/com.coteditor.CotEditor.help*",
     "~/Library/Containers/com.coteditor.CotEditor",

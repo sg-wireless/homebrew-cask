@@ -1,9 +1,9 @@
 cask "mubu" do
-  version "3.7.0"
-  sha256 "a58493fc1b185fdd808ab9167b7cdbe064418790d30dbb2b907147debbfedab0"
+  version "4.0.4"
+  sha256 "55a0e49e41a674a356e67c498b8672cc63e92748f955085b0340d92bacf3deb2"
 
-  url "https://lf1-ttcdn-tos.pstatp.com/obj/mubu-assets/client/Mubu-#{version}.dmg",
-      verified: "lf1-ttcdn-tos.pstatp.com/obj/mubu-assets/"
+  url "https://mubu-assets.tos-cn-shanghai.volces.com/client/Mubu-#{version}.dmg",
+      verified: "mubu-assets.tos-cn-shanghai.volces.com/client/"
   name "Mubu"
   desc "Outline note taking and management app"
   homepage "https://mubu.com/"

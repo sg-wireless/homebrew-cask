@@ -1,6 +1,6 @@
 cask "wifi-explorer-pro" do
-  version "3.6"
-  sha256 "81d0940998bc9e43ebbb05a06c495b36ba452e02a2f8f1051367535584328b51"
+  version "3.6.5"
+  sha256 "793188b37b80bbac4ddcd7316a03cbc7d824d2c8fa52cd6f2564e3df03f661a2"
 
   url "https://www.intuitibits.com/downloads/WiFiExplorerPro_#{version}.pkg"
   name "WiFi Explorer Pro"
@@ -16,15 +16,15 @@ cask "wifi-explorer-pro" do
 
   pkg "WiFiExplorerPro_#{version}.pkg"
 
-  uninstall pkgutil:   [
+  uninstall launchctl: "com.intuitibits.wifiexplorerpro#{version.major}.wifiexplorerpro-bpf",
+            pkgutil:   [
               "com.intuitibits.wifiexplorerpro#{version.major}.pkg",
               "com.intuitibits.wifiexplorerpro-helper.pkg",
-            ],
-            launchctl: "com.intuitibits.wifiexplorerpro#{version.major}.wifiexplorerpro-bpf"
+            ]
 
   zap trash: [
     "~/Library/Application Support/WiFi Explorer Pro #{version.major}",
-    "~/Library/Caches/com.apple.helpd/Generated/com.intuitibits.wifiexplorerpro#{version.major}.*",
+    "~/Library/Caches/com.apple.helpd/Generated/com.intuitibits.wifiexplorerpro*",
     "~/Library/Caches/com.intuitibits.wifiexplorerpro#{version.major}",
     "~/Library/Group Containers/2B9R362QNU.com.adriangranados.wifiexplorer",
     "~/Library/Preferences/com.intuitibits.wifiexplorerpro#{version.major}.plist",

@@ -4,12 +4,11 @@ cask "sencha" do
 
   url "https://trials.sencha.com/cmd/#{version.major_minor_patch}/SenchaCmd-#{version}-osx.app.zip"
   name "Sencha Cmd"
-  desc "Productivity and performance optimization tool for Sencha Ext JS"
+  desc "Productivity and performance optimisation tool for Sencha Ext JS"
   homepage "https://www.sencha.com/products/sencha-cmd/"
 
   livecheck do
-    url "https://www.sencha.com/products/extjs/cmd-download/"
-    regex(/href=.*?SenchaCmd[._-]v?(\d+(?:\.\d+)+)[._-]osx\.app\.zip/i)
+    skip "No reliable way to get version info"
   end
 
   installer script: {

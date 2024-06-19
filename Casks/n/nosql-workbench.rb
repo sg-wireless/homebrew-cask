@@ -1,8 +1,11 @@
 cask "nosql-workbench" do
-  version "3.8.2"
-  sha256 "7991066ff8a0a145023c44e58fbc39f3314275df446ce196019dfaf2d2f6b7d0"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://s3.amazonaws.com/nosql-workbench/NoSQL%20Workbench-mac-#{version}.dmg",
+  version "3.13.1"
+  sha256 arm:   "95487612931034139a1992b79280799b465c152cc9287c6339e267b69defc434",
+         intel: "b51d16d795648eb067504498a8a94e3eefbe4430aade40c17a25b21718844e3f"
+
+  url "https://s3.amazonaws.com/nosql-workbench/NoSQL%20Workbench-mac-#{arch}-#{version}.dmg",
       verified: "s3.amazonaws.com/nosql-workbench/"
   name "NoSQL Workbench"
   desc "Client-side GUI application for modern database development and operations"

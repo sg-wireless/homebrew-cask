@@ -1,6 +1,6 @@
 cask "minecraft-server" do
-  version "1.20.2,5b868151bd02b41319f54c8d4061b8cae84e665c"
-  sha256 "1daee4838569ad46e41f0a6f459684c500c7f2685356a40cfb7e838d6e78eae8"
+  version "1.21,450698d1863ab5180c25d7c804ef0fe6369dd1ba"
+  sha256 "c96394da86f9d9f9ef7ca2d2ee1f2f0980c29b7aa5c94b43c02c50435dbcf53f"
 
   url "https://launcher.mojang.com/v#{version.major}/objects/#{version.csv.second}/server.jar",
       verified: "launcher.mojang.com/"
@@ -9,7 +9,7 @@ cask "minecraft-server" do
   homepage "https://www.minecraft.net/en-us/"
 
   livecheck do
-    url "https://www.minecraft.net/en-us/download/server/"
+    url "https://www.minecraft.net/en-us/download/server"
     strategy :page_match do |page|
       page.scan(%r{href=.*?/objects/(\h+)/server\.jar[^>]*>minecraft[_-]server[._-]v?(\d+(?:\.\d+)*)\.jar}i)
           .map { |match| "#{match[1]},#{match[0]}" }

@@ -1,5 +1,5 @@
 cask "loopback" do
-  version "2.3.0"
+  version "2.4.0"
   sha256 :no_check
 
   url "https://rogueamoeba.com/loopback/download/Loopback.zip"
@@ -7,8 +7,10 @@ cask "loopback" do
   desc "Cable-free audio router"
   homepage "https://rogueamoeba.com/loopback/"
 
+  # NOTE: The `system` value will need to be kept up to date with the latest
+  # macOS version (e.g. 1441 for 14.4.1).
   livecheck do
-    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=1231&bundleid=com.rogueamoeba.Loopback&platform=osx&version=#{version.no_dots}8000"
+    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=145&bundleid=com.rogueamoeba.Loopback&platform=osx&version=#{version.no_dots}8000"
     strategy :sparkle
   end
 
@@ -17,11 +19,11 @@ cask "loopback" do
 
   app "Loopback.app"
 
-  uninstall delete: "~/Library/LaunchAgents/com.rogueamoeba.loopbackd.plist",
-            quit:   [
+  uninstall quit:   [
               "com.rogueamoeba.Loopback",
               "com.rogueamoeba.loopbackd",
-            ]
+            ],
+            delete: "~/Library/LaunchAgents/com.rogueamoeba.loopbackd.plist"
 
   zap trash: [
     "~/Library/Application Support/Loopback",

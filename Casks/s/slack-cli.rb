@@ -1,6 +1,6 @@
 cask "slack-cli" do
-  version "2.9.1"
-  sha256 "b43f8f254296dd75b670a296a891851a5c4b3862fe42e03045597ba67c5d2148"
+  version "2.26.0"
+  sha256 "e3f68bd7710d6665d670c5556905a8b2dba317cffd7ef3cb02a6b693ef642d31"
 
   url "https://downloads.slack-edge.com/slack-cli/slack_cli_#{version}_macOS_64-bit.tar.gz",
       verified: "downloads.slack-edge.com/slack-cli/"
@@ -9,7 +9,7 @@ cask "slack-cli" do
   homepage "https://api.slack.com/future/tools/cli"
 
   livecheck do
-    url "https://api.slack.com/future/changelog"
+    url "https://api.slack.com/automation/changelog"
     regex(%r{h2.*?v?(\d+(?:\.\d+)+).*?/h2}i)
   end
 

@@ -1,17 +1,17 @@
 cask "epic" do
-  arch arm: "m1"
+  arch arm: "arm", intel: "intel"
 
-  version "103.0.5060.53"
-  sha256 arm:   "445d5344376c5f586350fb53ed04f7535dd48c48029e0f4a18a5b9be45995b8f",
-         intel: "d3e352ae9cd7aa342ff8d9b89f87be9b94e7887c38ac5fb9b92e9e2089a721ba"
+  version "120.0.6099.71"
+  sha256 arm:   "f4c018f7c7bed4400eaa23ca14128c51d6a477250d5b453b8a00d01af83fe473",
+         intel: "0be47399f764d59ed14614b689bee5f8b8c31e2a425cd0baf02e322656698702"
 
-  url "https://cdn.epicbrowser.com/v100/#{arch}/epic_#{version}.dmg"
+  url "https://cdn.epicbrowser.com/v#{version.major}#{arch}/epic_#{version}.dmg"
   name "Epic Privacy Browser"
   desc "Private, secure web browser"
-  homepage "https://www.epicbrowser.com/"
+  homepage "https://epicbrowser.com/"
 
   livecheck do
-    url "https://epicbrowser.com/thank_you.php"
+    url "https://epicbrowser.com/thank-you"
     regex(%r{href=.*?/epic[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
   end
 

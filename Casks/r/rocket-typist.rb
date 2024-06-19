@@ -1,5 +1,5 @@
 cask "rocket-typist" do
-  version "2.4.4"
+  version "3.0.9"
   sha256 :no_check
 
   url "https://witt-software.com/downloads/rockettypist/Rocket%20Typist.dmg"
@@ -18,8 +18,8 @@ cask "rocket-typist" do
   app "Rocket Typist.app"
 
   zap trash: [
-    "~/Library/Application Support/com.witt-software.Rocket-Typist-#{version.major}",
     "~/Library/Application Support/com.witt-software.rocket-typist",
+    "~/Library/Application Support/com.witt-software.Rocket-Typist-#{version.major}",
     "~/Library/Application Support/Rocket Typist",
     "~/Library/Caches/com.apple.helpd/Generated/com.witt-software.Rocket-Typist.help*",
     "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.witt-software.Rocket-Typist-#{version.major}",

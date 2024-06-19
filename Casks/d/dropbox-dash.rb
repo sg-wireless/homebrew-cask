@@ -1,15 +1,15 @@
 cask "dropbox-dash" do
-  version "2.77.1"
-  sha256 "e148468fbae575d0934f7fab29bfa5abde3f1f37990dc1816c65e122b2fb0c88"
+  version "3.16.11"
+  sha256 "6183d540e8114c75e2367679b4ccb7e46d9bce9cd32f1feb800b48ab8275515f"
 
-  url "https://dash-releases.s3.amazonaws.com/Dropbox%20Dash-#{version}.dmg",
-      verified: "dash-releases.s3.amazonaws.com/"
+  url "https://edge.dropboxstatic.com/dbx-releng/products/dash-tesla/#{version}/mac.x86_64/Dropbox%20Dash-#{version}.dmg",
+      verified: "edge.dropboxstatic.com/dbx-releng/products/dash-tesla/"
   name "Dropbox Dash"
   desc "Universal search tool"
   homepage "https://www.dropbox.com/dash"
 
   livecheck do
-    url "https://dash-releases.s3.amazonaws.com/latest-mac.yml"
+    url "https://client.dropbox.com/electron_builder/dash-tesla/update_check/stable-mac.yml?arch=x64&version=0"
     strategy :electron_builder
   end
 

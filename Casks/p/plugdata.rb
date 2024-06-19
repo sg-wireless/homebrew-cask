@@ -1,11 +1,16 @@
 cask "plugdata" do
-  version "0.8.0-test"
-  sha256 "e478123deed1d585a1df4c7cc374dd34dc9b03bea871ae1b9d088f3b2f1538ef"
+  version "0.8.3"
+  sha256 "f1dc46b31d6ded4c6ab578fd00ab57faa666eec69ec79c5daf565c4a6b2a9be3"
 
   url "https://github.com/timothyschoen/PlugData/releases/download/v#{version}/plugdata-macOS-Universal.pkg"
   name "PlugData"
   desc "Plugin wrapper for PureData"
   homepage "https://github.com/timothyschoen/PlugData"
+
+  livecheck do
+    url :url
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
 
   auto_updates true
 
@@ -21,8 +26,8 @@ cask "plugdata" do
 
   zap trash: [
     "~/Library/Application Support/PlugData.settings",
-    "~/Library/Caches/PlugData",
     "~/Library/Caches/com.PlugData.PlugDataStandalone",
+    "~/Library/Caches/PlugData",
     "~/Library/HTTPStorages/com.PlugData.PlugDataStandalone",
     "~/Library/PlugData",
     "~/Library/Preferences/com.PlugData.PlugDataStandalone.plist",

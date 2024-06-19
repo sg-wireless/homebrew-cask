@@ -1,8 +1,11 @@
 cask "115browser" do
-  version "25.0.6.5"
-  sha256 "3b8a337d19ac1eeba2068fdb3892aa30c5f0d75bbcd3bcf05411596089822878"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://down.115.com/client/mac/115br_#{version}.dmg"
+  version "26.0.7.2"
+  sha256 arm:   "1b7c4101483157f4dd4dbf7194245b4e6e398ef3dbb7e993121accb60874384a",
+         intel: "fc7252ec32b59a5a6d568cb7bf183849a1f54d2122b2699fdbda090eff9a3a1f"
+
+  url "https://down.115.com/client/mac/115br_v#{version}_#{arch}.dmg"
   name "115Browser"
   name "115浏览器"
   desc "Web browser"

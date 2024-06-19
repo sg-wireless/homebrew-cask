@@ -1,6 +1,6 @@
 cask "qgis" do
-  version "3.32.3,20230915_122907"
-  sha256 "c1f4d8d729cc00325f68627e367745c09d92eee58966920e489c0d4ae8b704b3"
+  version "3.36.3,20240517_122510"
+  sha256 "5f356ed5a87297185fd30ec40bb9cc4d0cb22892c4ccd2f1052fc63d50f99708"
 
   url "https://qgis.org/downloads/macos/pr/qgis_pr_final-#{version.csv.first.dots_to_underscores}_#{version.csv.second}.dmg"
   name "QGIS"
@@ -8,7 +8,7 @@ cask "qgis" do
   homepage "https://www.qgis.org/"
 
   livecheck do
-    url "https://qgis.org/downloads/macos/qgis-macos-pr.sha256sum"
+    url "https://download.qgis.org/downloads/macos/qgis-macos-pr.sha256sum"
     strategy :page_match do |page|
       match = page.match(/qgis_pr_final[._-]v?(\d+(?:_\d+)+)[._-](\d+_\d+)\.dmg/i)
       next if match.blank?

@@ -1,24 +1,23 @@
 cask "mblock" do
-  version "5.4.0"
-  sha256 "cdaae703059821efb8806ce3e6fc9b44d74c5975d67fefb0d2e626565f8d6452"
+  version "5.4.3"
+  sha256 "719b808ba96b36ba811cb92a982b65c76b675df398426d53932e0b15d515177c"
 
-  url "https://dl.makeblock.com/mblock#{version.major}/darwin/V#{version}.pkg",
+  url "https://dl.makeblock.com/mblock#{version.major}/darwin/V#{version}.dmg",
       verified: "dl.makeblock.com/"
   name "mBlock"
   desc "Coding tool designed for teaching STEAM"
   homepage "https://www.mblock.cc/"
 
-  livecheck do
-    url "https://s.mblock.cc/download/pc-mac"
-    strategy :header_match
-  end
+  disable! date: "2024-06-12", because: "download artifact behind signed url"
 
   depends_on macos: ">= :sierra"
 
-  pkg "V#{version}.pkg"
+  app "mBlock.app"
 
-  uninstall pkgutil: [
-    "cc.mblock",
-    "com.makeblock.pkg.mblock",
+  zap trash: [
+    "~/Library/Application Support/mblock",
+    "~/Library/Preferences/cc.mblock.plist",
+    "~/Library/Saved Application State/cc.mblock.savedState",
+    "~/mblock",
   ]
 end

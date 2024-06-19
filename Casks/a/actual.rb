@@ -11,6 +11,8 @@ cask "actual" do
   desc "Privacy-focused app for managing your finances"
   homepage "https://actualbudget.com/"
 
+  deprecate! date: "2023-12-17", because: :discontinued
+
   app "Actual.app"
 
   zap trash: [

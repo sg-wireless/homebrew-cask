@@ -1,5 +1,5 @@
 cask "publish-or-perish" do
-  version "8.9.4538.8589"
+  version "8.12.4612.8838"
   sha256 :no_check
 
   url "https://harzing.com/download/PoP#{version.major}Mac.pkg"
@@ -20,7 +20,7 @@ cask "publish-or-perish" do
 
   zap trash: [
     "~/Library/Application Support/Publish or Perish",
-    "~/Library/Preferences/Publish or Perish.json",
     "~/Library/Preferences/com.tarma.popmac.plist",
+    "~/Library/Preferences/Publish or Perish.json",
   ]
 end

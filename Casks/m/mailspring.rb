@@ -1,6 +1,6 @@
 cask "mailspring" do
-  version "1.11.0"
-  sha256 "871aacc202c4198c80cedb99d39e8e6261b59ca64ee8867d95b3f9a900e80ae7"
+  version "1.13.3"
+  sha256 "99f7bb841b4b559b6a9ad28c044179907f8e1238797fa0c9979a410017605204"
 
   url "https://github.com/Foundry376/Mailspring/releases/download/#{version}/Mailspring.zip",
       verified: "github.com/Foundry376/Mailspring/"
@@ -9,6 +9,7 @@ cask "mailspring" do
   homepage "https://getmailspring.com/"
 
   auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "Mailspring.app"
 

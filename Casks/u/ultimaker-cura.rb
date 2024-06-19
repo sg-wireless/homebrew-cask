@@ -1,17 +1,31 @@
 cask "ultimaker-cura" do
-  version "5.4.0"
-  sha256 "d5883826fda5b8125d60b1434161e8c7ba8805fa116b8c14c27bbbc14717bfe1"
+  arch arm: "ARM64", intel: "X64"
 
-  url "https://github.com/Ultimaker/Cura/releases/download/#{version}/Ultimaker-Cura-#{version}-mac.dmg",
+  on_arm do
+    version "5.7.2,5.7.2-RC2"
+    sha256 "eb4950b2c4f0928a727fd77c71d6b196fcb1d3fca3bc71df1c54752b8d7d0826"
+  end
+  on_intel do
+    version "5.7.2,5.7.2-RC2"
+    sha256 "1cb00b09c13d118547fe782c3a91b9489897e245ebb60949b7c331535cda0ce5"
+  end
+
+  url "https://github.com/Ultimaker/Cura/releases/download/#{version.csv.second}/UltiMaker-Cura-#{version.csv.first}-macos-#{arch}.dmg",
       verified: "github.com/Ultimaker/Cura/"
-  name "Ultimaker Cura"
+  name "UltiMaker Cura"
   name "Cura"
   desc "3D printer and slicing GUI"
   homepage "https://ultimaker.com/software/ultimaker-cura"
 
   livecheck do
     url :url
-    strategy :github_latest
+    regex(/^(\d+(?:\.\d+)+)/i)
+    strategy :github_latest do |item, regex|
+      version = item["tag_name"][regex, 1]
+      next if version.blank?
+
+      "#{version},#{item["tag_name"]}"
+    end
   end
 
   app "UltiMaker Cura.app"

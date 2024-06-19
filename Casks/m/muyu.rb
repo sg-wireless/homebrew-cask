@@ -1,8 +1,8 @@
 cask "muyu" do
-  version "1.4.2,29"
-  sha256 "a066d707ffdff384a687268607967b3eba9f4ae4806d280a8bf9b15673e65b92"
+  version "1.5.1,43"
+  sha256 "595ced25efae4a9b65f35897d3372d4f4814bfabb9f1229087c9080cd165f560"
 
-  url "https://breakit.thriller.fun/packages/Muyu.v#{version.csv.first}_#{version.csv.second}.zip"
+  url "https://breakit.thriller.fun/packages/appcast/Muyu.v#{version.csv.first}_#{version.csv.second}.zip"
   name "Muyu"
   desc "Combination of work efficiency and health"
   homepage "https://breakit.thriller.fun/"
@@ -13,7 +13,7 @@ cask "muyu" do
   end
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
 
   app "Muyu.app"
 

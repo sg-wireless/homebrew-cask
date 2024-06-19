@@ -2,9 +2,9 @@ cask "sunloginclient" do
   arch arm: "arm64", intel: "x86_64"
   livecheck_id = on_arch_conditional arm: "187", intel: "89"
 
-  version "13.1.0.49006"
-  sha256 arm:   "aec91d480624ffa6c865dcaa6aeae24496bc573103ca9de0aafa3578dcd36219",
-         intel: "6feac4f09859c56095be56f3cccc79ba9b289211bc063edb53e33c0eeca42c1d"
+  version "15.2.0.62925"
+  sha256 arm:   "379b14b1d2c6dda4013d3c201114968994176eb6ae6ca14d193eeba40d52942c",
+         intel: "91e7093806119e440f7047e6f6d1e8f012e4fce0887c860d4c4821ece89e08da"
 
   url "https://down.oray.com/sunlogin/mac/SunloginClient_#{version}_#{arch}.dmg"
   name "Sunlogin Client"
@@ -37,8 +37,8 @@ cask "sunloginclient" do
               "com.oray.sunlogin.service",
               "com.oray.sunlogin.startup",
             ],
-            pkgutil:   "com.oray.sunlogin.macclient",
-            quit:      "com.oray.sunlogin.macclient"
+            quit:      "com.oray.sunlogin.macclient",
+            pkgutil:   "com.oray.sunlogin.macclient"
 
   zap delete: "/private/var/log/sunlogin/",
       trash:  [

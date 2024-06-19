@@ -1,8 +1,8 @@
 cask "grisbi" do
-  version "2.0.5"
-  sha256 "c927abc191c75b2ac0d622bcb4d9557628ca2cd8e463a000e1a6287a57702a75"
+  version "3.0.4"
+  sha256 "ff016c36ec113c1cf3733c5363e843834a610a52f42a481c2bc0fd9d589217a1"
 
-  url "https://downloads.sourceforge.net/grisbi/#{version.major_minor}.x/#{version}/Grisbi-#{version}.dmg",
+  url "https://downloads.sourceforge.net/grisbi/Grisbi-#{version}.dmg",
       verified: "downloads.sourceforge.net/grisbi/"
   name "Grisbi"
   desc "Personal financial management program"
@@ -10,7 +10,7 @@ cask "grisbi" do
 
   livecheck do
     url "https://sourceforge.net/projects/grisbi/files/grisbi%20stable/"
-    regex(%r{url=.*?/grisbi/files/grisbi%20stable/.*?[-_/](\d+(?:[-.]\d+)+)[-_/%.]}i)
+    regex(%r{url=.*?/grisbi/files/grisbi%20stable/.*?[-_/](\d+(?:[-.]\d+)+)\.dmg[-_/%.]}i)
   end
 
   app "Grisbi.app"

@@ -1,21 +1,21 @@
 cask "geany" do
-  version "1.38,4"
-  sha256 "f9882c1ea469c57d8c6d00012d0dc59735efeb48b0c504cccd13f03bb5184bed"
+  arch arm: "_arm64"
 
-  url "https://download.geany.org/geany-#{version.csv.first}_osx#{version.csv.second&.prepend("-")}.dmg"
+  version "2.0"
+  sha256 arm:   "1d383519d5ef7d3a2d17483a816250776158bfc26590aa4914f8634d81f112d7",
+         intel: "c42991517d1a94920c8f39f159d6707ee093347321e5acb8ef6a11fd094adf4e"
+
+  url "https://download.geany.org/geany-#{version}_osx#{arch}.dmg"
   name "Geany"
-  desc "Fast and lightweight IDE"
+  desc "Small and lightweight IDE"
   homepage "https://www.geany.org/"
 
   livecheck do
     url "https://geany.org/download/releases/"
-    strategy :page_match do |page|
-      match = page.match(/href=.*?geany[._-](\d+(?:\.\d+)+)[._-]osx(?:[._-](\d+))?\.dmg/i)
-      next if match.blank?
-
-      match[2] ? "#{match[1]},#{match[2]}" : match[1]
-    end
+    regex(/href=.*?geany[._-]v?(\d+(?:\.\d+)+)[._-]osx#{arch}\.dmg/i)
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "Geany.app"
 

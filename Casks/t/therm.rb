@@ -1,6 +1,6 @@
 cask "therm" do
-  version "0.5.0"
-  sha256 "5e2271d077f08aa084a2107b02d546363746ab21b07bcea1ccd286554deaf930"
+  version "0.6.4"
+  sha256 "30b1c67a1d297f5e05de47faa66d6cf118c5a450aac2f222098e4fb1cf80d650"
 
   url "https://github.com/trufae/Therm/releases/download/#{version}/Therm-#{version}.zip"
   name "Therm"
@@ -13,4 +13,10 @@ cask "therm" do
   end
 
   app "Therm.app"
+
+  zap trash: [
+    "~/Library/Application Support/Therm",
+    "~/Library/Preferences/com.pancake.therm.plist",
+    "~/Library/Saved Application State/com.pancake.therm.savedState",
+  ]
 end

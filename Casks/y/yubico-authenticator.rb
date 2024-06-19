@@ -1,16 +1,12 @@
 cask "yubico-authenticator" do
-  version "6.3.0"
-  sha256 "5b3dd82a4b67317bb177afe2ab60080b64f834a9b8b23619ef14eab860c6cdc0"
+  version "7.0.0"
+  sha256 "ea9e07d5f3ada7d75c1555de42b93a6d91ccc4dab0460520a3ddd9ac7be80bf1"
 
-  url "https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-#{version}-mac.dmg"
+  url "https://github.com/Yubico/yubioath-flutter/releases/download/#{version}/yubico-authenticator-#{version}-mac.dmg",
+      verified: "github.com/Yubico/yubioath-flutter/releases/download/"
   name "Yubico Authenticator"
   desc "Application for generating TOTP and HOTP codes"
   homepage "https://developers.yubico.com/yubioath-flutter/"
-
-  livecheck do
-    url "https://developers.yubico.com/yubioath-flutter/Releases/"
-    regex(/href=.*?yubico[._-]authenticator[._-]v?(\d+(?:\.\d+)+)[._-]mac\.dmg/i)
-  end
 
   depends_on macos: ">= :big_sur"
 

@@ -1,6 +1,6 @@
 cask "aircall" do
-  version "2.32.2"
-  sha256 "c80d8ccd55b08f3ec8a85a7651a1ff81e240c756d299caaa2930b2b6b2e63687"
+  version "3.1.18"
+  sha256 "b8f5804987d04c1450adb5441c1764ac1e2f8108150520002bc8ace03145ec4e"
 
   url "https://download-electron.aircall.io/Aircall-#{version}.dmg"
   name "Aircall"
@@ -8,8 +8,10 @@ cask "aircall" do
   homepage "https://aircall.io/"
 
   livecheck do
-    url "https://aircall.io/download/"
-    regex(/Aircall[._-](\d+(?:\.\d+)+)\.(dmg|pkg)/i)
+    url "https://aircall.io/api/app-infos/"
+    strategy :json do |json|
+      json["name"]
+    end
   end
 
   auto_updates true

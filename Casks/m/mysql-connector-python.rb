@@ -10,10 +10,7 @@ cask "mysql-connector-python" do
   desc "Self-contained Python driver for communicating with MySQL servers"
   homepage "https://dev.mysql.com/downloads/connector/python/"
 
-  livecheck do
-    url "https://dev.mysql.com/downloads/connector/python/?tpl=files&os=33"
-    regex(/href=.*?mysql[._-]connector[._-]python[._-]v?(\d+(?:\.\d+)+)[._-]macos13[._-]#{arch}\.dmg/i)
-  end
+  deprecate! date: "2023-12-17", because: :discontinued
 
   depends_on macos: ">= :monterey"
 
@@ -21,10 +18,10 @@ cask "mysql-connector-python" do
 
   uninstall pkgutil: [
     "com.mysql.connector-python",
-    "com.mysql.connector-python-py3.8",
-    "com.mysql.connector-python-py3.9",
     "com.mysql.connector-python-py3.10",
     "com.mysql.connector-python-py3.11",
+    "com.mysql.connector-python-py3.8",
+    "com.mysql.connector-python-py3.9",
     "com.oracle.mysql.connector.python",
   ]
 

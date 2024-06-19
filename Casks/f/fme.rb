@@ -2,9 +2,9 @@ cask "fme" do
   arch arm: "aarch64", intel: "x64"
   folder = on_arch_conditional arm: "-aarch64"
 
-  version "2023.1.1,23631"
-  sha256 arm:   "49dedf4e5b6454dc76acd2c4e287b6582296ba33e19c7e2d489b3adb6fcb543b",
-         intel: "4da87133ee2185cf696de50ae8c1f170e4e97c8e88f60589485a2447984759c8"
+  version "2024.0.3,24220"
+  sha256 arm:   "ebb2df3e5e669d7485f556d1cddab3b5a0bcce64e7f1e26189b0ab98efa8c69b",
+         intel: "9472f0917ed7d61abcb1a09d521e0eb8b5e94e153139f2ad0d6f13d21bc3553b"
 
   url "https://downloads.safe.com/fme/#{version.major}/macos#{folder}/fme-form-#{version.csv.first}-b#{version.csv.second}-macosx-#{arch}.pkg"
   name "FME Form"
@@ -23,8 +23,8 @@ cask "fme" do
   pkg "fme-form-#{version.csv.first}-b#{version.csv.second}-macosx-#{arch}.pkg"
 
   uninstall pkgutil: [
-              "com.safesoftware.pkg.engine.fme-form-#{version.major_minor}-b#{version.csv.second}-macosx-#{arch}",
               "com.safesoftware.pkg.apps.fme-form-#{version.major_minor}-b#{version.csv.second}-macosx-#{arch}",
+              "com.safesoftware.pkg.engine.fme-form-#{version.major_minor}-b#{version.csv.second}-macosx-#{arch}",
             ],
             delete:  [
               "/Applications/FME #{version.major_minor}",
@@ -32,9 +32,9 @@ cask "fme" do
             ]
 
   zap trash: [
-    "~/Library/Application Support/FME",
     "~/Library/Application Support/FME Desktop Help",
     "~/Library/Application Support/FME Help",
     "~/Library/Application Support/FME Workbench",
+    "~/Library/Application Support/FME",
   ]
 end

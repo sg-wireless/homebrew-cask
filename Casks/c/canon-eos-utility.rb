@@ -1,6 +1,6 @@
 cask "canon-eos-utility" do
-  version "3.17.2.1,0200006949,9"
-  sha256 "aa14d8d2681b6473fffcdde3a15944ddfb6bb5463af157c442816bef48027205"
+  version "3.18.5.13,0200007089,9"
+  sha256 "dd911c4cc74fe25d675cb321071dbe816afce2259f80966b90540bdd5921243a"
 
   url "https://gdlp01.c-wss.com/gds/#{version.csv.third}/#{version.csv.second}/01/EU-Installset-M#{version.csv.first}.dmg.zip",
       verified: "gdlp01.c-wss.com/"
@@ -15,7 +15,7 @@ cask "canon-eos-utility" do
     url "https://gdlp01.c-wss.com/rmds/ic/autoupdate/common/tls_eu_updater_url.xml"
     regex(%r{http.*?/(\d+)/(\d+)/\d+/EU[._-]Installset[._-]v?M?(\d+(?:\.\d+)+)\.dmg\.zip}i)
     strategy :page_match do |page, regex|
-      match = page.match(/<Component\sID="[^"]+mac_11[^"]+".*\n?.*(https.*)\n/i)
+      match = page.match(/<Component\sID="[^"]+mac_14[^"]+".*\n?.*(https.*)\n/i)
       next if match.blank?
 
       url = match[1].strip
@@ -45,11 +45,11 @@ cask "canon-eos-utility" do
               "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/Auto Update Interface Library/Uninstall_for_EOS Web Service Registration Tool.xml",
               "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/CameraSurveyProgram",
               "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Lens Registration Tool",
-              "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Web Service Registration Tool",
-              "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Utility",
               "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Utility 2",
               "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Utility 3",
               "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Utility Launcher",
+              "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Utility",
+              "/Library/Application Support/Canon_Inc_IC/UniversalInstaller/Uninstall/EOS Web Service Registration Tool",
             ],
             rmdir:  [
               "/Applications/Canon Utilities",
@@ -59,9 +59,9 @@ cask "canon-eos-utility" do
   zap trash: [
     "~/Library/Caches/com.canon.EOS-Lens-Registration-Tool",
     "~/Library/Caches/com.canon.UpdateChecker",
-    "~/Library/Preferences/jp.co.canon.ic.camerasurveyprogram.plist",
-    "~/Library/Preferences/com.canon.EOS-Utility.plist",
     "~/Library/Preferences/com.canon.EOS Utility 2.plist",
     "~/Library/Preferences/com.canon.EOS-Utility-3.plist",
+    "~/Library/Preferences/com.canon.EOS-Utility.plist",
+    "~/Library/Preferences/jp.co.canon.ic.camerasurveyprogram.plist",
   ]
 end

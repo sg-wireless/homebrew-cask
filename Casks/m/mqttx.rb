@@ -1,11 +1,11 @@
 cask "mqttx" do
-  arch arm: "arm64-"
+  arch arm: "-arm64"
 
-  version "1.9.6"
-  sha256 arm:   "b2b7723acb100c8ac51829aea7c498486bfc78cd6c4284f5280c82947a734436",
-         intel: "b08d7081e1efadec3bd7d0dc63d1cd8e2e0f06bafc9e5ec1bf210d7de555d71b"
+  version "1.10.0"
+  sha256 arm:   "8b76d7deda6e5e46e010087f8234564d6c35b3dc3c37db8a771d56609c27276d",
+         intel: "75c070d14239abcf1f515d8d79518a7c4f6e9a7e300fc3a342c5e07c4c9bbf5d"
 
-  url "https://github.com/emqx/MQTTX/releases/download/v#{version}/MQTTX-#{version}-#{arch}mac.zip",
+  url "https://github.com/emqx/MQTTX/releases/download/v#{version}/MQTTX-#{version}#{arch}.dmg",
       verified: "github.com/emqx/MQTTX/"
   name "MQTTX"
   desc "Cross-platform MQTT 5.0 Desktop Client"

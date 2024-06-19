@@ -1,10 +1,8 @@
 cask "anypointstudio" do
-  version "7.15.0"
-  sha256 "37f5bca8a63c38061ebc46a539540287ef7186223b05ef93aa8a4eee5c25d3b8"
+  version "7.18.1"
+  sha256 "3f9dddf20bee30a3976a607a0c7138b265301e2284e7fd2ad5bae1bd68b0ce9f"
 
-  vsuffix = (version.patch == "0") ? "GA" : "U#{version.patch}"
-
-  url "https://mule-studio.s3.amazonaws.com/#{version}-#{vsuffix}/AnypointStudio-#{version}-macos64.zip",
+  url "https://mule-studio.s3.amazonaws.com/#{version}-GA/AnypointStudio-#{version}-macos64.zip",
       verified: "mule-studio.s3.amazonaws.com/"
   name "Anypoint Studio"
   desc "Eclipse-based IDE for designing and testing Mule applications"

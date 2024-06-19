@@ -1,6 +1,6 @@
 cask "protonvpn" do
-  version "3.3.3"
-  sha256 "5180a6865a688f94627b460432ef1c9318500251a4d96bbbb1d82d45e27bf13d"
+  version "4.3.0"
+  sha256 "6574920e2257f3198e72eb3eb88359a35dd126e9d1d2e776154be0ebfb4a7dd0"
 
   url "https://protonvpn.com/download/ProtonVPN_mac_v#{version}.dmg"
   name "ProtonVPN"
@@ -9,7 +9,7 @@ cask "protonvpn" do
 
   livecheck do
     url "https://protonvpn.com/download/macos-update3.xml"
-    regex(/ProtonVPN_mac_v?(\d+(?:\.\d+)+)\.dmg/i)
+    regex(/ProtonVPN[._-]mac[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 
   auto_updates true
@@ -21,13 +21,12 @@ cask "protonvpn" do
             quit:      "ch.protonvpn.mac"
 
   zap trash: [
-    "~/Library/Application Scripts/ch.protonvpn.ProtonVPNStarter",
-    "~/Library/Application Scripts/ch.protonvpn.mac",
+    "~/Library/Application Scripts/ch.protonvpn.*",
     "~/Library/Application Support/CrashReporter/ProtonVPN*",
     "~/Library/Application Support/ProtonVPN",
-    "~/Library/Caches/SentryCrash/ProtonVPN",
     "~/Library/Caches/ch.protonvpn.mac",
     "~/Library/Caches/com.apple.nsurlsessiond/Downloads/ch.protonvpn.mac",
+    "~/Library/Caches/SentryCrash/ProtonVPN",
     "~/Library/Containers/ch.protonvpn.*",
     "~/Library/Cookies/ch.protonvpn.mac.binarycookies",
     "~/Library/Logs/ProtonVPN.log",

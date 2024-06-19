@@ -1,21 +1,15 @@
 cask "eudic" do
-  version "4.4.5,1103"
+  version :latest
   sha256 :no_check
 
-  url "https://static.frdic.com/pkg/eudicmac.dmg",
-      verified:   "static.frdic.com/",
+  url "https://static.eudic.net/pkg/eudicmac.dmg",
       user_agent: :fake
   name "Eudic"
   name "欧路词典"
   desc "European dictionary"
   homepage "https://www.eudic.net/v4/en/app/eudic"
 
-  livecheck do
-    url :url
-    strategy :extract_plist
-  end
-
-  auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "Eudic.app"
 
@@ -33,8 +27,8 @@ cask "eudic" do
     "~/Library/Eudb_en",
     "~/Library/HTTPStorages/com.eusoft.eudic",
     "~/Library/HTTPStorages/com.eusoft.eudic.binarycookies",
-    "~/Library/Preferences/com.eusoft.eudic.plist",
     "~/Library/Preferences/com.eusoft.eudic.LightPeek.plist",
+    "~/Library/Preferences/com.eusoft.eudic.plist",
     "~/Library/Preferences/group.com.eusoft.eudic.plist",
     "~/Library/WebKit/com.eusoft.eudic",
     "~/Library/WebKit/com.eusoft.eudic.LightPeek",

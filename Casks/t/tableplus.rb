@@ -1,8 +1,8 @@
 cask "tableplus" do
-  version "5.4.2,506"
-  sha256 "6d30c4ed69a2cf7e80a0a22d83f684634531a9fe01f329defd254febd3677be5"
+  version "6.0.8,562"
+  sha256 "b52b5db1a32d7a7869d2d3ceced98d4f5cf35016d04516bdb1a6cb43adf24aab"
 
-  url "https://download.tableplus.com/macos/#{version.csv.second}/TablePlus.dmg"
+  url "https://files.tableplus.com/macos/#{version.csv.second}/TablePlus.dmg"
   name "TablePlus"
   desc "Native GUI tool for relational databases"
   homepage "https://tableplus.com/"
@@ -13,7 +13,7 @@ cask "tableplus" do
   end
 
   auto_updates true
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :high_sierra"
 
   app "TablePlus.app"
 

@@ -1,6 +1,6 @@
 cask "weakauras-companion" do
-  version "5.1.2"
-  sha256 "efd4e06e82eb4e8cb11d3af64d083ec01d05ce5ba2684d28755b0834d42ac184"
+  version "5.2.4"
+  sha256 "ede3ef7f2a093e67eb57adfde1ad366aedb969e3cc4aa0cb7fbbf8a4132ad531"
 
   url "https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v#{version}/WeakAuras-Companion-#{version}-mac-universal.dmg",
       verified: "github.com/WeakAuras/WeakAuras-Companion/"

@@ -1,17 +1,18 @@
 cask "tableau-prep" do
-  version "2023.2.2"
-  sha256 "b414748682811170a32861c2ea79f7e886dd6c178651cb9def0ca29bde9f3103"
+  version "2024.1.3"
+  sha256 "d74c5eb931d4ca0eee635a4ceead8f053292e485730fb452cb50d302bdd606ab"
 
-  url "https://downloads.tableau.com/esdalt/tableau_prep/#{version}/TableauPrep-#{version.dots_to_hyphens}.dmg"
+  url "https://downloads.tableau.com/esdalt/tableau_prep/#{version}/TableauPrep-#{version.dots_to_hyphens}.dmg",
+      user_agent: "curl/8.7.1"
   name "Tableau Prep"
   name "Tableau Prep Builder"
   desc "Combine, shape, and clean your data for analysis"
   homepage "https://www.tableau.com/support/releases/prep"
 
   livecheck do
-    url "https://www.tableau.com/downloads/prep/mac"
-    strategy :header_match do |headers|
-      headers["location"][/TableauPrep[._-]v?(\d+(?:-\d+)+)\.dmg/i, 1].tr("-", ".")
+    url "https://downloads.tableau.com/TableauAutoUpdate.xml"
+    strategy :xml do |xml|
+      xml.get_elements("//version").map { |item| item.attributes["releaseNotesVersion"] }
     end
   end
 
@@ -32,7 +33,11 @@ cask "tableau-prep" do
     "simba.sparkodbc",
   ]
 
-  zap trash:  [
+  zap delete: [
+        "/Library/Application Support/Tableau Prep Builder",
+        "/Library/Preferences/FLEXnet Publisher",
+      ],
+      trash:  [
         "~/Documents/My Tableau Prep Repository",
         "~/Library/Application Support/Tableau Prep Builder #{version}",
         "~/Library/Caches/com.tableau.caching",
@@ -41,9 +46,5 @@ cask "tableau-prep" do
         "~/Library/Preferences/com.tableausoftware.tabminerva.plist",
         "~/Library/Saved Application State/com.tableausoftware.tableauprep.savedState",
         "~/Library/Tableau",
-      ],
-      delete: [
-        "/Library/Application Support/Tableau Prep Builder",
-        "/Library/Preferences/FLEXnet Publisher",
       ]
 end

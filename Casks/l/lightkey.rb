@@ -1,33 +1,60 @@
 cask "lightkey" do
-  version "4.5,62ee0cc022-1695367347"
-  sha256 "a277768206cf6650cd501902c7d11a2c10951336af0489f613f41d1279bec2ba"
+  on_monterey :or_older do
+    version "4.4.5"
+    sha256 "457df4bb2d2f21a52eec9b9b05830eb082014ce66fd79f91544a0838d54a3241"
 
-  url "https://lightkeyapp.com/media/pages/download/Lightkey-#{version.csv.first.dots_to_hyphens}/#{version.csv.second}/LightkeyInstaller.zip"
+    # This check should only return legacy versions and the conditions may need
+    # to be updated as the minimum system version of releases changes. If/when
+    # upstream stops publishing new legacy versions, this should be updated to
+    # use `skip` instead.
+    livecheck do
+      url "https://lightkeyapp.com/en/update"
+      strategy :sparkle do |items|
+        items.map do |item|
+          next unless item.minimum_system_version
+          next if item.minimum_system_version < :big_sur ||
+                  item.minimum_system_version >= :ventura
+
+          item.version
+        end
+      end
+    end
+
+    depends_on macos: ">= :big_sur"
+  end
+  on_ventura :or_newer do
+    version "4.8.3"
+    sha256 "093704b225818ff99a790c7cfa323e8e91b56e6a26ee43f609cbf430ed44bbc3"
+
+    # Upstream also publishes legacy versions (with a lower minor version) in
+    # the appcast, so the first `item` after sorting by `pubDate`/`version` may
+    # not be the highest version. This `strategy` block collects the `version`
+    # from all `items`, ignoring the `Sparkle` strategy's `pubDate` sorting.
+    livecheck do
+      url "https://lightkeyapp.com/en/update"
+      strategy :sparkle do |items|
+        items.map(&:version)
+      end
+    end
+
+    depends_on macos: ">= :ventura"
+  end
+
+  url "https://lightkeyapp.com/download/Lightkey-#{version.dots_to_hyphens}/LightkeyInstaller.zip"
   name "Lightkey"
   desc "DMX lighting control"
   homepage "https://lightkeyapp.com/"
 
-  livecheck do
-    url "https://lightkeyapp.com/en/download"
-    regex(%r{/Lightkey[._-]v?(\d+(?:-\d+)+)/([^/]+)/LightkeyInstaller\.zip}i)
-    strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map do |match|
-        "#{match[0].tr("-", ".")},#{match[1]}"
-      end
-    end
-  end
-
   auto_updates true
-  depends_on macos: ">= :big_sur"
 
   pkg "LightkeyInstaller.pkg"
 
-  uninstall delete:  "/Applications/Lightkey.app",
-            pkgutil: [
+  uninstall pkgutil: [
               "de.monospc.lightkey.pkg.App",
               "de.monospc.lightkey.pkg.documentation",
               "de.monospc.lightkey.pkg.OLA",
-            ]
+            ],
+            delete:  "/Applications/Lightkey.app"
 
   zap trash: [
     "~/Library/Application Support/Lightkey",

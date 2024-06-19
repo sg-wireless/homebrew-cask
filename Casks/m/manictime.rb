@@ -1,25 +1,40 @@
 cask "manictime" do
   arch arm: "arm64", intel: "x64"
 
-  version "2023.2.0"
-  sha256 arm:   "b807700edc2b117aa404077035d63f347dc2f7fb087d161b583b49c6a0cb85c9",
-         intel: "89ac81b4a3f02ea88d9d8b01fc2d9a227ead07694321b544ede4d038e1a5da7c"
+  version "2024.1.1.0"
+  sha256 arm:   "7b456cce2a34ffc4dcfd49484ae90dfb2391a9820d6914f1cd948faa72a193e4",
+         intel: "4d2b9aeadae0d5e62cb2c1a3f8e9c3dff9e2100eb7f4e41e30ce4299ce18ce0d"
 
   url "https://cdn.manictime.com/setup/mac/v#{version.dots_to_underscores}/manictime-#{version}-osx-#{arch}.dmg"
   name "ManicTime"
   desc "Time tracker that automatically collects computer usage data"
-  homepage "https://www.manictime.com/Mac"
+  homepage "https://www.manictime.com/"
 
+  # The download page includes a link to a beta version, so instead of
+  # mapping over the versions present on the page, we return the first match
+  # which is the latest stable version
   livecheck do
-    url "https://www.manictime.com/mac/download"
+    url "https://www.manictime.com/download/mac"
     regex(/manictime[._-]v?(\d+(?:\.\d+)+)[._-]osx[._-]#{arch}\.dmg/i)
+    strategy :page_match do |page, regex|
+      match = page.match(regex)
+      next if match.blank?
+
+      match[1]
+    end
   end
 
   depends_on macos: ">= :mojave"
 
-  pkg "manictime-#{version}-osx-#{arch}.pkg"
+  pkg "ManicTime.pkg"
 
   uninstall pkgutil: "com.finkit.manictime.tracker"
 
-  zap trash: "~/Library/Application Support/ManicTime"
+  zap trash: [
+    "~/.local/share/manictime",
+    "~/Library/Application Support/com.apple.sharedfilelist/*/com.finkit.manictime.tracker.sfl*",
+    "~/Library/Application Support/ManicTime",
+    "~/Library/LaunchAgents/com.ManicTime.mac.start.plist",
+    "~/Library/Preferences/com.finkit.manictime.tracker.plist",
+  ]
 end

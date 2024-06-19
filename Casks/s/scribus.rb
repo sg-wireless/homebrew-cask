@@ -1,16 +1,19 @@
 cask "scribus" do
-  version "1.5.8"
-  sha256 "d5ebc6f104bb57457c68ce651864053040af38f218bad1eef17491db7e6282ef"
+  arch arm: "-arm64"
 
-  url "https://downloads.sourceforge.net/scribus/scribus-devel/#{version}/scribus-#{version}.dmg",
+  version "1.6.2"
+  sha256 arm:   "e0020434cbc234025b9a2675dd0ffda0f978ae2fc74e6b1d8528af7a8dc03075",
+         intel: "0f0aa86dcd8674ee933e4cbe80f54f785f3847ea3b8c1d152d43f7245c0c7e69"
+
+  url "https://downloads.sourceforge.net/scribus/scribus/#{version}/scribus-#{version}#{arch}.dmg",
       verified: "sourceforge.net/scribus/"
   name "Scribus"
   desc "Free and open-source page layout program"
   homepage "https://www.scribus.net/"
 
   livecheck do
-    url "https://www.scribus.net/downloads/unstable-branch/"
-    regex(/Current\s*development\s*candidate:\s*Scribus\s*(\d+(?:\.\d+)+)/i)
+    url "https://sourceforge.net/projects/scribus/rss?path=/scribus"
+    regex(%r{url=.*?/scribus[._-]v?(\d+(?:\.\d+)+)(?:#{arch})?\.(?:dmg|pkg)}i)
   end
 
   app "Scribus.app"

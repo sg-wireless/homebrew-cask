@@ -1,11 +1,11 @@
 cask "fxfactory" do
-  version "8.0.10,7604"
-  sha256 "a258b07033f55c27199a675f01c4bae38d77b2a6d1cf0a3d90aeba28ffe08c0e"
+  version "8.0.16,7877"
+  sha256 "59967d2ae46570dafa7ab4bf680e068c0b26ec909e70046e2491d61b7dd263b7"
 
   url "https://fxfactory.s3.amazonaws.com/noiseindustries/fxfactory/FxFactory-#{version.csv.first}-#{version.csv.second}.zip",
       verified: "fxfactory.s3.amazonaws.com/noiseindustries/"
   name "FxFactory"
-  desc "Browse, install and purchase effects and plugins from a huge catalog"
+  desc "Browse, install and purchase effects and plugins from a huge catalogue"
   homepage "https://fxfactory.com/"
 
   livecheck do
@@ -19,11 +19,13 @@ cask "fxfactory" do
     end
   end
 
+  depends_on macos: ">= :monterey"
+
   pkg "Install FxFactory #{version.csv.first}.pkg"
 
-  uninstall pkgutil:   "com.fxfactory.pkg",
-            quit:      "com.fxfactory.Fxfactory",
-            launchctl: "com.fxfactory.FxFactory.helper",
+  uninstall launchctl: "com.fxfactory.FxFactory.helper",
+            quit:      "com.fxfactory.FxFactory",
+            pkgutil:   "com.fxfactory.pkg",
             delete:    [
               "/Library/Application Support/FxFactory",
               "/Library/LaunchDaemons/com.fxfactory.FxFactory.helper.plist",

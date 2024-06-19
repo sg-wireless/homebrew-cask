@@ -1,11 +1,11 @@
 cask "odrive" do
-  version "7363"
-  sha256 "08e787f5fc7bb34d3a0abd098a737a6eeae0cac2f3244e458fb40874578496e6"
+  version "7421"
+  sha256 "3b2d236d0c0f7647c28d8a0971d43a6525dce49c4c147a7a694c8e2626fdf794"
 
   url "https://d3huse1s6vwzq6.cloudfront.net/odrivesync.#{version}.pkg",
       verified: "d3huse1s6vwzq6.cloudfront.net/"
   name "odrive"
-  desc "Tool to make any cloud storage unified, synchronized, shareable, and encrypted"
+  desc "Tool to make any cloud storage unified, synchronised, shareable, and encrypted"
   homepage "https://www.odrive.com/"
 
   livecheck do

@@ -3,16 +3,15 @@ cask "xtool-creative-space" do
   livecheck_arch = on_arch_conditional arm: "apple", intel: "intel"
 
   on_arm do
-    version "1.5.11,28,c2865216-d6df-49f2-82f4-4b95f1907ed2,2023-09-04-15-34-04"
-    sha256  "b8980a35a8b28252c2fe2f700ebf1e04befd0f7e48489cd9a041670dc1740838"
+    version "1.7.8,28,bef4f224-d24e-4f63-b111-8670b86dcd49,2023-11-27-17-54-11"
+    sha256  "d98539f34f0b2efe1326065ea61b0c638ba2653a55a194935bdd47a79bae577b"
   end
   on_intel do
-    version "1.5.11,16,991f51bd-09a7-4edd-89d6-340706b219fc,2023-09-04-15-33-29"
-    sha256 "7d3850bf1bf1b10042c5ef7f103ad044f8b1a5bd0064dece1fd0514ad5716f1b"
+    version "1.7.8,16,16d09ac8-b6d6-4335-ae2a-c51788a6acaf,2023-11-27-17-55-01"
+    sha256 "854b9e4c5397a6aa3a958b03dd3bec6c7665393132924fdedc913eefbd85056d"
   end
 
-  url "https://res-us.makeblock.com/efficacy/xcs/production/packages/#{version.csv.second}/#{version.csv.third}/xTool%20Creative%20Space-#{version.csv.first}-#{version.csv.fourth}-#{arch}.dmg",
-      verified: "res-us.makeblock.com/efficacy/xcs/production/packages/"
+  url "https://storage-us.xtool.com/resource/efficacy/xcs/production/packages/#{version.csv.second}/#{version.csv.third}/xTool%20Creative%20Space-#{version.csv.first}-#{version.csv.fourth}-#{arch}.dmg"
   name "xTool Creative Space"
   desc "Design and control software for xTool laser machines"
   homepage "https://www.xtool.com/pages/software"

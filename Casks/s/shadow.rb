@@ -1,13 +1,13 @@
 cask "shadow" do
   arch arm: "arm64", intel: "x64"
 
-  version "8.0.10164"
-  sha256 arm:   "8f076824b02d181401ed178307b46a26f03821d6a6f310acb4af1b62d723b2c3",
-         intel: "f5e7afdbd838cd66128616cfc4a863e831472436b5de1d02133222c1ee9d764e"
+  version "9.9.10056"
+  sha256 arm:   "a4212f3397665ad5b324528597e26884611e898dc53df27819bd4fec381aca3d",
+         intel: "b9d47cc8a852ec2b15ed24bf67746375ffa8383ea53b250ec48856e8dcca5994"
 
   url "https://update.shadow.tech/launcher/prod/mac/#{arch}/ShadowPC-#{version}.dmg"
   name "Shadow"
-  desc "Online virtualized computer"
+  desc "Online virtualised computer"
   homepage "https://shadow.tech/"
 
   livecheck do

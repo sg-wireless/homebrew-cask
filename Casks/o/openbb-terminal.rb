@@ -1,10 +1,9 @@
 cask "openbb-terminal" do
-  # raised an issue about the x86.64 typo, https://github.com/OpenBB-finance/OpenBBTerminal/issues/5405
-  arch arm: "ARM64", intel: "x86.84"
+  arch arm: "ARM64", intel: "x86.64"
 
-  version "3.2.2"
-  sha256 arm:   "63706c56c1d264dd8b98957cf62d3d1689a8edb684d26c4f7a0bf1b1eb1335fc",
-         intel: "6fe94ec142155f6abf8dfcb77dda834454720594d85a3292b0772b8b27472247"
+  version "3.2.5"
+  sha256 arm:   "80c12368b62b135bb74736a411c9adf277dbed46969b0b49be46cbd768afb618",
+         intel: "d5a386b10ba076a69a7e642034a55b1c5e53ef32c8fc6383985199709b06572e"
 
   url "https://github.com/OpenBB-finance/OpenBBTerminal/releases/download/v#{version}/#{arch}.MacOS.OpenBB.Terminal.v#{version}.pkg",
       verified: "github.com/OpenBB-finance/OpenBBTerminal/"
@@ -12,10 +11,7 @@ cask "openbb-terminal" do
   desc "Open-source investment research terminal"
   homepage "https://openbb.co/"
 
-  livecheck do
-    url :url
-    strategy :github_latest
-  end
+  deprecate! date: "2024-05-16", because: :discontinued
 
   depends_on macos: ">= :monterey"
 

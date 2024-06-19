@@ -1,8 +1,8 @@
 cask "ripx" do
-  version "6.4.1"
-  sha256 "95a670b4066d9341362dad18ad009b8c7361f921406e28084006a1230b5e1516"
+  version "7.1.0"
+  sha256 "67584bcf35e6230633946d683ce1e661026afd04e26430dbf79b215473ce163e"
 
-  url "https://s3.us-east-2.amazonaws.com/downloads.hitnmix.com/RipX_#{version.no_dots}.dmg",
+  url "https://s3.us-east-2.amazonaws.com/downloads.hitnmix.com/RipXDAW_#{version.no_dots}.dmg",
       verified: "s3.us-east-2.amazonaws.com/downloads.hitnmix.com/"
   name "RipX"
   desc "Music stem separation and repair utility"
@@ -15,7 +15,7 @@ cask "ripx" do
 
   depends_on macos: ">= :sierra"
 
-  pkg "RipX.pkg"
+  pkg "RipX DAW.pkg"
 
   uninstall pkgutil: [
               "com.hitnmix.HitnMix.pkg",

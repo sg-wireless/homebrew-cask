@@ -1,20 +1,22 @@
 cask "zettlr" do
   arch arm: "arm64", intel: "x64"
 
-  version "3.0.1"
-  sha256 arm:   "33e5b028f26991ed3ed006275e4264cd077ef1799f3c24cb29b1af70a1da1959",
-         intel: "7a9b9004d499e4ca7defcb478bd80695ef8c57b3ba9644e55f8daa05d103d58d"
+  version "3.2.0"
+  sha256 arm:   "e959763299d1798c0caa8e72797748feec379dac4ac0569be44c0ae1f5b0dc3d",
+         intel: "ed7d8ab83547e63e8e9bfa32cfe1f8ddb6bc08f8ce12706148b69dcaf6843848"
 
   url "https://github.com/Zettlr/Zettlr/releases/download/v#{version}/Zettlr-#{version}-#{arch}.dmg"
   name "Zettlr"
   desc "Open-source markdown editor"
   homepage "https://github.com/Zettlr/Zettlr/"
 
+  depends_on macos: ">= :catalina"
+
   app "Zettlr.app"
 
   zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.zettlr.app.sfl*",
     "~/Library/Application Support/zettlr",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.zettlr.app.sfl2",
     "~/Library/Logs/Zettlr",
     "~/Library/Preferences/com.zettlr.app.plist",
     "~/Library/Saved Application State/com.zettlr.app.savedState",

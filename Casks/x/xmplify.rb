@@ -1,14 +1,14 @@
 cask "xmplify" do
-  version "1.11"
-  sha256 "7c9480910e3d88cbaf699d0ea966d5affe3f0e8b75d4ba13c6348004f1cf73a1"
+  version "1.11.4"
+  sha256 "cea327e8d06c8807f05f87b1f9f555a00874e4a053d1536821e5a774f69587bd"
 
-  url "http://xmplifyapp.com/releases/Xmplify-#{version}.dmg"
+  url "https://xmplifyapp.com/releases/Xmplify-#{version}.dmg"
   name "Xmplify"
   desc "XML editor"
-  homepage "http://xmplifyapp.com/"
+  homepage "https://xmplifyapp.com/"
 
   livecheck do
-    url "http://xmplifyapp.com/appcast.xml"
+    url "https://xmplifyapp.com/appcast.xml"
     strategy :sparkle
   end
 

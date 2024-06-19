@@ -1,10 +1,10 @@
 cask "sunvox" do
-  version "2.1c"
-  sha256 "c8f55c6ed94055b3bdb8cb0595f679d53e34f2103554f24023e47e25d8dcca3c"
+  version "2.1.1c"
+  sha256 "2df050fdfd97ef96dca8ba77f5cdad75a4a50e6f84ef7194bc1ebc5c5aa289cc"
 
   url "https://www.warmplace.ru/soft/sunvox/sunvox-#{version}.zip"
   name "SunVox"
-  desc "Modular synthesizer"
+  desc "Modular synthesiser"
   homepage "https://www.warmplace.ru/soft/sunvox/"
 
   livecheck do

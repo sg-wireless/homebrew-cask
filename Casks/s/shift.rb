@@ -1,17 +1,18 @@
 cask "shift" do
   arch arm: "arm64", intel: "x64"
 
-  version "9.1.0.1002"
-  sha256 arm:   "fec70f88534b87c7825ddd018473d984e7f9d3e793e1048f4b655c6a5e2a51f3",
-         intel: "e59e28acde146ae5a14897bce20e2add7efe6c2f1b7a89f0e0a4342ecc7d3cb4"
+  version "9.3.2.1093"
+  sha256 arm:   "d0824001cc946a7242323fea78c74e32ab1b7cbdf66ebdb88fbc3e54c9f733cd",
+         intel: "8fdbb28fe0fe484cb688b7fa2fffc0a46a91ecf89557d98f1227b846553ed782"
 
-  url "https://updates.tryshift.com/v#{version.major_minor_patch}/stable/shift-v#{version}-stable-#{arch}.dmg"
+  url "https://updates.tryshift.com/v#{version.major_minor_patch}/stable/shift-v#{version}-stable-#{arch}.dmg",
+      verified: "updates.tryshift.com/"
   name "Shift"
   desc "Workstation to streamline your accounts, apps, and workflows"
-  homepage "https://tryshift.com/"
+  homepage "https://shift.com/"
 
   livecheck do
-    url "https://tryshift.com/download/?platform=mac"
+    url "https://shift.com/download/?platform=mac"
     regex(/href=.*?(\d+(?:[._-]\d+)+)[._-]stable.*?\.dmg/i)
   end
 
@@ -20,8 +21,8 @@ cask "shift" do
   zap trash: [
     "~/Library/Application Support/.Shift",
     "~/Library/Application Support/Shift",
-    "~/Library/Caches/com.rdbrck.shift.ShipIt",
     "~/Library/Caches/com.rdbrck.shift",
+    "~/Library/Caches/com.rdbrck.shift.ShipIt",
     "~/Library/HTTPStorages/com.rdbrck.shift",
     "~/Library/Preferences/com.rdbrck.shift.plist",
     "~/Library/Saved Application State/com.rdbrck.shift.savedState",

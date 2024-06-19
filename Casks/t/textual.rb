@@ -1,6 +1,6 @@
 cask "textual" do
-  version "7.2.1,210711.11,9d231fdb0"
-  sha256 "3e7b1bb5431c356bfd61142486a096707b68fe8afe6243ba41d0e10332b4111a"
+  version "7.2.3,240606.22,1a4696349"
+  sha256 "a93cc4ead05bdc11e7f24e24697198faaff095422d57b2bc46018aac4b8f71f9"
 
   url "https://cached.codeux.com/textual/downloads/resources/builds/Textual-#{version.csv.third}/universal/Textual.zip"
   name "Textual"
@@ -19,7 +19,7 @@ cask "textual" do
   app "Textual.app"
 
   zap trash: [
-    "~/Library/Preferences/com.codeux.apps.textual.plist",
     "~/Library/Application Support/Textual",
+    "~/Library/Preferences/com.codeux.apps.textual.plist",
   ]
 end

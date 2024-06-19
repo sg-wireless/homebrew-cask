@@ -1,8 +1,8 @@
 cask "fabfilter-pro-ds" do
-  version "1.21"
-  sha256 "6a2b1fd70457e5d54f9575ba28a6593509594406e37a052bcad5e0d85ad57ba1"
+  version "1.24"
+  sha256 "853364c2e73c6a8103331549957018e3b71654bc6add69414d312cd208335ebe"
 
-  url "https://download.fabfilter.com/ffprods#{version.no_dots}.dmg"
+  url "https://www.fabfilter.com/downloads/ffprods#{version.no_dots}.dmg"
   name "FabFilter Pro-DS"
   desc "De-esser plug-in"
   homepage "https://www.fabfilter.com/products/pro-ds-de-esser-plug-in"

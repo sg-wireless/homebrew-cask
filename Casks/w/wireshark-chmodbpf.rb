@@ -1,9 +1,9 @@
 cask "wireshark-chmodbpf" do
   arch arm: "Arm", intel: "Intel"
 
-  version "4.0.8"
-  sha256 arm:   "cbf50f162411b4870b07f1460ada76d357dafbd20e5243a97b055ddb39d9fcac",
-         intel: "a751eb215c0337982675b889bf48e742a57859eaaf3a0f7d64ddc27e6a459595"
+  version "4.2.5"
+  sha256 arm:   "72d670ad068ac46c1d16ffb5fc8e6b582136a0eed6fc278b9f36877311e4e4af",
+         intel: "67a1ea88226c2f5699c3c6c36fb0006d84c62bdbfe5474dccff30860fd9f81b7"
 
   url "https://www.wireshark.org/download/osx/Wireshark%20#{version}%20#{arch}%2064.dmg"
   name "Wireshark-ChmodBPF"
@@ -21,11 +21,9 @@ cask "wireshark-chmodbpf" do
 
   uninstall_preflight do
     system_command "/usr/sbin/installer",
-                   args: [
-                     "-pkg", "#{staged_path}/Uninstall ChmodBPF.pkg",
-                     "-target", "/"
-                   ],
-                   sudo: true
+                   args:         ["-pkg", "#{staged_path}/Uninstall ChmodBPF.pkg", "-target", "/"],
+                   sudo:         true,
+                   sudo_as_root: true
   end
 
   uninstall pkgutil: "org.wireshark.ChmodBPF.pkg"

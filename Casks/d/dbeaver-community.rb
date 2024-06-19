@@ -1,9 +1,9 @@
 cask "dbeaver-community" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "23.2.1"
-  sha256 arm:   "08444d66281326a05c99b7ebd542d447a9e8ba592f0bb6e4e9b84dc290aaf45a",
-         intel: "2df9597376a4aa4ed038116487fd2b6443d6928451c4c8d2f44d0e1538c40790"
+  version "24.1.0"
+  sha256 arm:   "afb5aa26b345d488101f1dcd6b57c6934cb0b1f879b780e5feef211fa08fba81",
+         intel: "f31a922fc7d3bde83563986e0536192f2b9b6a3b76ee1e17501cf2615177f780"
 
   url "https://dbeaver.io/files/#{version}/dbeaver-ce-#{version}-macos-#{arch}.dmg"
   name "DBeaver Community Edition"
@@ -11,13 +11,16 @@ cask "dbeaver-community" do
   homepage "https://dbeaver.io/"
 
   livecheck do
-    url "https://github.com/dbeaver/dbeaver"
-    strategy :github_latest
+    url "https://dbeaver.io/product/dbeaver-ce-version.xml"
+    strategy :xml do |xml|
+      xml.elements["//version/number"]&.text&.strip
+    end
   end
 
   auto_updates true
 
   app "DBeaver.app"
+  binary "#{appdir}/DBeaver.app/Contents/MacOS/dbeaver"
 
   uninstall signal: ["TERM", "org.jkiss.dbeaver.core.product"]
 

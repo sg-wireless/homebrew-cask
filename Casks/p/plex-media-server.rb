@@ -1,6 +1,6 @@
 cask "plex-media-server" do
-  version "1.32.6.7557,1cf77d501"
-  sha256 "b3e70cfb3c1d64d9bc9bea0b25c56200ee17476f6e6e736d473fd500edfe6205"
+  version "1.40.3.8555,fef15d30c"
+  sha256 "e5bef6176aa6444cae9882ced85b17a8c9dff309a1fbaf234c299fd42cdcd8ac"
 
   url "https://downloads.plex.tv/plex-media-server-new/#{version.csv.first}-#{version.csv.second}/macos/PlexMediaServer-#{version.csv.first}-#{version.csv.second}-universal.zip"
   name "Plex Media Server"
@@ -21,8 +21,8 @@ cask "plex-media-server" do
   app "Plex Media Server.app"
   binary "#{appdir}/Plex Media Server.app/Contents/MacOS/Plex Media Scanner", target: "plexms"
 
-  uninstall quit:      "com.plexapp.plexmediaserver",
-            launchctl: "com.plexapp.mediaserver"
+  uninstall launchctl: "com.plexapp.mediaserver",
+            quit:      "com.plexapp.plexmediaserver"
 
   zap trash: [
     "~/Library/Application Support/Plex Media Server/",

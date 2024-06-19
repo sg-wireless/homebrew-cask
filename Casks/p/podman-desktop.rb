@@ -1,9 +1,9 @@
 cask "podman-desktop" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.4.0"
-  sha256 arm:   "b64cb0b8fdf8a4757aee7b6bef52af8eee303ad3168fa1e3023acc1cc14f6536",
-         intel: "0ec98a724bc045718e4b47372b5aa2d0fb7282a04be6a8ff855fa5db7f809580"
+  version "1.10.3"
+  sha256 arm:   "fa81a02b805df8145fec0f2f9a68d8c4a46df6c1a5684555785b34aa4fe95054",
+         intel: "a662de4aba0ca75c82dc9551bb9c2afc5d4384c075ee0cd7e7759aaf6e8a4d13"
 
   url "https://github.com/containers/podman-desktop/releases/download/v#{version}/podman-desktop-#{version}-#{arch}.dmg",
       verified: "github.com/containers/podman-desktop/"
@@ -16,13 +16,14 @@ cask "podman-desktop" do
     strategy :github_latest
   end
 
-  depends_on formula: "podman"
+  auto_updates true
   depends_on macos: ">= :catalina"
 
   app "Podman Desktop.app"
 
-  uninstall quit:  "io.podmandesktop.PodmanDesktop",
-            trash: "~/Library/LaunchAgents/io.podman_desktop.PodmanDesktop.plist"
+  uninstall quit:   "io.podmandesktop.PodmanDesktop",
+            delete: "/Applications/Podman Desktop.app",
+            trash:  "~/Library/LaunchAgents/io.podman_desktop.PodmanDesktop.plist"
 
   zap trash: [
     "~/.local/share/containers/podman-desktop",

@@ -1,13 +1,13 @@
 cask "visual-paradigm" do
   arch arm: "AArch64", intel: "WithJRE"
 
-  version "17.1,20231001"
-  sha256 arm:   "6c27dc56527fe78d19eb96833d3f89cc8601b9b132cff59fccf5c70dfaea2c5a",
-         intel: "b57570d22422838e5abee8a3a8f32b36d3b68c13ca96d4328be9ad9280cd401b"
+  version "17.2,20240608"
+  sha256 arm:   "42b179c5f79efdfe08cc8030142e1357e0c109e4245176d592d40f012e3f7e32",
+         intel: "4e0c308cf35f017faa9f0321dcc59437b2acd56bcb4c1873538270045edbe739"
 
   url "https://www.visual-paradigm.com/downloads/vp#{version.csv.first}/#{version.csv.second}/Visual_Paradigm_#{version.csv.first.dots_to_underscores}_#{version.csv.second}_OSX_#{arch}.dmg"
   name "Visual Paradigm"
-  desc "UML CASE Tool supporting UML 2, SysML and Business Process Modeling Notation"
+  desc "UML, SysML, BPMN modelling platform"
   homepage "https://www.visual-paradigm.com/"
 
   livecheck do

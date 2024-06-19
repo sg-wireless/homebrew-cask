@@ -1,9 +1,9 @@
 cask "phpstorm" do
   arch arm: "-aarch64"
 
-  version "2023.2.2,232.9921.55"
-  sha256 arm:   "a31daeddae532324436b2d11acbd5fb657721883f17c7ef4457ac76a51bd4189",
-         intel: "99a9bb313a5c141ecd1810306deaca3cf52d338edf206362b3f9d9337a27890e"
+  version "2024.1.3,241.17890.8"
+  sha256 arm:   "e4b767f5348fc3854ffc057baeffcd10c0c293b5aa3cbeeb2d2e7bd14531a4bb",
+         intel: "68403a8f6afd6d0a13355dd6ea8b333a1fd785fd1422fe902105d3c02359ee04"
 
   url "https://download.jetbrains.com/webide/PhpStorm-#{version.csv.first}#{arch}.dmg"
   name "JetBrains PhpStorm"
@@ -23,15 +23,7 @@ cask "phpstorm" do
   depends_on macos: ">= :high_sierra"
 
   app "PhpStorm.app"
-
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "pstorm") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
-  end
+  binary "#{appdir}/PhpStorm.app/Contents/MacOS/phpstorm"
 
   zap trash: [
     "~/Library/Application Support/PhpStorm#{version.major_minor}",

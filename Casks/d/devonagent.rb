@@ -1,6 +1,6 @@
 cask "devonagent" do
-  version "3.11.7"
-  sha256 "7b59ba4b3e3f681b5c8bc14ec8792bf7ea069480ab81bdf655b64567cee6aec7"
+  version "3.11.8"
+  sha256 "81809652d8821376d3c6df1b68212c61944ec18a874e1c49a310a535050e36fc"
 
   url "https://download.devontechnologies.com/download/devonagent/#{version}/DEVONagent_Pro.app.zip"
   name "DEVONagent Pro"
@@ -20,15 +20,15 @@ cask "devonagent" do
   zap trash: [
     "~/Library/Application Scripts/*.devon-technologies.*",
     "~/Library/Application Support/DEVONagent",
-    "~/Library/Caches/DEVONagent",
-    "~/Library/Scripts/Applications/Safari/*DEVONagent*.scpt",
-    "~/Library/Caches/TemporaryItems/DEVONagent",
     "~/Library/Caches/com.devon-technologies.agent",
+    "~/Library/Caches/DEVONagent",
+    "~/Library/Caches/TemporaryItems/DEVONagent",
     "~/Library/Containers/com.devon-technologies.get",
     "~/Library/Group Containers/*.devon-technologies.*",
     "~/Library/Group Containers/*.devon-technologies.*",
     "~/Library/HTTPStorages/com.devon-technologies.agent",
     "~/Library/Preferences/com.devon-technologies.agent.plist",
+    "~/Library/Scripts/Applications/Safari/*DEVONagent*.scpt",
     "~/Library/WebKit/com.devon-technologies.agent",
   ]
 end

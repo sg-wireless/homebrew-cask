@@ -4,13 +4,13 @@ cask "bartender" do
     sha256 "f1a2ecf300cf56aaf531324cba646442026cb0b63b4f90f46a1aee5b0804688a"
   end
   on_sonoma :or_newer do
-    version "5.0.35"
-    sha256 "5dee6315c700939dc549920759e3db2ace55f1d94591a0a3c47b7bf9557d2a7c"
+    version "5.0.52"
+    sha256 "e5d54c9d31b2d7f50a22ce8e28b8010c2eba5686657d5caa0d7eada74b787b02"
   end
 
   url "https://macbartender.com/B2/updates/#{version.dots_to_hyphens}/Bartender%20#{version.major}.zip"
   name "Bartender"
-  desc "Menu bar icon organizer"
+  desc "Menu bar icon organiser"
   homepage "https://www.macbartender.com/"
 
   livecheck do
@@ -26,14 +26,14 @@ cask "bartender" do
 
   app "Bartender #{version.major}.app"
 
-  uninstall delete:    [
+  uninstall launchctl: "com.surteesstudios.Bartender.BartenderInstallHelper",
+            quit:      "com.surteesstudios.Bartender",
+            delete:    [
               "/Library/Audio/Plug-Ins/HAL/BartenderAudioPlugIn.plugin",
               "/Library/PrivilegedHelperTools/com.surteesstudios.Bartender.BartenderInstallHelper",
               "/Library/ScriptingAdditions/BartenderHelper.osax",
               "/System/Library/ScriptingAdditions/BartenderSystemHelper.osax",
-            ],
-            launchctl: "com.surteesstudios.Bartender.BartenderInstallHelper",
-            quit:      "com.surteesstudios.Bartender"
+            ]
 
   zap trash: [
     "~/Library/Caches/com.surteesstudios.Bartender",

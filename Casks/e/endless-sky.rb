@@ -1,6 +1,6 @@
 cask "endless-sky" do
-  version "0.10.2"
-  sha256 "47e417ac3dbda9cc7eab0202e85301f84971451a6ce793c70b53ec25e5df4890"
+  version "0.10.6"
+  sha256 "97aee28ba528a417852e408685d39c2bc7b1c555b942a1e3c7340cb540ee1f52"
 
   url "https://github.com/endless-sky/endless-sky/releases/download/v#{version}/Endless-Sky-v#{version}.dmg",
       verified: "github.com/endless-sky/endless-sky/"
@@ -15,5 +15,9 @@ cask "endless-sky" do
 
   app "Endless Sky.app"
 
-  zap trash: "~/Library/Application Support/endless-sky"
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/endless-sky.sfl",
+    "~/Library/Application Support/endless-sky",
+    "~/Library/Saved Application State/Endless-Sky.savedState",
+  ]
 end

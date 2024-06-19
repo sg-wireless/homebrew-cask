@@ -8,7 +8,7 @@ cask "hammerspoon" do
 
     # Specific build provided for Mojave upstream https://github.com/Hammerspoon/hammerspoon/issues/3023#issuecomment-992980087
     livecheck do
-      skip "Specific build for Mojave and earlier"
+      skip "Specific build for Mojave and later"
     end
   end
   on_catalina :or_newer do
@@ -32,6 +32,7 @@ cask "hammerspoon" do
   depends_on macos: ">= :mojave"
 
   app "Hammerspoon.app"
+  binary "#{appdir}/Hammerspoon.app/Contents/Frameworks/hs/hs"
 
   uninstall quit: "org.hammerspoon.Hammerspoon"
 

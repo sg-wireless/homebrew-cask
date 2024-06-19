@@ -1,12 +1,20 @@
 cask "pika" do
-  version "0.0.15"
-  sha256 "83bec4a407954bb568f1eee94e9499afb672d39e69a4646788c951931d821065"
+  version "0.0.17"
+  sha256 "01a7522b77d3a84ca34743cfecd476d2beafa4d77518ad21ffd8c9a44694cd52"
 
   url "https://github.com/superhighfives/pika/releases/download/#{version}/Pika-#{version}.dmg",
       verified: "github.com/superhighfives/pika/"
   name "Pika"
   desc "Colour picker for colours onscreen"
   homepage "https://superhighfives.com/pika"
+
+  livecheck do
+    url "https://superhighfives.com/releases/pika"
+    strategy :sparkle, &:short_version
+  end
+
+  auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Pika.app"
 

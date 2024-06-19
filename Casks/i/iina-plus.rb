@@ -1,6 +1,6 @@
 cask "iina-plus" do
-  version "0.7.11"
-  sha256 "ee85056c7c83dd3f85af22500af48bc96791348a98adef6b5eada1b1cf9f94d4"
+  version "0.7.30"
+  sha256 "a57e69645eabd143e84290bf55a48395537b9fe058cdc8596ce9101367c6b7df"
 
   url "https://github.com/xjbeta/iina-plus/releases/download/#{version}/IINA+.#{version}.dmg"
   name "IINA+"
@@ -8,6 +8,7 @@ cask "iina-plus" do
   homepage "https://github.com/xjbeta/iina-plus"
 
   auto_updates true
+  depends_on macos: ">= :mojave"
 
   app "iina+.app"
 

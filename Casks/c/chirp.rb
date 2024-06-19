@@ -1,6 +1,6 @@
 cask "chirp" do
-  version "20231003"
-  sha256 "9d32297ddb033f5f02e4bbc56b3bc3eb937b72abc4ed110c175dfe6384320b44"
+  version "20240618"
+  sha256 "8867300f9b9ab71d25512d6d5f7f288c114985f06c0df9af0040ae230285cb0c"
 
   url "https://trac.chirp.danplanet.com/chirp_next/next-#{version}/chirp-next-#{version}.app.zip"
   name "CHIRP"
@@ -11,6 +11,8 @@ cask "chirp" do
     url "https://trac.chirp.danplanet.com/chirp_next/"
     regex(/next[._-]v?(\d+(?:\.\d+)*)/i)
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "CHIRP.app"
 

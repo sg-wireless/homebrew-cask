@@ -1,6 +1,6 @@
 cask "multiapp" do
-  version "0.275.0"
-  sha256 "cb1699a2885c34fc18e6ffc6b95f9166ce86e0773422fd99669791c2e1ed057d"
+  version "0.531.0"
+  sha256 "6e12f720508f3384c2a111f1276d212fe09e7ffca3e551ba2810d2783fe26cb9"
 
   url "https://updates.multi.app/installers/Multi%20#{version}.dmg"
   name "Multi"
@@ -13,7 +13,7 @@ cask "multiapp" do
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :monterey"
 
   app "Multi.app"
 

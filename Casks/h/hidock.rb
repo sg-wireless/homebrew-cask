@@ -1,6 +1,6 @@
 cask "hidock" do
-  version "1.2"
-  sha256 "643b609ac5407746a020e211f028a212eb217a35a1f2cebb66557737acf1cbb6"
+  version "1.3"
+  sha256 "26673a21c6d53b2e56e5769c19ad8232716c83b42897d949b8e420425d614010"
 
   url "https://hidock.app/HiDock_#{version}.zip"
   name "HiDock"
@@ -17,11 +17,11 @@ cask "hidock" do
 
   app "HiDock.app"
 
-  uninstall login_item: "HiDock",
-            quit:       [
+  uninstall quit:       [
               "design.rafa.HiDock",
               "design.rafa.HiDock-LaunchAtLoginHelper",
-            ]
+            ],
+            login_item: "HiDock"
 
   zap trash: [
     "~/Library/HTTPStorages/design.rafa.HiDock",

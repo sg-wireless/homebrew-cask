@@ -1,15 +1,15 @@
 cask "kkbox" do
-  version "23.6.10"
-  sha256 "f99a185db921a9a20afa3257ab3790aa87f7980efe8d28ab68f72f9d92c0aa6f"
+  version "24.6.1"
+  sha256 "b03ff003a538a584b1698a76488b067fc8b4031c1e37a1fd97391d3bafb46c24"
 
-  url "https://dl-universal.kfs.io/#{version}/KKBOX-#{version}.dmg",
-      verified: "dl-universal.kfs.io/"
+  url "https://dl-universal-v2.kfs.io/KKBOX-#{version}.dmg",
+      verified: "dl-universal-v2.kfs.io/"
   name "KKBOX"
   desc "Music streaming service"
   homepage "https://www.kkbox.com/"
 
   livecheck do
-    url "https://dl-universal.kfs.io/latest/darwin"
+    url "https://play.kkbox.com/download/macos"
     strategy :header_match
   end
 
@@ -22,8 +22,8 @@ cask "kkbox" do
   zap trash: [
     "~/Library/Application Support/com.kkbox.KKBOX",
     "~/Library/Application Support/KKBOX",
-    "~/Library/Caches/com.kkbox.electron-app.ShipIt",
     "~/Library/Caches/com.kkbox.electron-app",
+    "~/Library/Caches/com.kkbox.electron-app.ShipIt",
     "~/Library/Caches/com.kkbox.KKBOX",
     "~/Library/Caches/KKBOX",
     "~/Library/HTTPStorages/com.kkbox.electron-app",

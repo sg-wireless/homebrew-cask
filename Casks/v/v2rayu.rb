@@ -1,9 +1,9 @@
 cask "v2rayu" do
   arch arm: "arm64", intel: "64"
 
-  version "3.8.0"
-  sha256 arm:   "2215b7c29780ecd395277b43611eb67b1fc0da8adf3925320e666b49e1ff12a9",
-         intel: "c36f0140842c24f9613eec7534e7591f1c1497b0d74437a0eb297d1a5f7e264a"
+  version "4.1.0"
+  sha256 arm:   "9f4aead802aacac7499c9bf611eb136978ecb0f890d68dd601c991eef83e62d9",
+         intel: "bcfa512e87dd3183cccf91a8a9b8f0e3ea266bb637eb4756fb8e2c96929c03e0"
 
   url "https://github.com/yanue/V2rayU/releases/download/v#{version}/V2rayU-#{arch}.dmg"
   name "V2rayU"
@@ -22,6 +22,9 @@ cask "v2rayu" do
 
   zap trash: [
     "~/.V2rayU/",
+    "~/Library/Caches/net.yanue.V2rayU",
+    "~/Library/Containers/net.yanue.V2rayU.Launcher",
+    "~/Library/HTTPStorages/net.yanue.V2rayU",
     "~/Library/LaunchAgents/yanue.v2rayu.v2ray-core.plist",
     "~/Library/Logs/V2rayU.log",
     "~/Library/Preferences/net.yanue.V2rayU.plist",

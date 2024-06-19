@@ -1,6 +1,6 @@
 cask "cisco-jabber" do
-  version "20220728050403"
-  sha256 "e7240238ab80fdb1de801308011a720feb9f310617ae95842955d3893d70d46e"
+  version "20240401022744"
+  sha256 "0d2b13e5b353c4b04d11802e043f80d8db594699da17a338a9b17f3fff515fbf"
 
   url "https://binaries.webex.com/jabberclientmac/#{version}/Install_Cisco-Jabber-Mac.pkg"
   name "Cisco Jabber"
@@ -20,12 +20,20 @@ cask "cisco-jabber" do
               "com.jabra.CiscoJabberPlugin",
               "com.logitech.LogiUCPlugin",
               "com.PlantronicsPlugin.CiscoJabberPlugin",
-              "com.Sennheiser.pkg.SennheiserSDKv789904MacSDKv8602",
               "com.sennheiser.CiscoJabberPlugin",
+              "com.Sennheiser.pkg.SennheiserSDKv789904MacSDKv8602",
             ],
             delete:  [
               "/Applications/Cisco Jabber.app",
-              "/Library/Logs/Jabber/",
               "/Library/Application Support/Cisco/Unified Communications/Jabber/",
+              "/Library/Logs/Jabber/",
             ]
+
+  zap trash: [
+    "~/Library/Application Support/Cisco/Unified Communications/Jabber",
+    "~/Library/Caches/com.cisco.Jabber",
+    "~/Library/Logs/Jabber",
+    "~/Library/Preferences/com.cisco.Jabber.plist",
+    "~/Library/WebKit/com.cisco.Jabber",
+  ]
 end

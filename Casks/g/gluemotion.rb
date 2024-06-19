@@ -1,21 +1,15 @@
 cask "gluemotion" do
-  version "2.1.4,72ba9f4c-292f-4778-b270-5b71bfa27e9d"
-  sha256 "1e3f0f6d8acbb03bf4b5c3d0391363aca21dc71ae44c238c87b50bdc0644f6fb"
+  version "2.2.2"
+  sha256 "cd9fe2194cef815948d3fabfcb27a6a8e532b8658eeadc820a76ae137c16b873"
 
-  url "https://neededapps.nyc3.digitaloceanspaces.com/media/public/#{version.csv.second}.dmg",
-      verified: "neededapps.nyc3.digitaloceanspaces.com/media/public/"
+  url "https://neededapps.com/appcasts/gluemotion/versions/#{version}"
   name "GlueMotion"
   desc "Create and correct time lapse movies"
   homepage "https://neededapps.com/gluemotion/"
 
   livecheck do
     url "https://neededapps.com/appcasts/gluemotion/changelog.xml"
-    strategy :sparkle do |item|
-      hex = item.url[%r{/([\h-]+)\.dmg}i, 1]
-      next if hex.blank?
-
-      "#{item.short_version},#{hex}"
-    end
+    strategy :sparkle, &:short_version
   end
 
   depends_on macos: ">= :big_sur"

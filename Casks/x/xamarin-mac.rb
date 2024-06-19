@@ -1,6 +1,6 @@
 cask "xamarin-mac" do
-  version "9.3.0.6,b4928191-de3d-42cb-a24f-709e5d71626c,586143733de41c62d8b6179d7eeaf3e5"
-  sha256 "2fb94ef86efff8f4a523db652eeaca9cc46dcabd5e426889c094907185045a80"
+  version "9.3.0.23,ceb0ea3f-4db8-46b4-8dc3-8049d27c0107,7b04843d469aae253519989fcb8e750f"
+  sha256 "9aa89a4d273e5fc246f779db5d23907c414b98b76fe51e30cb60e8ccd1199956"
 
   url "https://download.visualstudio.microsoft.com/download/pr/#{version.csv.second}/#{version.csv.third}/xamarin.mac-#{version.csv.first}.pkg"
   name "Xamarin Mac"
@@ -17,7 +17,7 @@ cask "xamarin-mac" do
     end
   end
 
-  depends_on cask: "homebrew/cask-versions/mono-mdk-for-visual-studio"
+  depends_on cask: "mono-mdk-for-visual-studio"
 
   pkg "xamarin.mac-#{version.csv.first}.pkg"
 

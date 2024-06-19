@@ -1,6 +1,6 @@
 cask "8x8-work" do
-  version "8.6.3-1"
-  sha256 "78c677ea9968432671456ab6871474775e63f0a4cfc83214b8f1572209871885"
+  version "8.13.2-4"
+  sha256 "ae438c182ff7e6a18f9c94bc523d3361af7c72ca2d06d4ca6a61d1fb4c6c8314"
 
   url "https://vod-updates.8x8.com/ga/work-dmg-v#{version}.dmg"
   name "8x8_work"
@@ -8,8 +8,8 @@ cask "8x8-work" do
   homepage "https://www.8x8.com/products/apps"
 
   livecheck do
-    url "https://support.8x8.com/cloud-phone-service/voice/work-desktop/download-8x8-work-for-desktop#Download_for_Mac"
-    regex(/work[._-]dmg[._-]v(\d+(?:.\d+)*)\.dmg/i)
+    url "https://support-portal.8x8.com/helpcenter/docrenderservice/services/rest/documents/8bff4970-6fbf-4daf-842d-8ae9b533153d"
+    regex(/work[._-]dmg[._-]v(\d+(?:[.-]\d+)+)\.dmg/i)
   end
 
   depends_on macos: ">= :high_sierra"

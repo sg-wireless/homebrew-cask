@@ -1,6 +1,6 @@
 cask "aldente" do
-  version "1.22.2,42"
-  sha256 "6d1108d114b8c6f11c732c37c9e779683f281b9c260f98721bcdaa5b6b6a9440"
+  version "1.27,57"
+  sha256 "412a333f8f125f89ba69d66573c9396ca792177207052a224cf0bf9814b538a7"
 
   url "https://apphousekitchen.com/aldente/AlDente#{version.csv.first}.dmg"
   name "AlDente"
@@ -17,8 +17,8 @@ cask "aldente" do
 
   app "AlDente.app"
 
-  uninstall quit:       "com.apphousekitchen.aldente-pro",
-            launchctl:  "com.apphousekitchen.aldente-pro.helper",
+  uninstall launchctl:  "com.apphousekitchen.aldente-pro.helper",
+            quit:       "com.apphousekitchen.aldente-pro",
             login_item: "AlDente",
             delete:     "/Library/PrivilegedHelperTools/com.apphousekitchen.aldente-pro.helper"
 
@@ -26,7 +26,7 @@ cask "aldente" do
     "~/Library/Application Support/AlDente",
     "~/Library/Caches/com.apphousekitchen.aldente-pro",
     "~/Library/HTTPStorages/com.apphousekitchen.aldente-pro.binarycookies",
-    "~/Library/Preferences/com.apphousekitchen.aldente-pro_backup.plist",
     "~/Library/Preferences/com.apphousekitchen.aldente-pro.plist",
+    "~/Library/Preferences/com.apphousekitchen.aldente-pro_backup.plist",
   ]
 end

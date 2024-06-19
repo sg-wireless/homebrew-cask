@@ -1,6 +1,6 @@
 cask "qutebrowser" do
-  version "3.0.0"
-  sha256 "4c58795008d4df8b3412cb4dc5058fc55bf49b462bc922ade7229d8781e5d297"
+  version "3.2.0"
+  sha256 "221092f9b7f8153692145a70de49d49be3595196892c3f7120cc5a6dfd271541"
 
   url "https://github.com/qutebrowser/qutebrowser/releases/download/v#{version}/qutebrowser-#{version}.dmg",
       verified: "github.com/qutebrowser/qutebrowser/"
@@ -20,10 +20,14 @@ cask "qutebrowser" do
     EOS
   end
 
-  zap rmdir: "~/.qutebrowser",
-      trash: [
+  zap trash: [
         "~/Library/Application Support/qutebrowser",
         "~/Library/Caches/qutebrowser",
         "~/Library/Preferences/qutebrowser",
-      ]
+      ],
+      rmdir: "~/.qutebrowser"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -1,15 +1,15 @@
 cask "elgato-control-center" do
-  version "1.4.2.10504"
-  sha256 "64b28664e9e2bfc1f3da1713ca2c012bb7a7548fd2c8c4163496e330c074da38"
+  version "1.7.20497"
+  sha256 "83931b9b7c9796b16547bb6afa7d016ffe4098020cfc75845631b79bf69a572c"
 
-  url "https://edge.elgato.com/egc/macos/eccm/#{version.major_minor_patch.chomp(".0")}/ControlCenterMac-#{version}.app.zip"
+  url "https://edge.elgato.com/egc/macos/eccm/#{version.major_minor}/ElgatoControlCenter-#{version}.app.zip"
   name "Elgato Control Center"
   desc "Control your Elgato key lights"
   homepage "https://www.elgato.com/ww/en/s/downloads"
 
   livecheck do
-    url "https://www.elgato.com/graphql?query=query%20contentJson(%24identifier%3A%5BString%5D%24contentType%3AString%24options%3AContentJsonOptionsInput)%7BcontentJson(identifiers%3A%24identifier%20contentType%3A%24contentType%20options%3A%24options)%7Bidentifier%20entries%7D%7D&operationName=contentJson&variables=%7B%22contentType%22%3A%22downloads%22%2C%22identifier%22%3A%5B%22downloads%22%5D%2C%22options%22%3A%7B%22level%22%3A1%7D%7D&locale=en-US"
-    regex(/ControlCenterMac[._-]v?(\d+(?:\.\d+)+)\.app\.zip/i)
+    url "https://gc-updates.elgato.com/mac/control-center-update/feed.xml"
+    regex(/ElgatoControlCenter[._-]v?(\d+(?:\.\d+)+)\.app\.zip/i)
   end
 
   depends_on macos: ">= :mojave"
@@ -19,8 +19,8 @@ cask "elgato-control-center" do
   uninstall quit: "com.corsair.ControlCenter"
 
   zap trash: [
-    "~/Library/Application Support/com.corsair.ControlCenter",
     "~/Library/Application Scripts/com.corsair.ControlCenterLauncher",
+    "~/Library/Application Support/com.corsair.ControlCenter",
     "~/Library/Caches/com.corsair.ControlCenter",
     "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.corsair.ControlCenter",
     "~/Library/Containers/com.corsair.ControlCenterLauncher",

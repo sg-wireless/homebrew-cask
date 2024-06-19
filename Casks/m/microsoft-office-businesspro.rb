@@ -1,12 +1,11 @@
 cask "microsoft-office-businesspro" do
-  version "16.77.23091003"
-  sha256 "c94a41430df6f8670d14c3fadefb406128afa385930d9e9e353c6b9659c8d91a"
+  version "16.86.24060916"
+  sha256 "4a975380e91bbdb2c9e8b9511bb12937805d378480d119f4c58e551f590549ad"
 
-  url "https://officecdnmac.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_365_and_Office_#{version}_BusinessPro_Installer.pkg",
-      verified: "officecdnmac.microsoft.com/"
+  url "https://officecdnmac.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/Microsoft_365_and_Office_#{version}_BusinessPro_Installer.pkg"
   name "Microsoft Office BusinessPro"
   desc "Office suite"
-  homepage "https://products.office.com/mac/microsoft-office-for-mac/"
+  homepage "https://www.microsoft.com/en-us/microsoft-365/mac/microsoft-365-for-mac/"
 
   livecheck do
     url "https://go.microsoft.com/fwlink/p/?linkid=2009112"
@@ -22,11 +21,12 @@ cask "microsoft-office-businesspro" do
     microsoft-outlook
     microsoft-powerpoint
     microsoft-teams
+    microsoft-teams@classic
     microsoft-word
     onedrive
   ]
   depends_on cask: "microsoft-auto-update"
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   pkg "Microsoft_365_and_Office_#{version}_BusinessPro_Installer.pkg",
       choices: [
@@ -37,7 +37,17 @@ cask "microsoft-office-businesspro" do
         },
       ]
 
-  uninstall pkgutil:   [
+  uninstall launchctl: [
+              "com.microsoft.office.licensing.helper",
+              "com.microsoft.office.licensingV2.helper",
+              "com.microsoft.OneDriveStandaloneUpdater",
+              "com.microsoft.OneDriveStandaloneUpdaterDaemon",
+              "com.microsoft.OneDriveUpdaterDaemon",
+              "com.microsoft.SyncReporter",
+              "com.microsoft.teams.TeamsUpdaterDaemon",
+            ],
+            quit:      "com.microsoft.autoupdate2",
+            pkgutil:   [
               "com.microsoft.MSTeamsAudioDevice",
               "com.microsoft.OneDrive",
               "com.microsoft.package.DFonts",
@@ -51,10 +61,12 @@ cask "microsoft-office-businesspro" do
               "com.microsoft.package.Proofing_Tools",
               "com.microsoft.pkg.licensing",
               "com.microsoft.teams",
+              "com.microsoft.teams2",
               "com.microsoft.wdav",
+              "com.microsoft.wdav.shim",
             ],
-            # Frameworks, DFonts and ProofingTools remain in each application after pkg uninstall, delete them
             delete:    [
+              "/Applications/Microsoft Defender Shim.app",
               "/Applications/Microsoft Defender.app",
               "/Applications/Microsoft Excel.app",
               "/Applications/Microsoft OneNote.app",
@@ -63,17 +75,7 @@ cask "microsoft-office-businesspro" do
               "/Applications/Microsoft Teams.app",
               "/Applications/Microsoft Word.app",
               "/Applications/OneDrive.app",
-            ],
-            launchctl: [
-              "com.microsoft.office.licensing.helper",
-              "com.microsoft.office.licensingV2.helper",
-              "com.microsoft.OneDriveStandaloneUpdater",
-              "com.microsoft.OneDriveStandaloneUpdaterDaemon",
-              "com.microsoft.OneDriveUpdaterDaemon",
-              "com.microsoft.SyncReporter",
-              "com.microsoft.teams.TeamsUpdaterDaemon",
-            ],
-            quit:      "com.microsoft.autoupdate2"
+            ]
 
   zap trash: [
     "~/Library/Application Scripts/com.microsoft.errorreporting",

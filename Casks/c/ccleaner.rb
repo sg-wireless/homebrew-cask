@@ -1,6 +1,6 @@
 cask "ccleaner" do
-  version "2.09.185"
-  sha256 "785533a29545591882fb23a99f6a7d7a2d9aecbf3389f63a1d3c42455f3323bf"
+  version "2.09.187"
+  sha256 "fc3704c9ace0b4e04891af41c8904b105863f60f2529eda5749a701bbff84ff4"
 
   url "https://download.ccleaner.com/mac/CCMacSetup#{version.major}#{version.minor.rjust(2, "0")}.dmg"
   name "Piriform CCleaner"
@@ -14,12 +14,10 @@ cask "ccleaner" do
 
   pkg "Install CCleaner.pkg"
 
-  uninstall quit:      "com.piriform.ccleaner",
-            pkgutil:   "com.piriform.pkg.CCleaner",
-            launchctl: [
+  uninstall launchctl: [
+              "com.piriform.ccleaner (com.piriform.CCleaner)",
               "com.piriform.CCleaner",
               "com.piriform.ccleaner.CCleanerAgent",
-              "com.piriform.ccleaner (com.piriform.CCleaner)",
               "com.piriform.ccleaner.engine.xpc",
               "com.piriform.ccleaner.services.submit",
               "com.piriform.ccleaner.services.xpc",
@@ -27,9 +25,12 @@ cask "ccleaner" do
               "com.piriform.ccleaner.update",
               "com.piriform.ccleaner.update.xpc",
             ],
+            quit:      "com.piriform.ccleaner",
+            pkgutil:   "com.piriform.pkg.CCleaner",
             delete:    "/Library/PrivilegedHelperTools/com.piriform.ccleaner.CCleanerAgent"
 
   zap trash: [
+    "/Users/Shared/CCleaner",
     "~/Library/Application Support/CCleaner",
     "~/Library/Caches/com.piriform.ccleaner",
     "~/Library/Cookies/com.piriform.ccleaner.binarycookies",
@@ -37,6 +38,5 @@ cask "ccleaner" do
     "~/Library/HTTPStorages/com.piriform.ccleaner.binarycookies",
     "~/Library/Preferences/com.piriform.ccleaner.plist",
     "~/Library/Saved Application State/com.piriform.ccleaner.savedState",
-    "/Users/Shared/CCleaner",
   ]
 end

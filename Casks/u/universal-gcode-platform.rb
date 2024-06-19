@@ -1,19 +1,22 @@
 cask "universal-gcode-platform" do
-  version "2.0.20"
-  sha256 "b840f1ed7cf56e5c9a9509f0da281cf05676f895eabad8b730f2ef694bebb52a"
+  arch arm: "aarch64", intel: "x64"
 
-  url "https://github.com/winder/Universal-G-Code-Sender/releases/download/v#{version}/ios-ugs-platform-app-#{version}.dmg",
+  version "2.1.7"
+  sha256 arm:   "a1b0bbde6c8f155e337fb3b782f5ea395d355e6b06ef517542a13e845f9d4dd2",
+         intel: "129dba87dc2933f2da0f487615b7d05aab9125c0d720e888cb6eb5d7d9a3a66e"
+
+  url "https://github.com/winder/Universal-G-Code-Sender/releases/download/v#{version}/macosx-#{arch}-ugs-platform-app-#{version}.dmg",
       verified: "github.com/winder/Universal-G-Code-Sender/"
   name "Universal G-code Sender (Platform version)"
   desc "G-code sender for CNC (compatible with GRBL, TinyG, g2core and Smoothieware)"
   homepage "https://winder.github.io/ugs_website/"
 
   livecheck do
-    url "https://github.com/winder/Universal-G-Code-Sender"
+    url :url
     strategy :github_latest
   end
 
-  app "Universal Gcode Platform.app"
+  app "Universal Gcode Sender.app"
 
   zap trash: [
     "~/Library/Application Support/ugsplatform",

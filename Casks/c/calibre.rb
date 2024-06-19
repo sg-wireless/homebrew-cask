@@ -23,13 +23,29 @@ cask "calibre" do
       skip "Legacy version"
     end
   end
-  on_big_sur :or_newer do
-    version "6.27.0"
-    sha256 "459f1b395cfa3cf640dc6b3f407b9aefe295ab984ec3278842c4fc9daf9d1709"
+  on_big_sur do
+    version "6.29.0"
+    sha256 "2f76428ae19617875c5725cd892751a80eb2acdda76e06cd19c2f21a63966998"
 
     livecheck do
-      url "https://github.com/kovidgoyal/calibre"
-      strategy :github_latest
+      skip "Legacy version"
+    end
+  end
+  on_monterey do
+    version "6.29.0"
+    sha256 "2f76428ae19617875c5725cd892751a80eb2acdda76e06cd19c2f21a63966998"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "7.12.0"
+    sha256 "28388b62175080ff010510db5fbd9b045070299f7211de1e707668a3361edba1"
+
+    livecheck do
+      url "https://calibre-ebook.com/dist/osx"
+      strategy :header_match
     end
   end
 
@@ -38,7 +54,6 @@ cask "calibre" do
   desc "E-books management software"
   homepage "https://calibre-ebook.com/"
 
-  conflicts_with cask: "homebrew/cask-versions/calibre4"
   depends_on macos: ">= :catalina"
 
   app "calibre.app"

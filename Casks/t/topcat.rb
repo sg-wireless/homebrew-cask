@@ -1,11 +1,11 @@
 cask "topcat" do
-  version "4.8-8"
+  version "4.9-1"
   sha256 :no_check
 
-  url "http://www.starlink.ac.uk/topcat/topcat-full.dmg"
+  url "https://www.star.bristol.ac.uk/mbt/topcat/topcat-all.dmg"
   name "TOPCAT"
   desc "Interactive graphical viewer and editor for tabular data"
-  homepage "http://www.starlink.ac.uk/topcat/"
+  homepage "https://www.star.bristol.ac.uk/mbt/topcat/"
 
   livecheck do
     url :homepage
@@ -13,8 +13,8 @@ cask "topcat" do
   end
 
   app "TOPCAT.app"
-  binary "#{appdir}/TOPCAT.app/Contents/Resources/bin/topcat"
-  binary "#{appdir}/TOPCAT.app/Contents/Resources/bin/stilts"
+  binary "#{appdir}/TOPCAT.app/Contents/Resources/app/topcat"
+  binary "#{appdir}/TOPCAT.app/Contents/Resources/app/stilts"
 
   # No zap stanza required
 

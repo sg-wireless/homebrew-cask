@@ -1,19 +1,17 @@
 cask "tableau-reader" do
-  version "2023.2.2"
-  sha256 "105ade53d334f4266869d7bb450b1ffd15c760454e55e2dc9b527935c3a07610"
+  version "2024.1.3"
+  sha256 "2428a47c87d04e33482edaa6950510ee1aaf0c78763787cf143cc57999839cc9"
 
-  url "https://downloads.tableau.com/tssoftware/TableauReader-#{version.dots_to_hyphens}.dmg"
+  url "https://downloads.tableau.com/tssoftware/TableauReader-#{version.dots_to_hyphens}.dmg",
+      user_agent: "curl/8.7.1"
   name "Tableau Reader"
-  desc "Open and interact with data visualizations built in Tableau Desktop"
+  desc "Open and interact with data visualisations built in Tableau Desktop"
   homepage "https://www.tableau.com/products/reader"
 
   livecheck do
-    url "https://www.tableau.com/downloads/reader/mac"
-    regex(/-(\d+(?:-\d+)+)\.dmg/i)
-    strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map do |match|
-        match[0].tr("-", ".").to_s
-      end
+    url "https://downloads.tableau.com/TableauAutoUpdate.xml"
+    strategy :xml do |xml|
+      xml.get_elements("//version").map { |item| item.attributes["releaseNotesVersion"] }
     end
   end
 
@@ -25,12 +23,12 @@ cask "tableau-reader" do
     "com.tableausoftware.ReaderShortcuttab",
   ]
 
-  zap delete:  "/Library/Preferences/com.tableau.Tableau-Reader-*.plist",
-      pkgutil: [
+  zap pkgutil: [
         "com.tableausoftware.extensions",
         "com.tableausoftware.networkExtensions",
         "com.tableausoftware.telemetry",
       ],
+      delete:  "/Library/Preferences/com.tableau.Tableau-Reader-*.plist",
       trash:   [
         "~/Library/Caches/com.tableau.caching",
         "~/Library/Caches/com.tableausoftware.MapTiles",

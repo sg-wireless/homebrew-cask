@@ -1,6 +1,6 @@
 cask "seafile-client" do
-  version "9.0.4"
-  sha256 "e15de6f8a10224b48f3f61922c233ca4a5dcb20f89a29d2a8d5b22f3aa7dd37f"
+  version "9.0.6"
+  sha256 "4c06bda51440403c4b10ea55bd7467b9131e3b69f1cc13fff5ac788c7272da7a"
 
   url "https://download.seadrive.org/seafile-client-#{version}.dmg",
       verified: "seadrive.org/"
@@ -13,7 +13,7 @@ cask "seafile-client" do
     regex(%r{href=.*?/seafile[._-]client[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :mojave"
 
   app "Seafile Client.app"
 

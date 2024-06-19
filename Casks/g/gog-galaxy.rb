@@ -1,6 +1,6 @@
 cask "gog-galaxy" do
-  version "2.0.71.2"
-  sha256 "5a63ded6ac41e972da58eb4d57d36222a7858825f85d6b3d23da9a66c7a2722c"
+  version "2.0.74.336"
+  sha256 "634510f8ad52e084efc77e6eec1d63ec83a5e47d8dbaf6d38b47455899762d3c"
 
   url "https://cdn.gog.com/open/galaxy/client/#{version.chomp("a")}/galaxy_client_#{version}.pkg"
   name "GOG Galaxy"
@@ -16,12 +16,12 @@ cask "gog-galaxy" do
 
   pkg "galaxy_client_#{version}.pkg"
 
-  uninstall delete:    "/Applications/GOG Galaxy.app",
-            launchctl: [
+  uninstall launchctl: [
               "com.gog.galaxy.autoLauncher",
               "com.gog.galaxy.ClientService",
               "com.gog.galaxy.commservice",
-            ]
+            ],
+            delete:    "/Applications/GOG Galaxy.app"
 
   zap trash: [
     "/Library/LaunchDaemons/com.gog.galaxy.ClientService.plist",

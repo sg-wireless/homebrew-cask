@@ -1,10 +1,10 @@
 cask "devonthink" do
-  version "3.9.3"
-  sha256 "efd22fc36d449e1ed68d876a9bde3195c680be05130bcc141188dee6c3d413aa"
+  version "3.9.6"
+  sha256 "e272af94a61619adaf729de336e1ef24465a5e6ff27ed6ae8cb11d28ca35638a"
 
   url "https://download.devontechnologies.com/download/devonthink/#{version}/DEVONthink_#{version.major}.app.zip"
   name "DEVONthink"
-  desc "Collect, organize, edit and annotate documents"
+  desc "Collect, organise, edit and annotate documents"
   homepage "https://www.devontechnologies.com/apps/devonthink/"
 
   livecheck do
@@ -13,13 +13,13 @@ cask "devonthink" do
   end
 
   auto_updates true
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :mojave"
 
   app "DEVONthink #{version.major}.app"
 
   zap trash: [
     "~/Library/Application Scripts/com.devon-technologies.*",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.devon-technologies.think*.sfl2",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.devon-technologies.think*.sfl*",
     "~/Library/Application Support/DEVONthink*",
     "~/Library/Caches/com.apple.helpd/Generated/com.devontechnologies.devonthink.help*",
     "~/Library/Caches/com.devon-technologies.think*",

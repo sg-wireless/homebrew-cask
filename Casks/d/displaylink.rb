@@ -31,9 +31,17 @@ cask "displaylink" do
 
     pkg "DisplayLink Manager Graphics Connectivity#{version.csv.first}-EXE.pkg"
   end
-  on_big_sur :or_newer do
+  on_big_sur do
     version "1.9,2023-07"
     sha256 "cd7f7c7c313b0699bfa187f7112a45e5c5441264447b381569839318676208aa"
+
+    url "https://www.synaptics.com/sites/default/files/exe_files/#{version.csv.second}/DisplayLink%20Manager%20Graphics%20Connectivity#{version.csv.first}-EXE.pkg"
+
+    pkg "DisplayLink Manager Graphics Connectivity#{version.csv.first}-EXE.pkg"
+  end
+  on_monterey :or_newer do
+    version "1.10.2,2024-05"
+    sha256 "da441ed42c6335748add33e90468df5e9bbe7b56a4dbe70436ce0ff964af23f1"
 
     url "https://www.synaptics.com/sites/default/files/exe_files/#{version.csv.second}/DisplayLink%20Manager%20Graphics%20Connectivity#{version.csv.first}-EXE.pkg"
 
@@ -48,19 +56,14 @@ cask "displaylink" do
     skip "No version information available"
   end
 
-  uninstall pkgutil:   "com.displaylink.*",
-            # 'kextunload -b com.displaylink.driver.DisplayLinkDriver' causes kernel panic
-            # kext:      [
-            #              'com.displaylink.dlusbncm'
-            #              'com.displaylink.driver.DisplayLinkDriver',
-            #            ],
-            launchctl: [
+  uninstall launchctl: [
               "73YQY62QM3.com.displaylink.DisplayLinkAPServer",
               "com.displaylink.displaylinkmanager",
-              "com.displaylink.useragent-prelogin",
               "com.displaylink.useragent",
+              "com.displaylink.useragent-prelogin",
             ],
             quit:      "DisplayLinkUserAgent",
+            pkgutil:   "com.displaylink.*",
             delete:    [
               "/Applications/DisplayLink",
               "/Library/LaunchAgents/com.displaylink.useragent-prelogin.plist",

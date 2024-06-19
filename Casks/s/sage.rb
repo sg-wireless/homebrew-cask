@@ -1,9 +1,9 @@
 cask "sage" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "10.1,2.1.0"
-  sha256 arm:   "c3731a6c9b637323d70b02ee888047259455f3a9e3c6b120c66fe022178762ba",
-         intel: "34fb50159e8b568ca82c2fa54170ff1b85fe2fae226dcddd99f59b335675fea1"
+  version "10.3,2.3.2"
+  sha256 arm:   "22c72fd3e35c03e0c8d188a40c7877c59a1242f712b7bceeeda30bd9f20d473a",
+         intel: "025592850e925ddb6fc2e74f0713035c3994c4085f357379c497a696e9b7b181"
 
   url "https://github.com/3-manifolds/Sage_macOS/releases/download/v#{version.csv.second}/SageMath-#{version.csv.first}_#{arch}.dmg",
       verified: "github.com/3-manifolds/Sage_macOS/"
@@ -24,16 +24,16 @@ cask "sage" do
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :sierra"
 
   app "SageMath-#{version.csv.first.dots_to_hyphens}.app"
   pkg "Recommended_#{version.csv.first.dots_to_underscores}.pkg"
 
   uninstall quit:    [
-              "org.computop.sage",
-              "org.computop.SageMath",
               "com.tcltk.tcllibrary",
               "com.tcltk.tklibrary",
+              "org.computop.sage",
+              "org.computop.SageMath",
             ],
             pkgutil: [
               "org.computop.SageMath.#{version.csv.first.dots_to_underscores}.bin",

@@ -1,6 +1,6 @@
 cask "fujitsu-scansnap-home" do
-  version "2.12.0"
-  sha256 "5bf195c65855593f412652ec44d43457dc576fa1b1545818b289f8a026dfa74e"
+  version "2.22.0"
+  sha256 "9ad96dcf8e61871213cd4dac7b559a96382ed2c8285b127bd7beff15b178f4be"
 
   url "https://origin.pfultd.com/downloads/ss/sshinst/m-#{version.no_dots}/MacSSHOfflineInstaller_#{version.dots_to_underscores}.dmg",
       verified: "origin.pfultd.com/"
@@ -28,18 +28,18 @@ cask "fujitsu-scansnap-home" do
               "com.ricoh.pfu.SshAutoLaunch",
             ],
             quit:      [
-              "com.fujitsu.pfu.SSMenuBar",
               "com.fujitsu.pfu.Ssh*",
+              "com.fujitsu.pfu.SSMenuBar",
             ],
             pkgutil:   "com.fujitsu.pfu.scansnap.Home.*"
 
-  zap trash:  [
+  zap delete: "/Library/Application Support/PFU",
+      trash:  [
         "~/Library/Application Support/PFU",
         "~/Library/Caches/jp.co.pfu.SSHomeWizard",
         "~/Library/HTTPStorages/jp.co.pfu.SSHomeWizard",
         "~/Library/Preferences/com.fujitsu.pfu.*",
         "~/Library/Saved Application State/com.fujitsu.pfu.ScanSnapHome.savedState",
         "~/Library/Saved Application State/jp.co.pfu.SSHomeWizard.savedState",
-      ],
-      delete: "/Library/Application Support/PFU"
+      ]
 end

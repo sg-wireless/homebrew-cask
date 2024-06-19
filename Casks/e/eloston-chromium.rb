@@ -1,28 +1,24 @@
 cask "eloston-chromium" do
   arch arm: "arm64", intel: "x86-64"
 
-  on_arm do
-    version "117.0.5938.62-1.1,1695024143"
-    sha256 "0d171c1fa5920397e4a49557c0d041715d5fda112dd4dbc97f75b137abe1888e"
-  end
-  on_intel do
-    version "117.0.5938.62-1.1,1694986322"
-    sha256 "d0e4fc0fa50ff5c91d460317e1959f8053d2884dc676e9dbca971204d16c5090"
-  end
+  version "125.0.6422.141-1.1"
+  sha256 arm:   "1ad00e8ba8ed654e7db2d2887edcf10d0892d0cd786dc26a22035827b2e5755b",
+         intel: "d500e5c38a5364e71c095846b1651a47940ba399bc019fa566c2f0aba1ad5f89"
 
-  url "https://github.com/ungoogled-software/ungoogled-chromium-macos/releases/download/#{version.csv.first}_#{arch}__#{version.csv.second}/ungoogled-chromium_#{version.csv.first}_#{arch}-macos.dmg",
+  url "https://github.com/ungoogled-software/ungoogled-chromium-macos/releases/download/#{version}/ungoogled-chromium_#{version}_#{arch}-macos.dmg",
       verified: "github.com/ungoogled-software/ungoogled-chromium-macos/"
   name "Ungoogled Chromium"
   desc "Google Chromium, sans integration with Google"
-  homepage "https://ungoogled-software.github.io/ungoogled-chromium-binaries/"
+  homepage "https://ungoogled-software.github.io/"
 
   livecheck do
-    url "https://github.com/ungoogled-software/ungoogled-chromium-macos/releases?q=prerelease%3Afalse"
-    regex(%r{href=["']?[^"' >]*?/tree/v?(\d+(?:[.-]\d+)+)(?:[._-]#{arch})?(?:[._-]+?(\d+(?:\.\d+)*))?["' >]}i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map do |match|
-        (match.length > 1) ? "#{match[0]},#{match[1]}" : match[0]
-      end
+    url :url
+    regex(/^v?(\d+(?:[.-]\d+)+)(?:[._-]#{arch})?(?:[._-]+?(\d+(?:\.\d+)*))?$/i)
+    strategy :github_latest do |json, regex|
+      match = json["tag_name"]&.match(regex)
+      next if match.blank?
+
+      match[1]
     end
   end
 
@@ -30,6 +26,7 @@ cask "eloston-chromium" do
     "chromium",
     "freesmug-chromium",
   ]
+  depends_on macos: ">= :catalina"
 
   app "Chromium.app"
 

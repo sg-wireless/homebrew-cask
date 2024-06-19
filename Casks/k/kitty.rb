@@ -1,23 +1,31 @@
 cask "kitty" do
-  version "0.30.0"
-  sha256 "553627ca75395a5533dc9eeea24aa43e86bc50a2b9ce1d188a4d144f3c776e14"
+  version "0.35.1"
+  sha256 "c38647ab4706462f2780476032f1638d1466a3f5ae2695310080c85434f6d6a3"
 
   url "https://github.com/kovidgoyal/kitty/releases/download/v#{version}/kitty-#{version}.dmg"
   name "kitty"
   desc "GPU-based terminal emulator"
   homepage "https://github.com/kovidgoyal/kitty"
 
+  conflicts_with cask: "kitty@nightly"
   depends_on macos: ">= :sierra"
 
   app "kitty.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
-  shimscript = "#{staged_path}/kitty.wrapper.sh"
-  binary shimscript, target: "kitty"
+  kitty_shimscript = "#{staged_path}/kitty.wrapper.sh"
+  binary kitty_shimscript, target: "kitty"
+  # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
+  kitten_shimscript = "#{staged_path}/kitten.wrapper.sh"
+  binary kitten_shimscript, target: "kitten"
 
   preflight do
-    File.write shimscript, <<~EOS
+    File.write kitty_shimscript, <<~EOS
       #!/bin/sh
       exec '#{appdir}/kitty.app/Contents/MacOS/kitty' "$@"
+    EOS
+    File.write kitten_shimscript, <<~EOS
+      #!/bin/sh
+      exec '#{appdir}/kitty.app/Contents/MacOS/kitten' "$@"
     EOS
   end
 

@@ -1,11 +1,12 @@
 cask "burp-suite-professional" do
   arch arm: "MacOsArm64", intel: "MacOsx"
 
-  version "2023.10.1.2"
-  sha256 arm:   "2e4a0c84be39b317132b9da9db18bbcdb6dce5d5493ccc0cdcab21a600f8c591",
-         intel: "df163529d6d8fdcd752588cdae199042e9e4fd290863d03490e5a9ab40ba5c52"
+  version "2024.5.3"
+  sha256 arm:   "5f79dcf19692bfd559539c63f4fd629496d3cccf97791ae63cd86fc0a502bf08",
+         intel: "49cd4eac617b772cbbee6cea0bde983ec054cbf15dc85028058dd2bbb956ee7b"
 
-  url "https://portswigger.net/burp/releases/download?product=pro&version=#{version}&type=#{arch}"
+  url "https://portswigger-cdn.net/burp/releases/download?product=pro&version=#{version}&type=#{arch}",
+      verified: "portswigger-cdn.net/burp/releases/"
   name "Burp Suite Professional"
   desc "Web security testing toolkit"
   homepage "https://portswigger.net/burp/pro"
@@ -16,14 +17,14 @@ cask "burp-suite-professional" do
       all_versions = json["ResultSet"]["Results"]
       next if all_versions.blank?
 
-      all_versions.map do |item|
+      all_versions.filter_map do |item|
         item["version"] if
               item["releaseChannels"].include?("Stable") &&
               item["categories"].include?("Professional") &&
               item["builds"].any? do |build|
                 build["ProductPlatform"] == arch.to_s
               end
-      end.compact
+      end
     end
   end
 

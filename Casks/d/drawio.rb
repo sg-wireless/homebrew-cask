@@ -1,9 +1,9 @@
 cask "drawio" do
   arch arm: "arm64", intel: "x64"
 
-  version "22.0.2"
-  sha256 arm:   "1d7b09ff4b97b780f09d0aec36b1d8bc0d2951ef7ce7d6683480f8672ee65a4f",
-         intel: "eeb593ccac33d12c62daa5c43ae23cb27917ea4c59f0345a3658ac9bf17474fe"
+  version "24.5.3"
+  sha256 arm:   "71989aa4adf4a70050edd3cf170a2e245946b94e44c5c308156d1563073efa6b",
+         intel: "dcd42374914c7ec024799c30e2d5a2d69ca86bd3d0a6b6d6d1fdadb066b55d0b"
 
   url "https://github.com/jgraph/drawio-desktop/releases/download/v#{version}/draw.io-#{arch}-#{version}.dmg",
       verified: "github.com/jgraph/drawio-desktop/"
@@ -23,7 +23,11 @@ cask "drawio" do
   zap trash: [
     "~/Library/Application Support/draw.io",
     "~/Library/Caches/com.jgraph.drawio.desktop",
+    "~/Library/Caches/com.jgraph.drawio.desktop.ShipIt",
+    "~/Library/Caches/draw.io-updater",
+    "~/Library/HTTPStorages/com.jgraph.drawio.desktop",
     "~/Library/Logs/draw.io",
+    "~/Library/Preferences/ByHost/com.jgraph.drawio.desktop.ShipIt.*.plist",
     "~/Library/Preferences/com.jgraph.drawio.desktop.helper.plist",
     "~/Library/Preferences/com.jgraph.drawio.desktop.plist",
     "~/Library/Saved Application State/com.jgraph.drawio.desktop.savedState",

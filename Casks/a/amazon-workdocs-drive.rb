@@ -1,5 +1,5 @@
 cask "amazon-workdocs-drive" do
-  version "1.0.10003.0"
+  version "1.0.10729.0"
   sha256 :no_check
 
   url "https://d3f2hupz96ggz3.cloudfront.net/mac/AmazonWorkDocsDrive.pkg",
@@ -19,12 +19,12 @@ cask "amazon-workdocs-drive" do
 
   pkg "AmazonWorkDocsDrive.pkg"
 
-  uninstall signal:    ["TERM", "com.Amazon.WorkDocs.Drive"],
+  uninstall launchctl: "com.Amazon.WorkDocs.DriveUpdater",
+            signal:    ["TERM", "com.Amazon.WorkDocs.Drive"],
             pkgutil:   [
               "com.Amazon.WorkDocs.Drive",
               "com.Amazon.WorkDocs.Drive.pkg.core",
-            ],
-            launchctl: "com.Amazon.WorkDocs.DriveUpdater"
+            ]
 
   zap trash: [
     "~/Library/Application Scripts/com.Amazon.WorkDocs.DriveFinderExtension",

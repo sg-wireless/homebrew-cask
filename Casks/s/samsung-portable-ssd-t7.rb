@@ -5,11 +5,11 @@ cask "samsung-portable-ssd-t7" do
   url "https://semiconductor.samsung.com/resources/software-resources/SamsungPortableSSD_Setup_Mac_#{version.csv.second}.zip"
   name "Samsung Portable SSD Software for T7"
   desc "Software for Samsung external storage drives (T7 series)"
-  homepage "https://www.samsung.com/semiconductor/minisite/ssd/download/portable/"
+  homepage "https://semiconductor.samsung.com/consumer-storage/support/tools/"
 
   livecheck do
     url :homepage
-    regex(/SamsungPortableSSD[._-]Setup[._-]Mac[._-]v?(\d+(?:\.\d+)+)\.zip.*\n*\s*.*Version\sv?(\d+(?:\.\d+)+)/i)
+    regex(/SamsungPortableSSD[._-]Setup[._-]Mac[._-]v?(\d+(?:\.\d+)+)[._-]v?(\d+(?:\.\d+)+)/i)
     strategy :page_match do |page, regex|
       page.scan(regex).map { |match| "#{match[1]},#{match[0]}" }
     end
@@ -19,16 +19,16 @@ cask "samsung-portable-ssd-t7" do
 
   pkg "SamsungPortableSSD_Setup_Mac_#{version.csv.second}.pkg"
 
-  uninstall quit:      [
-              "com.samsung.portablessdplus.software",
+  uninstall launchctl: "com.samsung.portablessdplus.mon",
+            quit:      [
               "/Applications/SamsungPortableSSD_#{version.csv.second}.app",
+              "com.samsung.portablessdplus.software",
             ],
-            launchctl: "com.samsung.portablessdplus.mon",
             kext:      "com.samsung.portablessd.driver",
             pkgutil:   [
-              "com.samsung.portablessdplusuniversal.softwarepkg",
               "com.samsung.portablessd.driverpkg",
               "com.samsung.portablessdplus.softwarepkg",
+              "com.samsung.portablessdplusuniversal.softwarepkg",
             ],
             delete:    [
               "/Applications/SamsungPortableSSD_#{version.csv.second}.app",
@@ -36,8 +36,8 @@ cask "samsung-portable-ssd-t7" do
             ]
 
   zap trash: [
-    "~/Library/Application Support/PortableSSD",
     "~/Library/Application Support/Portable_SSD",
+    "~/Library/Application Support/PortableSSD",
     "~/Library/LaunchAgents/com.samsung.portablessdplus.mon.plist",
     "~/Library/Saved Application State/com.samsung.portablessd*",
   ]

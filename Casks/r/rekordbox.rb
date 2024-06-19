@@ -1,6 +1,6 @@
 cask "rekordbox" do
-  version "6.7.6,20230920153515"
-  sha256 "8708b3d16c63033b522b59d58d7a1ff8a5e3999974f83d373a217340890f88f8"
+  version "7.0.1,20240521172903"
+  sha256 "f8ee0e8e4f9561c46bb23075cc389090095c793887b8195ad191faf5e24952a8"
 
   url "https://cdn.rekordbox.com/files/#{version.csv.second}/Install_rekordbox_#{version.csv.first.dots_to_underscores}.pkg_.zip"
   name "rekordbox"
@@ -9,7 +9,7 @@ cask "rekordbox" do
 
   livecheck do
     url "https://rekordbox.com/en/download/"
-    regex(%r{data-url=.*?/(\d+)/Install[._-]rekordbox[._-]v?(\d+(?:[._]\d+)+)\.pkg_\.zip}i)
+    regex(%r{data-url=.*?/(\d+)/Install[._-]rekordbox[._-]v?(\d+(?:[._]\d+)+)[^"'< ]+\.zip}i)
     strategy :page_match do |page, regex|
       page.scan(regex).map { |match| "#{match.second.tr("_", ".")},#{match.first}" }
     end

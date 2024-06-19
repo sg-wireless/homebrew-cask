@@ -1,6 +1,6 @@
 cask "xamarin-ios" do
-  version "16.4.0.6,b4928191-de3d-42cb-a24f-709e5d71626c,ac849f1f644aee58ed4e7a79cb35a14e"
-  sha256 "1266b991cb5bf2f9ebcca7c79d5d1d9d702cd76ca2b135a43949d6235f8d1a46"
+  version "16.4.0.23,ceb0ea3f-4db8-46b4-8dc3-8049d27c0107,3960868aa9b1946a6c77668c3f3334ee"
+  sha256 "3c3a2e3c5adebf7955934862b89c82e4771b0fd44dfcfebad0d160033a6e0a1a"
 
   url "https://download.visualstudio.microsoft.com/download/pr/#{version.csv.second}/#{version.csv.third}/xamarin.ios-#{version.csv.first}.pkg"
   name "Xamarin.iOS"
@@ -20,9 +20,9 @@ cask "xamarin-ios" do
   pkg "xamarin.ios-#{version.csv.first}.pkg"
 
   uninstall pkgutil: [
-    "com.xamarin.xamarin.ios.pkg",
-    "com.xamarin.xamarin-ios-build-host.pkg",
     "com.xamarin.monotouch.pkg",
+    "com.xamarin.xamarin-ios-build-host.pkg",
+    "com.xamarin.xamarin.ios.pkg",
   ]
 
   zap trash: [

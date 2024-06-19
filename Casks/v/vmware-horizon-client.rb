@@ -1,17 +1,18 @@
 cask "vmware-horizon-client" do
-  version "2306-8.10.0-21964677,CART24FQ2_MAC_2306"
-  sha256 "0f3589c56fc74f709c6ccb7ddaad64918cd3ca37ebbcac4c699d93fa99705b7b"
+  version "2312.1-8.12.1-23531248,CART25FQ1_MAC_2312.1"
+  sha256 "007dbce07b319d7eb633d937135b0f39c72b0d4bbc38ae1939b05fc676bd4f2e"
 
-  url "https://download3.vmware.com/software/#{version.csv.second}/VMware-Horizon-Client-#{version.csv.first}.dmg"
+  url "https://download3.omnissa.com/software/#{version.csv.second}/VMware-Horizon-Client-#{version.csv.first}.dmg",
+      verified: "download3.omnissa.com/software/"
   name "VMware Horizon Client"
   desc "Virtual machine client"
   homepage "https://www.vmware.com/"
 
   livecheck do
-    url "https://customerconnect.vmware.com/channel/public/api/v1.0/products/getRelatedDLGList?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&version=horizon_8&dlgType=PRODUCT_BINARY"
+    url "https://customerconnect.omnissa.com/channel/public/api/v1.0/products/getRelatedDLGList?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&version=horizon_8&dlgType=PRODUCT_BINARY"
     regex(%r{/([^/]+)/VMware[._-]Horizon[._-]Client[._-]v?(\d+(?:[.-]\d+)+)\.dmg}i)
-    strategy :page_match do |page|
-      mac_json_info = JSON.parse(page)["dlgEditionsLists"].select { |item| item["name"].match(/mac/i) }&.first
+    strategy :json do |json|
+      mac_json_info = json["dlgEditionsLists"]&.select { |item| item["name"].match(/mac/i) }&.first
       api_item = mac_json_info["dlgList"]&.first
       next if api_item.blank?
 
@@ -20,7 +21,7 @@ cask "vmware-horizon-client" do
       pid = api_item["releasePackageId"]
       next if download_group.blank? || product_id.blank? || pid.blank?
 
-      url = "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=#{download_group}&productId=#{product_id}&rPId=#{pid}"
+      url = "https://customerconnect.omnissa.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=#{download_group}&productId=#{product_id}&rPId=#{pid}"
       download_item = Homebrew::Livecheck::Strategy.page_content(url)
       next if download_item[:content].blank?
 
@@ -31,31 +32,41 @@ cask "vmware-horizon-client" do
     end
   end
 
+  auto_updates true
   depends_on macos: ">= :big_sur"
 
   pkg "VMware Horizon Client.pkg"
 
-  uninstall delete:    "/Applications/VMware Horizon Client.app",
+  uninstall launchctl: [
+              "com.vmware.deem.MacUIEvents",
+              "com.vmware.deemd",
+              "com.vmware.horizon.CDSHelper",
+              "com.vmware.vmwetlm",
+            ],
+            quit:      "com.vmware.horizon",
             pkgutil:   [
               "com.vmware.horizon",
               "com.vmware.VMware.Deem",
               "com.vmware.VMware.Deem.InstallerHelper",
               "com.vmware.VMware.EndpointTelemetryService",
             ],
-            launchctl: [
-              "com.vmware.deem.MacUIEvents",
-              "com.vmware.deemd",
-              "com.vmware.horizon.CDSHelper",
-              "com.vmware.vmwetlm",
-            ],
-            quit:      "com.vmware.horizon"
+            delete:    [
+              "/Applications/VMware Horizon Client.app",
+              "/Library/Application Support/VMware",
+              "/Library/LaunchAgents/com.vmware.deem.MacUIEvents.plist",
+              "/Library/LaunchDaemons/com.vmware.deemd.plist",
+              "/Library/LaunchDaemons/com.vmware.horizon.CDSHelper.plist",
+              "/Library/LaunchDaemons/com.vmware.vmwetlm.plist",
+              "/Library/Logs/VMware View Client Services.log",
+              "/Library/Logs/VMware",
+              "/Library/Preferences/com.vmware.horizon.plist",
+              "/Library/PrivilegedHelperTools/com.vmware.horizon.CDSHelper",
+            ]
 
   zap trash: [
-    "/Library/Application Support/VMware",
-    "/Library/Logs/VMware View Client Services.log",
-    "/Library/Logs/VMware",
-    "/Library/Preferences/com.vmware.horizon.plist",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.vmware.horizon.sfl2",
+    "/usr/share/file/magic/vmware",
+    "~/.vmware",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.vmware.horizon.sfl*",
     "~/Library/Application Support/VMware Horizon View Client",
     "~/Library/Caches/com.vmware.horizon",
     "~/Library/Logs/VMware Horizon Client",

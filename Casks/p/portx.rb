@@ -1,9 +1,9 @@
 cask "portx" do
   arch arm: "arm64", intel: "x64"
 
-  version "2.1.14,10.46"
-  sha256 arm:   "07E602C343C4FB5984E4748BFA9D6B30EB7A40B7C1F4684382BF4A16EF41D87A",
-         intel: "3D36B21451C337850237B692BCAFD67F8174750F5B0EA4F888A0694215E5E4D2"
+  version "2.2.8,10.59"
+  sha256 arm:   "CE43DB4D71845836DDCE3C7FDA6E420FEEFA219CDA2E70D0CCD5B858F4A08A8C",
+         intel: "05DF55F292966AAEB11E5413AE08CA13CDFAC5F962EF966F80BD060545C2D722"
 
   url "https://cdn.netsarang.net/0ac7ea20/PortX-#{version.csv.first}-#{arch}.dmg",
       verified: "cdn.netsarang.net/"
@@ -12,9 +12,11 @@ cask "portx" do
   homepage "https://portx.online/"
 
   livecheck do
-    url "https://cdn.netsarang.net/0ac7ea20/PortX-#{version.csv.first}-#{arch}.dmg"
+    url "https://cdn.netsarang.net/0ac7ea20/PortX-latest-#{arch}.dmg"
     strategy :extract_plist
   end
+
+  depends_on macos: ">= :catalina"
 
   app "PortX.app"
 

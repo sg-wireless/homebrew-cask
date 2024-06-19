@@ -1,9 +1,9 @@
 cask "intellij-idea-ce" do
   arch arm: "-aarch64"
 
-  version "2023.2.2,232.9921.47"
-  sha256 arm:   "b3c126636d2096933672d1c1359fe32ad04d35057090363ad1812951f2ada7d9",
-         intel: "a59590af2bef95562f3b7a066016d22f347d59b71e136d3dd739d626f1594636"
+  version "2024.1.3,241.17890.1"
+  sha256 arm:   "0b51284ee1e1e1390f9bce1211ee8b48b03b4d5d2394fb7180b12f80a7817d63",
+         intel: "8ad56d0c4517bdcfb8e970cce1d8e1b44672454eb658e14d452ee59bb5659a56"
 
   url "https://download.jetbrains.com/idea/ideaIC-#{version.csv.first}#{arch}.dmg"
   name "IntelliJ IDEA Community Edition"
@@ -21,19 +21,10 @@ cask "intellij-idea-ce" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/intellij-idea-ce19"
   depends_on macos: ">= :high_sierra"
 
   app "IntelliJ IDEA CE.app"
-
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "idea") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
-  end
+  binary "#{appdir}/IntelliJ IDEA CE.app/Contents/MacOS/idea", target: "idea-ce"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/IdeaIC#{version.major_minor}",

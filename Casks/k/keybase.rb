@@ -2,12 +2,12 @@ cask "keybase" do
   arch arm: "arm64-"
 
   on_arm do
-    version "6.2.3,20230928152642,eba57c1814"
-    sha256 "7da56a72c82c35d0358404e578153533343157572410754eb7a1ec9b6741684b"
+    version "6.3.0,20240528152652,16b027d126"
+    sha256 "9a90649bd60260a27bd0de2834584547eb7cf90a93fd48d2eb24aad32cdf8cee"
   end
   on_intel do
-    version "6.2.3,20230928143931,eba57c1814"
-    sha256 "eee303d78dafb53f0ccba6323053f53ed3092abaac7548aa87fd2d437ea3a628"
+    version "6.3.0,20240528151149,16b027d126"
+    sha256 "695d6d9a5588e125e74513f57537ceddad96481bb7116f490d8ba5e4d8b65667"
   end
 
   url "https://prerelease.keybase.io/darwin-#{arch}updates/Keybase-#{version.csv.first}-#{version.csv.second}%2B#{version.csv.third}.zip"
@@ -34,11 +34,7 @@ cask "keybase" do
                    args: ["install-auto"]
   end
 
-  uninstall delete:    [
-              "/Library/Logs/keybase*",
-              "/Library/PrivilegedHelperTools/keybase.Helper",
-            ],
-            launchctl: "keybase.Helper",
+  uninstall launchctl: "keybase.Helper",
             signal:    [
               ["TERM", "keybase.Electron"],
               ["TERM", "keybase.ElectronHelper"],
@@ -48,7 +44,11 @@ cask "keybase" do
             script:    {
               executable: "#{appdir}/Keybase.app/Contents/SharedSupport/bin/keybase",
               args:       ["uninstall"],
-            }
+            },
+            delete:    [
+              "/Library/Logs/keybase*",
+              "/Library/PrivilegedHelperTools/keybase.Helper",
+            ]
 
   zap trash: [
         "~/Library/Application Support/Keybase",

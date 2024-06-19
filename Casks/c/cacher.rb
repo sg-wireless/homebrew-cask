@@ -1,11 +1,11 @@
 cask "cacher" do
-  version "2.47.2"
-  sha256 "d17ddf14ff26910d4d18c84d7eaf74c6a8b30a053e483cd51c4ed7c0e16b0379"
+  version "2.47.4"
+  sha256 "25fdfcb2a30e265098b50d75e43a18baf8f711a4628d38ffd8ef9e063895b469"
 
   url "https://cacher-download.nyc3.digitaloceanspaces.com/Cacher-#{version}-universal-mac.zip",
       verified: "cacher-download.nyc3.digitaloceanspaces.com/"
   name "Cacher"
-  desc "Code snippet organizer"
+  desc "Code snippet organiser"
   homepage "https://www.cacher.io/"
 
   livecheck do

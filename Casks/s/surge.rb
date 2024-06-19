@@ -1,6 +1,6 @@
 cask "surge" do
-  version "5.3.2,2393,f4b3e5e9a7bc5b73106ace7b0776eefe"
-  sha256 "199169fe2caa92336018270e45875d52d3da28e79666188969c007d3bec74119"
+  version "5.7.3,2785,048c0bdc5ee2b05dab39852d51a19ff4"
+  sha256 "4d4cbfa3b907ad64a61dec764aa2afe9725f5dfc6fd53dc8b65dcc98ad956d99"
 
   url "https://dl.nssurge.com/mac/v#{version.major}/Surge-#{version.tr(",", "-")}.zip"
   name "Surge"
@@ -18,7 +18,7 @@ cask "surge" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/surge4"
+  conflicts_with cask: "surge@4"
   depends_on macos: ">= :high_sierra"
 
   app "Surge.app"
@@ -27,15 +27,12 @@ cask "surge" do
             delete:    "/Library/PrivilegedHelperTools/com.nssurge.surge-mac.helper"
 
   zap delete: [
-    "~/Library/Application Support/Surge",
     "~/Library/Application Support/com.nssurge.surge-mac",
-    "~/Library/Caches/com.nssurge.surge-mac",
-    "~/Library/Caches/com.nssurge.surge-mac.plist",
+    "~/Library/Application Support/Surge",
+    "~/Library/Caches/com.nssurge.surge-mac*",
     "~/Library/HTTPStorages/com.nssurge.surge-mac",
     "~/Library/Logs/Surge",
-    "~/Library/Preferences/com.nssurge.surge-dashboard.plist",
-    "~/Library/Preferences/com.nssurge.surge-mac.plist",
-    "~/Library/Saved Application State/com.nssurge.surge-dashboard.savedState",
-    "~/Library/Saved Application State/com.nssurge.surge-mac.savedState",
+    "~/Library/Preferences/com.nssurge.surge*",
+    "~/Library/Saved Application State/com.nssurge.surge*",
   ]
 end

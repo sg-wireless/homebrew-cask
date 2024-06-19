@@ -1,16 +1,17 @@
 cask "tableau" do
-  version "2023.2.2"
-  sha256 "623ecbf8dcd2d2b4bf49d8175cb4bfd080b3e71575f415302acae9f2cec87ed0"
+  version "2024.1.3"
+  sha256 "ecb299b8edf42cb3fddab9f7624e0f219ef6145f69f450a6d1ef883c5c1691a4"
 
-  url "https://downloads.tableau.com/tssoftware/TableauDesktop-#{version.dots_to_hyphens}.dmg"
+  url "https://downloads.tableau.com/tssoftware/TableauDesktop-#{version.dots_to_hyphens}.dmg",
+      user_agent: "curl/8.7.1"
   name "Tableau Desktop"
   desc "Data visualization software"
   homepage "https://www.tableau.com/products/desktop"
 
   livecheck do
-    url "https://www.tableau.com/downloads/desktop/mac"
-    strategy :header_match do |headers|
-      headers["location"][/TableauDesktop[._-]v?(\d+(?:-\d+)+)\.dmg/i, 1].tr("-", ".")
+    url "https://downloads.tableau.com/TableauAutoUpdate.xml"
+    strategy :xml do |xml|
+      xml.get_elements("//version").map { |item| item.attributes["releaseNotesVersion"] }
     end
   end
 
@@ -34,7 +35,8 @@ cask "tableau" do
     "simba.sparkodbc",
   ]
 
-  zap trash:  [
+  zap delete: "/Library/Preferences/com.tableau.Tableau-#{version.major_minor}.plist",
+      trash:  [
         "/Library/Preferences/com.tableau.Tableau-#{version.major_minor}.plist",
         "~/Documents/My Tableau Repository",
         "~/Library/Caches/com.tableau.caching",
@@ -43,6 +45,5 @@ cask "tableau" do
         "~/Library/Preferences/com.tableau.Tableau-#{version.major_minor}.plist",
         "~/Library/Saved Application State/com.tableausoftware.tableaudesktop.savedState",
         "~/Library/Tableau",
-      ],
-      delete: "/Library/Preferences/com.tableau.Tableau-#{version.major_minor}.plist"
+      ]
 end

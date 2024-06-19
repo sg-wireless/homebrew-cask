@@ -1,15 +1,20 @@
 cask "qqmusic" do
-  version "8.8.1,73227"
-  sha256 :no_check
+  version "9.2.0,01"
+  sha256 "68e63134eca01b613a5af7a4b0b73c27a07ecbe26577adaecd4f877020b308e2"
 
-  url "https://dldir1.qq.com/music/clntupate/mac/QQMusicMac_Mgr.dmg"
+  url "https://dldir1.qq.com/music/clntupate/mac/QQMusicMac#{version.csv.first}Build#{version.csv.second}.dmg"
   name "QQ音乐"
   desc "Chinese music streaming application"
   homepage "https://y.qq.com/"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://y.qq.com/download/download.js"
+    regex(/QQMusicMac[._-]?v?(\d+(?:[._]\d+)+)[._-]?build[._-]?(\d+)\.dmg/i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map do |match|
+        "#{match[0]},#{match[1]}"
+      end
+    end
   end
 
   auto_updates true

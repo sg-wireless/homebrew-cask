@@ -1,13 +1,13 @@
 cask "cinc-workstation" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "23.7.1042"
-  sha256 arm:   "5c2276b6ee88a2cbfe937fe4d79496f5e7e557fa1bada079c6c3faa84a854594",
-         intel: "4c85d68eca2ce661a4b18d6eaac1e593ce948a27f0db702e251efa2917ed8ca8"
+  version "24.4.1064"
+  sha256 arm:   "4365418ae6f2387cc925fede5245bb40e8c7432629728a546bed625efe2f20bb",
+         intel: "85752c80079b9a9d2038bbdaba30b764f8dd2dfb23f62652e68592e9dea917ce"
 
-  url "http://downloads.cinc.sh/files/stable/cinc-workstation/#{version}/mac_os_x/11/cinc-workstation-#{version}-1.#{arch}.dmg"
+  url "https://downloads.cinc.sh/files/stable/cinc-workstation/#{version}/mac_os_x/11/cinc-workstation-#{version}-1.#{arch}.dmg"
   name "Cinc Workstation"
-  desc "Free-as-in-Beer all-in-one installer for Chef infrastructure management tools"
+  desc "Installer for Chef infrastructure management tools"
   homepage "https://cinc.sh/start/workstation/"
 
   livecheck do
@@ -19,12 +19,12 @@ cask "cinc-workstation" do
 
   pkg "cinc-workstation-#{version}-1.#{arch}.pkg"
 
-  uninstall pkgutil:   "com.cinc-project.pkg.cinc-workstation",
-            launchctl: "io.chef.chef-workstation.app",
+  uninstall launchctl: "io.chef.chef-workstation.app",
             script:    {
               executable: "/opt/cinc-workstation/bin/uninstall_chef_workstation",
               sudo:       true,
-            }
+            },
+            pkgutil:   "com.cinc-project.pkg.cinc-workstation"
 
   zap trash: "~/.cinc-workstation/"
 end

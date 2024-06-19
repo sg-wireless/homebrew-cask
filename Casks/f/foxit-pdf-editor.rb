@@ -1,8 +1,8 @@
 cask "foxit-pdf-editor" do
-  version "13.0.0"
-  sha256 "01a9dedeb8b6834c2d6baeedfb8df97c5323007437492585642342e56ddaade4"
+  version "13.1.2"
+  sha256 "8c976e36008d60ad666a1f86eb141c28dcdc9fcfab056be43ab326b864db0707"
 
-  url "https://cdn01.foxitsoftware.com/pub/foxit/phantomPDF/desktop/mac/#{version.major}.x/FoxitPDFEditor#{version.no_dots}.L10N.Setup.pkg",
+  url "https://cdn01.foxitsoftware.com/pub/foxit/phantomPDF/desktop/mac/#{version.major}.x/#{version}/FoxitPDFEditor#{version.no_dots}.L10N.Setup.pkg",
       verified: "cdn01.foxitsoftware.com/pub/foxit/phantomPDF/desktop/mac/"
   name "Foxit PDF Editor"
   desc "PDF Editor"
@@ -22,13 +22,13 @@ cask "foxit-pdf-editor" do
 
   pkg "FoxitPDFEditor#{version.no_dots}.L10N.Setup.pkg"
 
-  uninstall pkgutil:   "com.foxit.pkg.pdfeditor",
+  uninstall launchctl: "com.foxit.PDFEditorUpdateService",
+            pkgutil:   "com.foxit.pkg.pdfeditor",
             delete:    [
               "/Applications/Foxit PDF Editor.app",
               "/Library/Application Support/Foxit Software/FoxitService/FoxitPDFEditorUpdateService.app",
               "/Library/LaunchDaemons/com.foxit.PDFEditorUpdateService.plist",
-            ],
-            launchctl: "com.foxit.PDFEditorUpdateService"
+            ]
 
   zap trash: [
     "~/Library/Application Support/Foxit Software/Foxit PDF Editor",

@@ -1,6 +1,6 @@
 cask "kindle-comic-converter" do
-  version "5.6.3"
-  sha256 "822b847259782c9452996ec4da0afd68982ca11faa8ec3b1d7d54de5b3d18061"
+  version "5.6.5"
+  sha256 "c32d71b35f1d8f34a8706a79cda2766b24b5f7ad5cab10253ebf28e7464972a6"
 
   url "https://github.com/ciromattia/kcc/releases/download/v#{version}/KindleComicConverter_osx_#{version}.dmg",
       verified: "github.com/ciromattia/kcc/"

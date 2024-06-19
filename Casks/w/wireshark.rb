@@ -2,17 +2,17 @@ cask "wireshark" do
   arch arm: "Arm", intel: "Intel"
   livecheck_arch = on_arch_conditional arm: "arm", intel: "x86-"
 
-  version "4.0.8"
+  version "4.2.5"
 
   on_arm do
-    sha256 "cbf50f162411b4870b07f1460ada76d357dafbd20e5243a97b055ddb39d9fcac"
+    sha256 "72d670ad068ac46c1d16ffb5fc8e6b582136a0eed6fc278b9f36877311e4e4af"
 
     depends_on macos: ">= :big_sur"
   end
   on_intel do
-    sha256 "a751eb215c0337982675b889bf48e742a57859eaaf3a0f7d64ddc27e6a459595"
+    sha256 "67a1ea88226c2f5699c3c6c36fb0006d84c62bdbfe5474dccff30860fd9f81b7"
 
-    depends_on macos: ">= :sierra"
+    depends_on macos: ">= :mojave"
   end
 
   url "https://2.na.dl.wireshark.org/osx/Wireshark%20#{version}%20#{arch}%2064.dmg"
@@ -20,9 +20,14 @@ cask "wireshark" do
   desc "Network protocol analyzer"
   homepage "https://www.wireshark.org/"
 
+  # This appcast sometimes uses a newer pubDate for an older version, so we
+  # have to ignore the default `Sparkle` strategy sorting (which involves the
+  # pubDate) and simply work with the version numbers.
   livecheck do
     url "https://www.wireshark.org/update/0/Wireshark/0.0.0/macOS/#{livecheck_arch}64/en-US/stable.xml"
-    strategy :sparkle
+    strategy :sparkle do |items|
+      items.map(&:nice_version)
+    end
   end
 
   auto_updates true
@@ -55,7 +60,6 @@ cask "wireshark" do
   manpage "#{appdir}/Wireshark.app/Contents/Resources/share/man/man1/capinfos.1"
   manpage "#{appdir}/Wireshark.app/Contents/Resources/share/man/man1/captype.1"
   manpage "#{appdir}/Wireshark.app/Contents/Resources/share/man/man1/ciscodump.1"
-  manpage "#{appdir}/Wireshark.app/Contents/Resources/share/man/man1/dftest.1"
   manpage "#{appdir}/Wireshark.app/Contents/Resources/share/man/man1/dumpcap.1"
   manpage "#{appdir}/Wireshark.app/Contents/Resources/share/man/man1/editcap.1"
   manpage "#{appdir}/Wireshark.app/Contents/Resources/share/man/man1/etwdump.1"
@@ -75,17 +79,13 @@ cask "wireshark" do
 
   uninstall_preflight do
     system_command "/usr/sbin/installer",
-                   args: [
-                     "-pkg", "#{staged_path}/Uninstall ChmodBPF.pkg",
-                     "-target", "/"
-                   ],
-                   sudo: true
+                   args:         ["-pkg", "#{staged_path}/Uninstall ChmodBPF.pkg", "-target", "/"],
+                   sudo:         true,
+                   sudo_as_root: true
     system_command "/usr/sbin/installer",
-                   args: [
-                     "-pkg", "#{staged_path}/Remove Wireshark from the system path.pkg",
-                     "-target", "/"
-                   ],
-                   sudo: true
+                   args:         ["-pkg", "#{staged_path}/Remove Wireshark from the system path.pkg", "-target", "/"],
+                   sudo:         true,
+                   sudo_as_root: true
   end
 
   uninstall pkgutil: "org.wireshark.*"

@@ -1,6 +1,6 @@
 cask "alfred" do
-  version "5.1.3,2175"
-  sha256 "1f403b4aa5e4c2a5ec36a7c37cd560ae740ebe5c39b852bf4b02a15113b4756e"
+  version "5.5,2257"
+  sha256 "eed7e21b531f3974ccd440f1cc56ba3ce6a2fed2d413864a9c4a4e6f2a637b54"
 
   url "https://cachefly.alfredapp.com/Alfred_#{version.csv.first}_#{version.csv.second}.dmg"
   name "Alfred"
@@ -20,15 +20,15 @@ cask "alfred" do
 
   app "Alfred #{version.major}.app"
 
-  uninstall login_item: "Alfred#{version.major}",
-            quit:       "com.runningwithcrayons.Alfred"
+  uninstall quit:       "com.runningwithcrayons.Alfred",
+            login_item: "Alfred#{version.major}"
 
   zap trash: [
     "~/Library/Application Support/Alfred",
     "~/Library/Caches/com.runningwithcrayons.Alfred",
     "~/Library/Cookies/com.runningwithcrayons.Alfred.binarycookies",
-    "~/Library/Preferences/com.runningwithcrayons.Alfred.plist",
     "~/Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist",
+    "~/Library/Preferences/com.runningwithcrayons.Alfred.plist",
     "~/Library/Saved Application State/com.runningwithcrayons.Alfred-Preferences.savedState",
   ]
 end

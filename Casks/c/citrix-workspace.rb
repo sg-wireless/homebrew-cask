@@ -1,6 +1,6 @@
 cask "citrix-workspace" do
-  version "23.09.0.4"
-  sha256 "0acfe30a1f3d9ec4f9439a639a24b38d5855af934be533d6b52b9fa750dcbfe1"
+  version "24.02.10.24"
+  sha256 "9c3b2e7116dc3c2a68c24b3b6d01e4a94f8aa76954824b2604a307d86492df61"
 
   url "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Mac/CitrixWorkspaceAppUniversal#{version}.pkg"
   name "Citrix Workspace"
@@ -10,7 +10,8 @@ cask "citrix-workspace" do
   livecheck do
     url "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_macos2.xml"
     strategy :xml do |xml|
-      xml.get_elements("//Installers[@name='WorkspaceApp']/Installer/Version").map(&:text)
+      xml.get_elements("//Installers[@name='WorkspaceApp']/Installer/Version")
+         .map { |item| item.text&.strip }
     end
   end
 

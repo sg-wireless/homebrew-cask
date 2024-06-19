@@ -1,15 +1,15 @@
 cask "retro-virtual-machine" do
-  version "2.1.8"
-  sha256 "1081d70356a3ba1097cf812139f30d85725af025a763a8ba9232f164849bd991"
+  version "2.1.15"
+  sha256 "a9ccc25c9e2cec2560e0d592f3ae2ec2c603448df7fcb288038d029e7cb9af97"
 
   url "https://static.retrovm.org/release/#{version}/RetroVirtualMachine.#{version}.dmg",
       verified: "static.retrovm.org/release/"
   name "Retro Virtual Machine"
   desc "ZX Spectrum and Amstrad CPC emulator"
-  homepage "https://www.retrovirtualmachine.org/en/"
+  homepage "https://www.retrovirtualmachine.org/"
 
   livecheck do
-    url "https://www.retrovirtualmachine.org/download"
+    url "https://www.retrovirtualmachine.org/download/"
     regex(/RetroVirtualMachine[._-](\d+(?:\.\d+)+)\.dmg/i)
   end
 

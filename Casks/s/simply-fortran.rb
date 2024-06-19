@@ -1,20 +1,41 @@
 cask "simply-fortran" do
   arch arm: "-arm64", intel: "-x86_64"
 
+  version "3.35.4216"
+
   on_big_sur :or_older do
-    version "3.25.3757"
-    sha256 "0975462a1593bdc976dc87d6a9da88b97d8268a1a97caebeefd359e56ef73195"
+    sha256 "eebe9337898adfd4a27c628e67395f9a84fad977276ac99dfea8c29093163f69"
 
     url "https://download.simplyfortran.com/#{version.major_minor}/macos/simplyfortran-#{version}-x86_64.legacy.dmg"
 
     livecheck do
-      skip "Legacy version"
+      url "https://simplyfortran.com/download/?platform=macos"
+      regex(/href=.*?simplyfortran[._-]v?(\d+(?:\.\d+)+)[._-]x86_64\.legacy\.dmg/i)
     end
   end
-  on_monterey :or_newer do
-    version "3.31.3974"
-    sha256 arm:   "df268483c68a69b20a3ece063ff4ecf88933659a96d8bd80b4d4c94371ecbf34",
-           intel: "0ab201d3165f9562bb413d7fd4c2ad234ae17c89919b36f5a8ea21b35b3f2640"
+  on_monterey do
+    sha256 "074021b2faeeaf7a737ff9f5b0dfef2b43b6265968f862a6ee4e648f5e4f91c5"
+
+    url "https://download.simplyfortran.com/#{version.major_minor}/macos/simplyfortran-#{version}-x86_64.dmg"
+
+    livecheck do
+      url "https://simplyfortran.com/download/?platform=macos"
+      regex(/href=.*?simplyfortran[._-]v?(\d+(?:\.\d+)+)[._-]x86_64\.dmg/i)
+    end
+  end
+  on_ventura do
+    sha256 "074021b2faeeaf7a737ff9f5b0dfef2b43b6265968f862a6ee4e648f5e4f91c5"
+
+    url "https://download.simplyfortran.com/#{version.major_minor}/macos/simplyfortran-#{version}-x86_64.dmg"
+
+    livecheck do
+      url "https://simplyfortran.com/download/?platform=macos"
+      regex(/href=.*?simplyfortran[._-]v?(\d+(?:\.\d+)+)[._-]x86_64\.dmg/i)
+    end
+  end
+  on_sonoma :or_newer do
+    sha256 arm:   "c600ddf0e38bbb643d63e06982c223edb989a78d010d72a1b05872976a334a12",
+           intel: "074021b2faeeaf7a737ff9f5b0dfef2b43b6265968f862a6ee4e648f5e4f91c5"
 
     url "https://download.simplyfortran.com/#{version.major_minor}/macos/simplyfortran-#{version}#{arch}.dmg"
 
@@ -32,7 +53,7 @@ cask "simply-fortran" do
 
   zap trash: [
     "~/.simplyfortran",
-    "~/Library/Caches/com.apple.helpd/Generated/com.approximatrix.simplyfortran.help*3.29",
+    "~/Library/Caches/com.apple.helpd/Generated/com.approximatrix.simplyfortran.help*",
     "~/Library/Saved Application State/com.approximatrix.simplyfortran.savedState",
   ]
 end

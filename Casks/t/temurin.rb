@@ -1,9 +1,9 @@
 cask "temurin" do
   arch arm: "aarch64", intel: "x64"
 
-  version "20.0.2,9"
-  sha256 arm:   "83e1539a97684fc30d291e104afc9df22deb83e0554e9df581010ebea284210a",
-         intel: "eeb481cf22c2c6ce30d6ed924b30bf1ab5d0df9e0ebfe6178649ad2819a6cd8c"
+  version "22.0.1,8"
+  sha256 arm:   "c55c87836bc3fa1a813b68afeb9b83506a4f830ff603e9392758ec6d02749d7b",
+         intel: "4ce736ce5aa48fecca15cd0ff93e1ae37ebbc0b11e3399d9082616397c0c6552"
 
   url "https://github.com/adoptium/temurin#{version.major}-binaries/releases/download/jdk-#{version.csv.first}%2B#{version.csv.second}/OpenJDK#{version.major}U-jdk_#{arch}_mac_hotspot_#{version.csv.first}_#{version.csv.second.major}.pkg",
       verified: "github.com/adoptium/"
@@ -14,12 +14,12 @@ cask "temurin" do
   livecheck do
     url "https://api.adoptium.net/v3/info/release_versions?release_type=ga&architecture=#{arch}&image_type=jdk&jvm_impl=hotspot&os=mac&page=0&page_size=1&project=jdk&sort_method=DEFAULT&sort_order=DESC&vendor=eclipse"
     strategy :json do |json|
-      json["versions"].map do |version|
-        match = version["openjdk_version"].match(/^(\d+(?:\.\d+)*)\+(\d+(?:\.\d+)*)$/i)
+      json["versions"].filter_map do |version|
+        match = version["openjdk_version"].match(/^(\d+(?:\.\d+)*)\+(\d+(?:\.\d+)*)(?:-LTS)?$/i)
         next if match.blank?
 
         "#{match[1]},#{match[2]}"
-      end.compact
+      end
     end
   end
 

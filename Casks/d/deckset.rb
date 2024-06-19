@@ -1,6 +1,6 @@
 cask "deckset" do
-  version "2.0.25,2636"
-  sha256 "62e3d8df1640ecf20c958b09b1e3a7af0a235620c91e5cd319dcf1dff34c536b"
+  version "2.0.32,2687"
+  sha256 "3c52df5cd033ea973d83827905d5207f8bf97e9852bbec69f113b9f62cb39a14"
 
   url "https://dl.decksetapp.com/Deckset+#{version.csv.first}+(#{version.csv.second}).dmg"
   name "Deckset"
@@ -12,7 +12,7 @@ cask "deckset" do
     strategy :sparkle
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :high_sierra"
 
   app "Deckset.app"
 
@@ -20,11 +20,10 @@ cask "deckset" do
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.unsignedinteger.deckset-paddle.sfl*",
     "~/Library/Application Support/com.unsignedinteger.Deckset-Paddle",
     "~/Library/Application Support/Deckset",
-    "~/Library/Caches/com.apple.helpd/Generated/com.unsignedinteger.Deckset.Helpbook*2.0.20",
+    "~/Library/Caches/com.apple.helpd/Generated/com.unsignedinteger.Deckset.Helpbook*",
     "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.unsignedinteger.Deckset-Paddle",
     "~/Library/Caches/com.unsignedinteger.Deckset-Paddle",
-    "~/Library/HTTPStorages/com.unsignedinteger.Deckset-Paddle",
-    "~/Library/HTTPStorages/com.unsignedinteger.Deckset-Paddle.binarycookies",
+    "~/Library/HTTPStorages/com.unsignedinteger.Deckset-Paddle*",
     "~/Library/Preferences/com.unsignedinteger.Deckset-Paddle.plist",
     "~/Library/Saved Application State/com.unsignedinteger.Deckset-Paddle.savedState",
   ]

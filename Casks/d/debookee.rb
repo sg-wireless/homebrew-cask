@@ -1,5 +1,5 @@
 cask "debookee" do
-  version "8.1.4"
+  version "8.1.5"
   sha256 :no_check
 
   url "https://www.iwaxx.com/debookee/debookee.zip",
@@ -18,8 +18,8 @@ cask "debookee" do
 
   app "Debookee.app"
 
-  uninstall delete:    "/Library/PrivilegedHelperTools/com.iwaxx.Debookee.PacketTool",
-            launchctl: "com.iwaxx.Debookee.PacketTool"
+  uninstall launchctl: "com.iwaxx.Debookee.PacketTool",
+            delete:    "/Library/PrivilegedHelperTools/com.iwaxx.Debookee.PacketTool"
 
   zap trash: [
     "~/.debookee",

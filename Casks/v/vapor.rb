@@ -1,13 +1,13 @@
 cask "vapor" do
-  arch arm: "ARM64", intel: "X86"
+  arch arm: "M1", intel: "x86"
 
-  version "3.9.0"
-  sha256 arm:   "24fc0f831696fe2276a878f8eb4144b5f78c65d13d0a4542f537c900e863d08f",
-         intel: "b3562847d4c3effd19d65713220e4fb6fab703d732db67ab990aaff9fdfb1988"
+  version "3.9.2"
+  sha256 arm:   "130806331261298a53c07451ab11bc728e5fe0fc86483bcc8a8f49a5d8018751",
+         intel: "00dbfcea7e6a7512d76fd6684af9471ba9bd0cc62dd324b6ee9e941e091f174d"
 
-  url "https://github.com/NCAR/VAPOR/releases/download/v#{version}/VAPOR#{version.major}-#{version}-Darwin#{arch}.dmg"
+  url "https://github.com/NCAR/VAPOR/releases/download/v#{version}/VAPOR#{version.major}-#{version}-MacOS-#{arch}.dmg"
   name "VAPOR"
-  desc "Visualization and analysis platform"
+  desc "Visualisation and analysis platform"
   homepage "https://github.com/NCAR/VAPOR"
 
   livecheck do
@@ -15,7 +15,12 @@ cask "vapor" do
     strategy :github_latest
   end
 
+  auto_updates true
+
   app "vapor.app"
 
-  # No zap stanza required
+  zap trash: [
+    "~/.vapor3_settings",
+    "~/Library/Saved Application State/Vapor3.savedState",
+  ]
 end

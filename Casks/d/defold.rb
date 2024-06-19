@@ -1,25 +1,28 @@
 cask "defold" do
-  version "1.6.0"
-  sha256 "71af7002692cc68b8f2a4e152bfbd0b9828e2e377fb26a57c642206ce4a5ebc6"
+  arch arm: "arm64", intel: "x86_64"
 
-  url "https://github.com/defold/defold/releases/download/#{version}/Defold-x86_64-macos.dmg",
+  version "1.8.1"
+  sha256 :no_check # required as upstream package is updated in-place
+
+  url "https://github.com/defold/defold/releases/download/#{version}/Defold-#{arch}-macos.dmg",
       verified: "github.com/defold/defold/"
   name "Defold"
   desc "Game engine for development of desktop, mobile and web games"
   homepage "https://defold.com/"
 
-  # Alpha releases are labeled as "pre-release" but beta releases aren't, so we
-  # can't use the `GithubLatest` strategy here.
+  # Upstream only marks alpha releases as "pre-release", so the "latest" GitHub
+  # release is sometimes a beta version. As such, it's necessary to check
+  # multiple recent releases to identify the latest stable version.
   livecheck do
-    url "https://github.com/defold/defold/releases?q=prerelease%3Afalse"
-    regex(%r{href=.*?/tag/v?(\d+(?:\.\d+)+)["' >]}i)
-    strategy :page_match
+    url :url
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+    strategy :github_releases
   end
 
   auto_updates true
   conflicts_with cask: [
-    "homebrew/cask-versions/defold-alpha",
-    "homebrew/cask-versions/defold-beta",
+    "defold@alpha",
+    "defold@beta",
   ]
 
   app "Defold.app"

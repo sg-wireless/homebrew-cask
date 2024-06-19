@@ -1,6 +1,6 @@
 cask "solar2d" do
-  version "2023.3697"
-  sha256 "72167cc28acc9a839236947ca4cd5eb13fe15c322414b7632478f51ea9c646c8"
+  version "2024.3706"
+  sha256 "b24005d3df1f980706b9ac36d678afc882d9452fb25cf70b91077bbed112a9c0"
 
   url "https://github.com/coronalabs/corona/releases/download/#{version.minor}/Solar2D-macOS-#{version}.dmg",
       verified: "github.com/coronalabs/corona/"
@@ -24,10 +24,10 @@ cask "solar2d" do
   suite "Corona-#{version.minor}"
 
   zap trash: [
-    "~/Library/Application Support/Corona",
     "~/Library/Application Support/Corona Simulator",
-    "~/Library/Preferences/com.coronalabs.CoronaConsole.plist",
+    "~/Library/Application Support/Corona",
     "~/Library/Preferences/com.coronalabs.Corona_Simulator.plist",
+    "~/Library/Preferences/com.coronalabs.CoronaConsole.plist",
     "~/Library/Saved Application State/com.coronalabs.Corona_Simulator.savedState",
   ]
 end

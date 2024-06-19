@@ -1,15 +1,25 @@
 cask "bambu-studio" do
-  version "01.07.06.92"
-  sha256 "8525411dca47583673817349a3975546b146a3806a45a9aa90c12fef6c82aa25"
+  version "01.09.02.57,20240607194639,01.09.02.57"
+  sha256 "f4ce20c6344e2fd7d8bd51d701879d9d7640e0ce01abf6de07f0016d889c6a4f"
 
-  url "https://public-cdn.bambulab.com/upgrade/studio/software/#{version}/Bambu_Studio_mac-v#{version}.dmg"
+  url "https://github.com/bambulab/BambuStudio/releases/download/v#{version.csv.third || version.csv.first}/Bambu_Studio_mac-v#{version.csv.first}-#{version.csv.second}.dmg",
+      verified: "github.com/bambulab/BambuStudio/"
   name "Bambu Studio"
   desc "3D model slicing software for 3D printers, maintained by Bambu Lab"
   homepage "https://bambulab.com/en/download/studio"
 
   livecheck do
     url :homepage
-    regex(/href=.*?Bambu[._-]Studio[._-]mac[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
+    regex(%r{href=.*/v?(\d+(?:\.\d+)+)/Bambu[._-]Studio[._-]mac[._-]v?(\d+(?:\.\d+)+)[._-](\d+)\.dmg}i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map do |match|
+        if match[2] == match[0]
+          "#{match[1]},#{match[2]}"
+        else
+          "#{match[1]},#{match[2]},#{match[0]}"
+        end
+      end
+    end
   end
 
   depends_on macos: ">= :catalina"

@@ -1,8 +1,8 @@
 cask "mullvad-browser" do
-  version "12.5.6"
-  sha256 "f0f1aac43024b733ba643c31aed1e457a0f5c1f58b9ff45051d6305274208b09"
+  version "13.0.16"
+  sha256 "a760c24d0490a35cd4d4d78e8d9b2e4d3a62b8b740a15407e0079a0b781e8e6b"
 
-  url "https://cdn.mullvad.net/browser/#{version}/MullvadBrowser-#{version}-macos_ALL.dmg"
+  url "https://cdn.mullvad.net/browser/#{version}/mullvad-browser-macos-#{version}.dmg"
   name "Mullvad Browser"
   desc "Web browser focused on privacy and on minimizing tracking and fingerprinting"
   homepage "https://mullvad.net/en/browser"

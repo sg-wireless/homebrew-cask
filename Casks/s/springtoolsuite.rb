@@ -1,15 +1,15 @@
 cask "springtoolsuite" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "4.20.0,4.29.0"
-  sha256 arm:   "8d1c4c48873dd0d781b9ca7b8229d5efa35a03c8d5770c2c65a3f3ef5ea4403d",
-         intel: "9c0fe04b88518768218c11c49ebb0458e289b7c2a49de722b7786e5d6c27fede"
+  version "4.23.1,4.32.0"
+  sha256 arm:   "29c197bafc0ad00342ed6d5f18205ee0873c22272836c162f06d67eda0e9900b",
+         intel: "5addf11c9ca6aa4223d40d3f81859a475b433c4f0811e4aa3ec1292964a19615"
 
   url "https://download.springsource.com/release/STS#{version.major}/#{version.csv.first}.RELEASE/dist/e#{version.csv.second.major_minor}/spring-tool-suite-#{version.major}-#{version.csv.first}.RELEASE-e#{version.csv.second}-macosx.cocoa.#{arch}.dmg",
       verified: "download.springsource.com/release/"
   name "Spring Tool Suite"
   desc "Next generation tooling for Spring Boot"
-  homepage "https://spring.io/tools"
+  homepage "https://spring.io/tools/"
 
   livecheck do
     url :homepage

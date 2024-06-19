@@ -1,6 +1,6 @@
 cask "keka" do
-  version "1.3.4"
-  sha256 "6e173b98ea77f13dcbf50842573ecffc793f8b51e196deb72cfc7f52f87b7b4d"
+  version "1.4.0"
+  sha256 "0097bef454b341daaf2cf218c1c527287b4d38500daa35ccb345c7b30a8835fe"
 
   url "https://github.com/aonez/Keka/releases/download/v#{version}/Keka-#{version}.dmg",
       verified: "github.com/aonez/Keka/"
@@ -9,12 +9,12 @@ cask "keka" do
   homepage "https://www.keka.io/"
 
   livecheck do
-    url "https://u.keka.io"
+    url "https://u.keka.io/keka.xml"
     strategy :sparkle, &:short_version
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/keka-beta"
+  conflicts_with cask: "keka@beta"
 
   app "Keka.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

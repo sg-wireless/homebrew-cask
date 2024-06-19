@@ -1,11 +1,11 @@
 cask "planet" do
-  version "0.15.1"
-  sha256 "fc1f091c7a9ec19852c805865c6d2e09214eb17d6f99581652c7790eab783cb8"
+  version "0.17.1"
+  sha256 "c725bf91bb511260ff2cb44968b2f74a3f82d2b5345d0b0bb41bbb3b6c5ea453"
 
   url "https://github.com/Planetable/Planet/releases/download/release-#{version}/Planet.zip",
       verified: "github.com/Planetable/Planet/"
   name "Planet"
-  desc "Decentralized blogs and websites powered by IPFS and Ethereum Name System"
+  desc "Decentralised blogs and websites powered by IPFS and Ethereum Name System"
   homepage "https://www.planetable.xyz/"
 
   livecheck do

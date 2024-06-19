@@ -1,6 +1,6 @@
 cask "cyberduck" do
-  version "8.6.3,40040"
-  sha256 "29e45aa94be68a39ede7cfa543c6f37fcdd02cdfd2888c1f30ad50a8ba7822e8"
+  version "8.9.0,41543"
+  sha256 "cbf52374553d748343a8882e97194578ca07113977bcb55aa69e05c2ce3945bb"
 
   url "https://update.cyberduck.io/Cyberduck-#{version.csv.first}.#{version.csv.second}.zip"
   name "Cyberduck"
@@ -13,7 +13,7 @@ cask "cyberduck" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :high_sierra"
 
   app "Cyberduck.app"
 

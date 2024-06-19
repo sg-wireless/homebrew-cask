@@ -1,23 +1,26 @@
 cask "virtualbox" do
-  version "7.0.10,a,158379"
-  sha256 "f3f25870bc7988c35f77eb370402623a1facf7405128fe86f0583fa07a5fff1b"
+  version "7.0.18,162988"
+  sha256 "496002f5d9b4280ffaec9269eeae97b301c3cb30ec569a904d430808cd72c7e2"
 
-  url "https://download.virtualbox.org/virtualbox/#{version.csv.first}/VirtualBox-#{version.csv.first}#{version.csv.second}-#{version.csv.third}-OSX.dmg"
+  url "https://download.virtualbox.org/virtualbox/#{version.csv.first}/VirtualBox-#{version.csv.first}-#{version.csv.second}-OSX.dmg"
   name "Oracle VirtualBox"
-  desc "Virtualizer for x86 hardware"
+  desc "Virtualiser for x86 hardware"
   homepage "https://www.virtualbox.org/"
 
   livecheck do
     url "https://www.virtualbox.org/wiki/Downloads"
     strategy :page_match do |page|
-      match = page.match(/href=.*?VirtualBox-(\d+(?:\.\d+)+)([a-z]+)[._-](\d+)[._-]OSX.dmg/)
+      match = page.match(/href=.*?VirtualBox[._-]v?(\d+(?:\.\d+)+)[._-](\d+)[._-]OSX.dmg/)
       next if match.blank?
 
-      "#{match[1]},#{match[2]},#{match[3]}"
+      "#{match[1]},#{match[2]}"
     end
   end
 
-  conflicts_with cask: "homebrew/cask-versions/virtualbox-beta"
+  conflicts_with cask: [
+    "virtualbox@6",
+    "virtualbox@beta",
+  ]
   depends_on macos: ">= :catalina"
   depends_on arch: :x86_64
 

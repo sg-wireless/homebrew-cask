@@ -1,6 +1,6 @@
 cask "redcine-x-pro" do
-  version "61.1.2"
-  sha256 "dafc8e78e00f3fa75a93c7bb896cdc1acaa2ce8b2a1678159cbbb355c089ba1b"
+  version "62.0.29"
+  sha256 "dce0998c5fec5b836855f985ec31784c2ea9c03934ffb75fdb7a1750c8197326"
 
   url "https://downloads.red.com/software/rcx/mac/release/#{version}/REDCINE-X_PRO_Build_#{version}.pkg"
   name "REDCINE-X PRO"
@@ -9,10 +9,16 @@ cask "redcine-x-pro" do
 
   livecheck do
     url "https://www.red.com/RedSuiteCentric/SCA-Kilimanjaro/services/Download.Service.ss?downloadIdentifier=redcine-x-pro-mac"
-    strategy :page_match do |page|
-      json = JSON.parse(page)
-      latest = json["data"][0]
-      "#{latest["versionMajor"]}.#{latest["versionMinor"]}.#{latest["versionRevision"]}"
+    regex(/Build[._-]v?(\d+(?:\.\d+)+)\.pkg/i)
+    strategy :json do |json, regex|
+      json["data"]&.map do |item|
+        next if item["versionIsBeta"] == "T"
+
+        match = item["versionUrl"]&.match(regex)
+        next if match.blank?
+
+        match[1]
+      end
     end
   end
 

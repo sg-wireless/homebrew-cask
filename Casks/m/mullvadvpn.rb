@@ -1,6 +1,6 @@
 cask "mullvadvpn" do
-  version "2023.4"
-  sha256 "3242edad8edd716109d3bbd0fca3fe09a4293ba047a883e19558b28c9b1cdb6c"
+  version "2024.3"
+  sha256 "bdbbde58d91a57fe783813e4082c6190527ef979b0818dd66d5e594de3598343"
 
   url "https://github.com/mullvad/mullvadvpn-app/releases/download/#{version}/MullvadVPN-#{version}.pkg",
       verified: "github.com/mullvad/mullvadvpn-app/"
@@ -13,13 +13,13 @@ cask "mullvadvpn" do
     strategy :header_match
   end
 
-  conflicts_with cask: "homebrew/cask-versions/mullvadvpn-beta"
+  conflicts_with cask: "mullvadvpn@beta"
   depends_on macos: ">= :big_sur"
 
   pkg "MullvadVPN-#{version}.pkg"
 
-  uninstall pkgutil:   "net.mullvad.vpn",
-            launchctl: "net.mullvad.daemon",
+  uninstall launchctl: "net.mullvad.daemon",
+            pkgutil:   "net.mullvad.vpn",
             delete:    [
               "/Library/Caches/mullvad-vpn",
               "/Library/LaunchDaemons/net.mullvad.daemon.plist",

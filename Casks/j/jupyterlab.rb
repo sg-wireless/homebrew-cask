@@ -1,9 +1,9 @@
 cask "jupyterlab" do
   arch arm: "arm64", intel: "x64"
 
-  version "4.0.5-1"
-  sha256 arm:   "684f891e1eb54a435b6bb826d033502bd4500256352b76ec07216c4992f39165",
-         intel: "4af67926454d197be45cac8593ae7886783409bd07e56f320c8c1f2a167986b4"
+  version "4.2.1-1"
+  sha256 arm:   "973cf57f8fedffa2cd557c26a7806c7b0e3b566e6e3e9476f84e8ba334fc6777",
+         intel: "2192ddc4cc5ba2f03012dbe7f8cc5bcb7408a4d9283640b06996474e95667b38"
 
   url "https://github.com/jupyterlab/jupyterlab-desktop/releases/download/v#{version}/JupyterLab-Setup-macOS-#{arch}.dmg"
   name "JupyterLab App"
@@ -32,8 +32,8 @@ cask "jupyterlab" do
     "~/Library/Caches/org.jupyter.jupyterlab-desktop.ShipIt",
     "~/Library/HTTPStorages/org.jupyter.jupyterlab-desktop",
     "~/Library/Jupyter",
-    "~/Library/Logs/jupyterlab-desktop",
     "~/Library/Logs/JupyterLab",
+    "~/Library/Logs/jupyterlab-desktop",
     "~/Library/Preferences/com.electron.jupyterlab-desktop.plist",
     "~/Library/Saved Application State/com.electron.jupyterlab-desktop.savedState",
   ]

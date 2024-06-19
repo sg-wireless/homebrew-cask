@@ -2,11 +2,16 @@ cask "molotov" do
   arch arm: "-arm64"
   arch_folder = on_arch_conditional arm: "m1/"
 
-  version "4.6.0"
-  sha256 arm:   "fe1a2804c50341d9463ef6291756ffbcdb280530e85282e6df5a6368cafb4e58",
-         intel: "c8cd1f85ee87eb168e127dc37c4cdae5a111045e621063c3b1724b516eea3c29"
+  on_arm do
+    version "6.0.1"
+    sha256 "648a1cd4496a23272f10f3af2dc901b3c356933fbc25fbc9b0732c52eeccf5b8"
+  end
+  on_intel do
+    version "6.0.2"
+    sha256 "d2eaeb287dc237266b507a8ff603ca108b0cc2cbe06b82567f5b382f65a0988a"
+  end
 
-  url "https://desktop-auto-upgrade.molotov.tv/mac/#{arch_folder}Molotov-#{version}#{arch}-mac.zip"
+  url "https://desktop-auto-upgrade.molotov.tv/mac/#{arch_folder}Molotov-#{version}-mac.zip"
   name "Molotov"
   desc "French TV streaming service"
   homepage "https://www.molotov.tv/"
@@ -16,5 +21,16 @@ cask "molotov" do
     regex(%r{/Molotov-v?(\d+(?:\.\d+)+)-mac\.zip}i)
   end
 
+  depends_on macos: ">= :catalina"
+
   app "Molotov.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/tv.molotov.molotovdesktopapp.sfl*",
+    "~/Library/Application Support/molotov",
+    "~/Library/Caches/com.apple.nsurlsessiond/Downloads/tv.molotov.MolotovDesktopApp",
+    "~/Library/Logs/molotov",
+    "~/Library/Preferences/tv.molotov.MolotovDesktopApp.plist",
+    "~/Library/Saved Application State/tv.molotov.MolotovDesktopApp.savedState",
+  ]
 end

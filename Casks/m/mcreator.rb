@@ -1,6 +1,6 @@
 cask "mcreator" do
-  version "2023.3.36712"
-  sha256 "e0cbb76b9d73fbf5b54df5381832b8071b94a75d23cc31d3db4438247c660691"
+  version "2024.1.18518"
+  sha256 "979318688d75128fe8acafd215b2b7d53e425abd9ee7cd9e6ce344da625b4883"
 
   url "https://github.com/MCreator/MCreator/releases/download/#{version}/MCreator.#{version.major_minor}.Mac.64bit.dmg",
       verified: "github.com/MCreator/MCreator/"
@@ -9,7 +9,7 @@ cask "mcreator" do
   homepage "https://mcreator.net/"
 
   livecheck do
-    url "https://mcreator.net/changelog/"
+    url "https://mcreator.net/changelog"
     regex(/>v?(\d+(?:\.\d+)+)</i)
   end
 

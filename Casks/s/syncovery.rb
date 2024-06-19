@@ -1,13 +1,13 @@
 cask "syncovery" do
   arch arm: "-Apple"
 
-  version "10.7.0"
-  sha256 arm:   "8bf9331a8a26d577764c59e51a1dddb7d6c527c0bb729b6dea63d5edee91531c",
-         intel: "962756052fd6a26d96d1de343f65a7be0f4d93b86b8aa2bc6fdc25d300e3146f"
+  version "10.14.9"
+  sha256 arm:   "5251ee375b883a210c1e766f515e73b7b8d446051c4700613c4fb6785d1ce80b",
+         intel: "5c968d59d2ff32fb0bc83d54acb9db2fe2e10998f7a9fd2a31153577e9dc62f4"
 
   url "https://www.syncovery.com/release/SyncoveryMac#{version}#{arch}.dmg"
   name "Syncovery"
-  desc "File synchronization and backup software"
+  desc "File synchronisation and backup software"
   homepage "https://www.syncovery.com/"
 
   livecheck do
@@ -22,8 +22,8 @@ cask "syncovery" do
   zap trash: [
     "~/Library/Application Support/Syncovery",
     "~/Library/Logs/Syncovery",
-    "~/Library/Preferences/Syncovery.ini",
     "~/Library/Preferences/Syncovery",
-    "~/Saved Application State/com.company.Syncovery.savedState",
+    "~/Library/Preferences/Syncovery.ini",
+    "~/Library/Saved Application State/com.company.Syncovery.savedState",
   ]
 end

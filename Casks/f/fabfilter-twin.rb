@@ -1,10 +1,10 @@
 cask "fabfilter-twin" do
-  version "3.02"
-  sha256 "b7802aca1594ecc5d771f8f46225180924bd82e62b3bcfbdc41552a9b15b9190"
+  version "3.05"
+  sha256 "0f93606650ce1ead95ba7eabd65140fe0bec9fb9de9844d39e4c01eec3991318"
 
-  url "https://download.fabfilter.com/fftwin#{version.no_dots}.dmg"
+  url "https://www.fabfilter.com/downloads/fftwin#{version.no_dots}.dmg"
   name "FabFilter Twin"
-  desc "Synthesizer plug-in"
+  desc "Synthesiser plug-in"
   homepage "https://www.fabfilter.com/products/twin-2-powerful-synthesizer-plug-in"
 
   livecheck do

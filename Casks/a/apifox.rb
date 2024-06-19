@@ -1,17 +1,17 @@
 cask "apifox" do
   arch arm: "-macOS-arm64"
 
-  version "2.3.19"
-  sha256 arm:   "319259b61ddbd5c44ff70620e7aaf4fb7c53ddb1d80e6a3b4c5c09b1b2f6c3ad",
-         intel: "ad9ba505a8dfacc75a47a7fe1e30e57d806f664efb50557bc9ac721ac512b96e"
+  version "2.5.31"
+  sha256 arm:   "2b15c62d7eb519f0dc835e9a822a4427d1fa0482c8082e208eea0bc5313d2380",
+         intel: "43387cd1fe09d85fb891dfc226975a3c9b2c0e680b1c5346ad5366fe98005dc4"
 
-  url "https://cdn.apifox.cn/download/#{version}/Apifox#{arch}-#{version}.dmg"
+  url "https://file-assets.apifox.com/download/#{version}/Apifox#{arch}-#{version}.dmg"
   name "Apifox"
   desc "Platform for API documentation, debugging, and testing"
-  homepage "https://www.apifox.cn/"
+  homepage "https://www.apifox.com/"
 
   livecheck do
-    url "https://cdn.apifox.cn/download/mac/latest-mac.yml?noCache=#{Time.new.to_i * 2}"
+    url "https://api.apifox.com/api/v1/configs/client-updates/#{version}/mac/latest-mac.yml?noCache=#{Time.new.to_i * 2}"
     strategy :electron_builder
   end
 

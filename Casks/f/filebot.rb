@@ -1,13 +1,13 @@
 cask "filebot" do
   arch arm: "arm64", intel: "x64"
 
-  version "5.1.1"
-  sha256 arm:   "b23d7b07f92eeb0e589f0e08e21be9e5f704f973a0222de115a9cd02eac6750f",
-         intel: "329c48a28ca69b6d7d72b0c46efdfc2f0ec2822ee53663dca94a1a4324c12641"
+  version "5.1.3"
+  sha256 arm:   "2b9fc1cf0349eadac549f26e3509fdee2e6d3296d12d85c5004be4ec1360fc99",
+         intel: "e9971b8a412deb08e7d8bccdb05b415eb099a9948bcab5127dad811b39ad7b27"
 
   url "https://get.filebot.net/filebot/FileBot_#{version}/FileBot_#{version}_#{arch}.app.tar.xz"
   name "FileBot"
-  desc "Tool for organizing and renaming movies, TV shows, anime or music"
+  desc "Tool for organising and renaming movies, TV shows, anime or music"
   homepage "https://www.filebot.net/"
 
   livecheck do

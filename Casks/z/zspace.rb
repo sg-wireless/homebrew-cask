@@ -1,16 +1,17 @@
 cask "zspace" do
-  arch arm: "ARM"
+  arch arm: "arm64", intel: "x64"
+  folder = on_arch_conditional arm: "ARM"
 
   on_arm do
-    version "2.4.2023071305,1689577756"
-    sha256 "96d7abedabc469962c8c51fbc560121b53fccfb0a0b34bbab9cd1a225a51bc86"
+    version "2.5.2024041501,1713519202,041522"
+    sha256 "be7711abb364424341a2fe6dc2e3399c0ef7cc4fe607d169d9cbce3a328311dd"
   end
   on_intel do
-    version "2.4.2023071305,1689566844"
-    sha256 "d58c7a5fbe52afe40431fd389b40714a994282307b0a39fe5580b425f1c5b615"
+    version "2.5.2024041501,1713519280,041522"
+    sha256 "93fd28fe842f603dff9d014dcf4d996f3ad5dc19b7094709bacd237d105283ad"
   end
 
-  url "https://update.zenithspace.net/app/APP_ZSPACE_DESKTOP_MAC#{arch}/V#{version.csv.first}/zspace/#{version.csv.second}/zspace_V#{version.csv.first}.dmg",
+  url "https://update.zenithspace.net/app/APP_ZSPACE_DESKTOP_MAC#{folder}/V#{version.csv.first}/zspace/#{version.csv.second}/zspace_mac_#{arch}_#{version.csv.first}_#{version.csv.third}.dmg",
       verified: "update.zenithspace.net/app/"
   name "zspace"
   name "极空间"
@@ -18,10 +19,10 @@ cask "zspace" do
   homepage "https://www.zspace.cn/"
 
   livecheck do
-    url "https://upgrade.zenithspace.net/upgrade_server/v2/check_upgrade?app_id=APP_ZSPACE_DESKTOP_MAC#{arch}&app_version=V0.0.0&nas_id=&plat=app&channel=zspace&skip_app_sync_upgrade=1"
-    regex(%r{v?(\d+(?:\.\d+)+)/zspace/(\d+)/}i)
+    url "https://upgrade.zenithspace.net/upgrade_server/v2/check_upgrade?app_id=APP_ZSPACE_DESKTOP_MAC#{folder}&app_version=V0.0.0&nas_id=&plat=app&channel=zspace&skip_app_sync_upgrade=1"
+    regex(%r{v?(\d+(?:\.\d+)+)/zspace/(\d+)/zspace[._-]mac[._-]#{arch}[._-](?:\d+(?:\.\d+)+)[._-](\d+)\.dmg}i)
     strategy :json do |json, regex|
-      json["data"]["download_url"]&.scan(regex)&.map { |match| "#{match[0]},#{match[1]}" }
+      json["data"]["download_url"]&.scan(regex)&.map { |match| "#{match[0]},#{match[1]},#{match[2]}" }
     end
   end
 

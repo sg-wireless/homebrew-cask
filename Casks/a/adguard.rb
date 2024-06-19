@@ -1,6 +1,6 @@
 cask "adguard" do
-  version "2.12.0.1385"
-  sha256 "48e41d4049dc84f48ccaab2e458b718f389b0d2ebb5fc8834816369d890bc1c1"
+  version "2.14.1.1603"
+  sha256 "82a104904e5f280d9fcdb75b251da126a88dbd1525ad36d974bfe678fb32fd9e"
 
   url "https://static.adguard.com/mac/release/AdGuard-#{version}.dmg"
   name "AdGuard"
@@ -15,27 +15,29 @@ cask "adguard" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/adguard-nightly"
+  conflicts_with cask: "adguard@nightly"
   depends_on macos: ">= :catalina"
 
   pkg "AdGuard.pkg"
 
-  uninstall quit:      "com.adguard.mac.adguard",
-            pkgutil:   "com.adguard.mac.adguard-pkg",
-            launchctl: [
+  uninstall launchctl: [
+              "com.adguard.mac.adguard.helper",
               "com.adguard.mac.adguard.pac",
               "com.adguard.mac.adguard.tun-helper",
               "com.adguard.mac.adguard.xpcgate2",
             ],
+            quit:      "com.adguard.mac.adguard",
+            pkgutil:   "com.adguard.mac.adguard-pkg",
             delete:    [
-              "/Library/com.adguard.mac.adguard.pac",
               "/Library/Application Support/AdGuard Software/com.adguard.mac.adguard",
               "/Library/Application Support/com.adguard.Adguard",
+              "/Library/com.adguard.mac.adguard.pac",
             ],
             rmdir:     "/Library/Application Support/AdGuard Software"
 
-  zap trash:  [
-        "~/Library/Application Scripts/*.com.adguard.mac*",
+  zap delete: "/Library/Logs/com.adguard.mac.adguard",
+      trash:  [
+        "~/Library/Application Scripts/*com.adguard.mac*",
         "~/Library/Application Support/Adguard",
         "~/Library/Application Support/com.adguard.*",
         "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.adguard.mac.adguard.loginhelper.sfl*",
@@ -47,6 +49,5 @@ cask "adguard" do
         "~/Library/Logs/Adguard",
         "~/Library/Preferences/com.adguard.*.plist",
         "~/Library/Saved Application State/com.adguard.mac.adguard.savedState",
-      ],
-      delete: "/Library/Logs/com.adguard.mac.adguard"
+      ]
 end

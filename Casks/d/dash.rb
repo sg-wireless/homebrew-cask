@@ -1,12 +1,6 @@
 cask "dash" do
-  on_high_sierra :or_older do
-    version "4.6.7"
-    sha256 "e2b5eb996645b25f12ccae15e24b1b0d8007bc5fed925e14ce7be45a2b693fb6"
-  end
-  on_mojave :or_newer do
-    version "7.1.2"
-    sha256 "24fd0c3e75ca4834e87cd6b92a9f076406e4d21f2a0af23612ed697292a5179c"
-  end
+  version "7.2.2"
+  sha256 "221d0159f7dc7042cb30fa6cd278c67ca3a1a7c23ec7a7db345642e20dedf2fd"
 
   url "https://kapeli.com/downloads/v#{version.major}/Dash.zip"
   name "Dash"
@@ -19,8 +13,8 @@ cask "dash" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask-versions/dash6"
-  depends_on macos: ">= :high_sierra"
+  conflicts_with cask: "dash@6"
+  depends_on macos: ">= :mojave"
 
   app "Dash.app"
 
@@ -28,8 +22,8 @@ cask "dash" do
     "~/Library/Application Support/com.kapeli.dashdoc",
     "~/Library/Application Support/Dash",
     "~/Library/Caches/com.kapeli.dashdoc",
-    "~/Library/Cookies/com.kapeli.dashdoc.binarycookies",
     "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.kapeli.dashdoc",
+    "~/Library/Cookies/com.kapeli.dashdoc.binarycookies",
     "~/Library/HTTPStorages/com.kapeli.dashdoc",
     "~/Library/HTTPStorages/com.kapeli.dashdoc.binarycookies",
     "~/Library/Logs/Dash",

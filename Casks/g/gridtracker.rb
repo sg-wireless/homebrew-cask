@@ -1,8 +1,8 @@
 cask "gridtracker" do
-  version "1.23.0402"
-  sha256 "5f07eb7b11980d52d3d4f739c43762d4e15ac636cdb663dbe35235f682e9f4c4"
+  version "1.24.0512"
+  sha256 "1d76e14f77f67bb6c0d11f1e35537aeb2bb469636942d02cc632179cb2a9f5cd"
 
-  url "https://downloads.gridtracker.org/v#{version}/GridTracker-#{version}-mac-x64.zip"
+  url "https://downloads.gridtracker.org/v#{version}-2/GridTracker-#{version}-mac-x64.zip"
   name "GridTracker"
   desc "Warehouse of amateur radio information presented in an easy to use interface"
   homepage "https://gridtracker.org/"

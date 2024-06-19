@@ -1,5 +1,5 @@
 cask "atext" do
-  version "3.16"
+  version "3.19"
   sha256 :no_check
 
   url "https://www.trankynam.com/atext/downloads/aText.dmg"
@@ -8,7 +8,7 @@ cask "atext" do
   homepage "https://www.trankynam.com/atext/"
 
   livecheck do
-    url "https://www.trankynam.com/atext/changelog.mac.html"
+    url "https://www.trankynam.com/atext/changelog.mac"
     regex(/aText\s*v?(\d+(?:\.\d+)+)["< ]/i)
   end
 

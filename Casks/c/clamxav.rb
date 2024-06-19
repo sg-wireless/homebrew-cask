@@ -1,6 +1,6 @@
 cask "clamxav" do
-  version "3.6.1,10182"
-  sha256 "c5699f993316489d022fc7d52e51cf080d2e917d83536ba62f61c132c558725f"
+  version "3.6.3,10255"
+  sha256 "a11bfa923a53aa74ee1b3b0541da30f11a83f547c3fffeb4dc68eb0e0c139c74"
 
   url "https://cdn.clamxav.com/ClamXAVdownloads/ClamXAV_#{version.csv.first}_#{version.csv.second}.zip"
   name "ClamXAV"
@@ -19,8 +19,8 @@ cask "clamxav" do
   zap trash: [
     "~/Library/Caches/uk.co.markallan.clamxav",
     "~/Library/Logs/ClamXAV-Console.log",
-    "~/Library/Logs/ClamXAV-UI-Helper-Console.log",
     "~/Library/Logs/clamXav-scan.*",
+    "~/Library/Logs/ClamXAV-UI-Helper-Console.log",
   ]
 
   caveats do

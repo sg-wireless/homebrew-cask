@@ -1,9 +1,9 @@
 cask "codux" do
   arch arm: "arm64", intel: "x64"
 
-  version "15.12.0"
-  sha256 arm:   "2a6913e99c88f357e246fe9932d84c1fe7f69b7af340e94d33eb0810568af752",
-         intel: "bc68a270f2f5a7aa6e2f6179c96b9c4bda907058a6feaf692efbded1310edcd8"
+  version "15.28.0"
+  sha256 arm:   "ae3729137c150c63def04e99bc2e872eb8cbcd748905bb367703655031f89fc8",
+         intel: "793a89d1ce2e085f0b36f03dac729124c26a3ad22fee6755b0eb30902360334e"
 
   url "https://github.com/wixplosives/codux-versions/releases/download/#{version}/Codux-#{version}.#{arch}.dmg",
       verified: "github.com/wixplosives/codux-versions/"
@@ -11,14 +11,18 @@ cask "codux" do
   desc "React IDE built to visually edit component styling and layouts"
   homepage "https://www.codux.com/"
 
+  livecheck do
+    url "https://www.codux.com/download"
+    regex(/href=.*?Codux[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}\.dmg/i)
+  end
+
   depends_on macos: ">= :catalina"
 
   app "Codux.app"
 
-  zap trash:
-             [
-               "~/Library/Application Support/Codux",
-               "~/Library/Preferences/com.wixc3.wcs.plist",
-               "~/Library/Saved Application State/com.wixc3.wcs.savedState",
-             ]
+  zap trash: [
+    "~/Library/Application Support/Codux",
+    "~/Library/Preferences/com.wixc3.wcs.plist",
+    "~/Library/Saved Application State/com.wixc3.wcs.savedState",
+  ]
 end

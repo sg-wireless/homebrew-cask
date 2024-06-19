@@ -1,6 +1,6 @@
 cask "maltego" do
-  version "4.5.0"
-  sha256 "d2ad23677000da380e9ef7b3ee71d3ca8f42d436fb9f37c3cee2bb30f67c434d"
+  version "4.7.0"
+  sha256 "0fdf042ad567c47c0391db1313a8ae0acb6370259ee05df97c0d08210da581d1"
 
   url "https://downloads.maltego.com/maltego-v#{version.major}/mac/Maltego.v#{version}.dmg"
   name "Maltego"

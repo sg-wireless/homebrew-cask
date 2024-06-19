@@ -1,15 +1,19 @@
 cask "mqttfx" do
-  version "5.3.0"
-  sha256 "6d602d05a452578725e059f30c43b3142377c54180ac6b91e2cce7522bf171e4"
+  arch arm: "applesilicon", intel: "intel"
 
-  url "https://download.softblade.de/mqttfx-#{version}-macos.dmg"
+  version "5.7.0"
+  sha256 arm:   "7c2e1bdca94fe3f94611c24d6378ac9d258030f15426c05047dcf33a9b711de3",
+         intel: "c992a54d7d873c055566651df07d9cb89bdcc347fa2db5ee1ed98bdd4abb9157"
+
+  url "https://download.softblade.net/mqttfx-#{version}-macos-#{arch}.dmg",
+      verified: "download.softblade.net/"
   name "MQTT.fx"
   desc "IoT route testing tool"
-  homepage "https://softblade.de/en/welcome/"
+  homepage "https://softblade.de/"
 
   livecheck do
     url "https://softblade.de/download/"
-    regex(/href=.*?mqttfx[._-]v?(\d+(?:\.\d+)+)-macos\.dmg/i)
+    regex(/href=.*?mqttfx[._-]v?(\d+(?:\.\d+)+)-macos/i)
   end
 
   installer script: {

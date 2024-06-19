@@ -12,16 +12,16 @@ cask "folding-at-home" do
     regex(/href=.*?fah[._-]installer[._-]v?(\d+(?:\.\d+)+)[._-]x86[._-]64.mpkg\.zip/i)
   end
 
-  conflicts_with cask: "homebrew/cask-versions/folding-at-home-beta"
+  conflicts_with cask: "folding-at-home@beta"
 
   pkg "fah-installer_#{version}_x86_64-b.pkg"
 
-  uninstall pkgutil:   "org.foldingathome.*",
-            launchctl: "org.foldingathome.fahclient",
+  uninstall launchctl: "org.foldingathome.fahclient",
             quit:      [
               "org.foldingathome.fahcontrol",
               "org.foldingathome.fahviewer",
-            ]
+            ],
+            pkgutil:   "org.foldingathome.*"
 
   zap trash: "/Library/Application Support/FAHClient"
 end

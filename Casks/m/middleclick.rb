@@ -1,11 +1,11 @@
 cask "middleclick" do
-  version "2.6.1"
-  sha256 "6f351cbc0fe2bf32526e691dfae50eea71a679a7f52ecd155fd453d8684ab175"
+  version "2.7"
+  sha256 "c5a98a652d880878452d8827630cf7a7266ce588edb5cf7b1cda5686f5ae71f3"
 
-  url "https://github.com/artginzburg/MiddleClick-BigSur/releases/download/#{version}/MiddleClick.zip"
+  url "https://github.com/artginzburg/MiddleClick-Sonoma/releases/download/#{version}/MiddleClick.zip"
   name "MiddleClick"
   desc "Utility to extend trackpad functionality"
-  homepage "https://github.com/artginzburg/MiddleClick-BigSur"
+  homepage "https://github.com/artginzburg/MiddleClick-Sonoma"
 
   livecheck do
     url :url
@@ -14,8 +14,8 @@ cask "middleclick" do
 
   app "MiddleClick.app"
 
-  uninstall login_item: "MiddleClick",
-            quit:       "com.rouge41.middleClick"
+  uninstall quit:       "com.rouge41.middleClick",
+            login_item: "MiddleClick"
 
   zap trash: "~/Library/Preferences/com.rouge41.middleClick.plist"
 end

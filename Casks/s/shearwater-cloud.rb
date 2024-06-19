@@ -1,14 +1,14 @@
 cask "shearwater-cloud" do
-  version "2.10.0"
-  sha256 "7792746e8fa8e740ba59e7eef3bf59e634e67492654076fe8146adec1d9dc1b3"
+  version "2.11.6"
+  sha256 "6f93ceac39fc4ff17f7fe174ef8670c65f4a1cd1eb30259cdaad8f82142a3dec"
 
-  url "https://www.shearwater.com/wp-content/downloads/ShearwaterCloudInstaller_#{version}.dmg"
+  url "https://downloads.shearwater.com/livedownloads/ShearwaterCloudInstaller_#{version}.dmg"
   name "Shearwater Cloud"
   desc "Review, edit and share dive log data"
-  homepage "https://www.shearwater.com/"
+  homepage "https://shearwater.com/"
 
   livecheck do
-    url "https://www.shearwater.com/cloud/"
+    url "https://shearwater.com/pages/shearwater-cloud"
     regex(/href=.*?ShearwaterCloudInstaller[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 

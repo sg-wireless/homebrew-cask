@@ -1,6 +1,6 @@
 cask "proxyman" do
-  version "4.12.0,49300"
-  sha256 "01a48bb5f90b7652d1b549c61b7720b67dbd5cb9ba77918eb11c48b4a03103ec"
+  version "5.5.0,50500"
+  sha256 "ceaff4d8dc557d5b61417215c081bb2ef2888d34080e2e6f93a668a540ea0060"
 
   url "https://download.proxyman.io/#{version.csv.second}/Proxyman_#{version.csv.first}.dmg"
   name "Proxyman"
@@ -13,8 +13,10 @@ cask "proxyman" do
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "Proxyman.app"
+  binary "#{appdir}/Proxyman.app/Contents/MacOS/proxyman-cli"
 
   uninstall_postflight do
     stdout, * = system_command "/usr/bin/security",
@@ -28,12 +30,13 @@ cask "proxyman" do
     end
   end
 
-  uninstall quit:      "com.proxyman.NSProxy",
-            launchctl: "com.proxyman.NSProxy.HelperTool",
+  uninstall launchctl: "com.proxyman.NSProxy.HelperTool",
+            quit:      "com.proxyman.NSProxy",
             delete:    "/Library/PrivilegedHelperTools/com.proxyman.NSProxy.HelperTool"
 
   zap trash: [
     "~/.proxyman*",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.proxyman.nsproxy.sfl*",
     "~/Library/Application Support/com.proxyman",
     "~/Library/Application Support/com.proxyman.NSProxy",
     "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.proxyman.NSProxy",
@@ -42,8 +45,8 @@ cask "proxyman" do
     "~/Library/Cookies/com.proxyman.binarycookies",
     "~/Library/Cookies/com.proxyman.NSProxy.binarycookies",
     "~/Library/HTTPStorages/com.proxyman.NSProxy",
-    "~/Library/Preferences/com.proxyman.NSProxy.plist",
     "~/Library/Preferences/com.proxyman.iconappmanager.userdefaults.plist",
+    "~/Library/Preferences/com.proxyman.NSProxy.plist",
     "~/Library/Preferences/com.proxyman.plist",
     "~/Library/Saved Application State/com.proxyman.NSProxy.savedState",
     "~/Library/WebKit/com.proxyman.NSProxy",
